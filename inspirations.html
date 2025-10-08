@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vow Inspirations - Browse endless wedding inspiration from top wedding planners. Find your perfect wedding theme and style.">
+    <meta name="keywords" content="wedding inspiration, wedding themes, wedding ideas, vow wedding inspiration">
+    <meta name="author" content="Vow">
+    <title>Vow - Wedding Inspirations Gallery</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #f8d7da;
+            --secondary-color: #f1c0d0;
+            --accent-color: #e6a4b4;
+            --dark-color: #343a40;
+            --light-color: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-color);
+            background-color: #ffffff;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        
+        .navbar-brand:hover {
+            color: var(--accent-color);
+            transform: scale(1.05);
+        }
+        
+        .nav-link {
+            color: var(--dark-color);
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after {
+            width: 80%;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .user-menu {
+            position: relative;
+        }
+        
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .user-avatar:hover {
+            background-color: #d6899a;
+            transform: scale(1.1);
+        }
+        
+        .user-dropdown {
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            min-width: 200px;
+            padding: 10px 0;
+            display: none;
+            z-index: 1001;
+        }
+        
+        .user-dropdown.show {
+            display: block;
+            animation: fadeInDown 0.3s ease;
+        }
+        
+        .user-dropdown-item {
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            color: var(--dark-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .user-dropdown-item:hover {
+            background-color: var(--light-color);
+            color: var(--accent-color);
+        }
+        
+        .user-dropdown-item i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Search and Filter Section */
+        .search-filter-section {
+            background: linear-gradient(135deg, var(--light-color), white);
+            padding: 30px 0;
+            border-bottom: 1px solid #e0e0e0;
+            position: sticky;
+            top: 76px;
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+        
+        .search-filter-section.hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        
+        .search-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto 25px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 15px 55px 15px 25px;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(230, 164, 180, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, var(--accent-color), #d6899a);
+            border: none;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-btn:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 5px 15px rgba(230, 164, 180, 0.4);
+        }
+        
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .filter-chip {
+            background-color: white;
+            border: 2px solid #e0e0e0;
+            color: var(--dark-color);
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .filter-chip:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(230, 164, 180, 0.2);
+        }
+        
+        .filter-chip.active {
+            background: linear-gradient(135deg, var(--accent-color), #d6899a);
+            color: white;
+            border-color: var(--accent-color);
+            box-shadow: 0 5px 15px rgba(230, 164, 180, 0.3);
+        }
+        
+        .category-filter-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .category-filter-label {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .category-dropdown {
+            padding: 10px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            background-color: white;
+            color: var(--dark-color);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 220px;
+        }
+        
+        .category-dropdown:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(230, 164, 180, 0.1);
+        }
+        
+        /* Masonry Grid */
+        .masonry-grid {
+            column-count: 5;
+            column-gap: 20px;
+            padding: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 1200px) {
+            .masonry-grid {
+                column-count: 4;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .masonry-grid {
+                column-count: 3;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .masonry-grid {
+                column-count: 1;
+            }
+        }
+        
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .masonry-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .masonry-item img {
+            width: 100%;
+            display: block;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+        
+        .masonry-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .masonry-item-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 60%, rgba(0,0,0,0.8) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            border-radius: 12px;
+        }
+        
+        .masonry-item:hover .masonry-item-overlay {
+            opacity: 1;
+        }
+        
+        .masonry-item-title {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+        
+        .masonry-item-planner {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.85rem;
+        }
+        
+        .masonry-item-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(135deg, var(--accent-color), #d6899a);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            box-shadow: 0 3px 10px rgba(230, 164, 180, 0.3);
+        }
+        
+        .masonry-item-actions {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .masonry-item:hover .masonry-item-actions {
+            opacity: 1;
+        }
+        
+        .masonry-item-action {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .masonry-item-heart {
+            background-color: white;
+            color: #e74c3c;
+        }
+        
+        .masonry-item-heart:hover {
+            background-color: #e74c3c;
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .masonry-item-heart.liked {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        .masonry-item-menu {
+            background-color: white;
+            color: var(--dark-color);
+        }
+        
+        .masonry-item-menu:hover {
+            background-color: var(--dark-color);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .masonry-item-select {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: white;
+            color: var(--accent-color);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .masonry-item:hover .masonry-item-select {
+            opacity: 1;
+        }
+        
+        .masonry-item.selected .masonry-item-select {
+            opacity: 1;
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .masonry-item.sponsored {
+            border: 2px solid var(--accent-color);
+        }
+        
+        .sponsored-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--accent-color), #d6899a);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            box-shadow: 0 3px 10px rgba(230, 164, 180, 0.3);
+            z-index: 10;
+        }
+        
+        /* Loading Spinner */
+        .loading-spinner {
+            text-align: center;
+            padding: 50px;
+            display: none;
+        }
+        
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--accent-color);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Selection Bar */
+        .selection-bar {
+            position: fixed;
+            bottom: -100px;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(135deg, white, #f8f9fa);
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+            padding: 20px 0;
+            transition: bottom 0.3s ease;
+            z-index: 1000;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .selection-bar.active {
+            bottom: 0;
+        }
+        
+        .selection-count {
+            background: linear-gradient(135deg, var(--accent-color), #d6899a);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 15px;
+            box-shadow: 0 3px 10px rgba(230, 164, 180, 0.3);
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 120px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--accent-color), #d6899a);
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(230, 164, 180, 0.3);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(230, 164, 180, 0.4);
+        }
+        
+        /* Modal Styles */
+        .modal-content {
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .modal-header {
+            border-bottom: none;
+            padding: 25px 30px 0;
+        }
+        
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--dark-color);
+        }
+        
+        .btn-close {
+            font-size: 1.3rem;
+        }
+        
+        .modal-body {
+            padding: 25px 30px;
+        }
+        
+        .form-control, .form-select {
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(230, 164, 180, 0.1);
+        }
+        
+        .folder-list {
+            max-height: 350px;
+            overflow-y: auto;
+        }
+        
+        .folder-item {
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 2px solid transparent;
+        }
+        
+        .folder-item:hover {
+            background-color: var(--light-color);
+            border-color: var(--accent-color);
+        }
+        
+        .folder-item.selected {
+            background-color: var(--primary-color);
+            border-color: var(--accent-color);
+        }
+        
+        .folder-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .folder-icon {
+            color: var(--accent-color);
+            margin-right: 12px;
+            font-size: 1.3rem;
+        }
+        
+        .folder-name {
+            font-weight: 500;
+        }
+        
+        .folder-count {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-left: 8px;
+        }
+        
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--accent-color), #d6899a);
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(230, 164, 180, 0.4);
+        }
+        
+        .btn-outline-primary-custom {
+            background-color: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary-custom:hover {
+            background-color: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(230, 164, 180, 0.4);
+        }
+        
+        .btn-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .btn-link:hover {
+            color: #d6899a;
+            text-decoration: underline;
+        }
+        
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg" id="mainNav">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="40" height="40">
+                    <circle cx="50" cy="50" r="45" fill="#f8d7da"/>
+                    <path d="M50,20 L60,40 L80,40 L65,55 L70,75 L50,60 L30,75 L35,55 L20,40 L40,40 Z" fill="#e6a4b4"/>
+                </svg>
+                Vow
+            </a>
+            <div class="d-flex align-items-center">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Inspiration</a>
+                <a href="pricing.html" class="nav-link">For Planners</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                <div class="user-menu ms-3">
+                    <div class="user-avatar" id="userAvatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="#" class="user-dropdown-item" id="loginLink">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Sign In
+                        </a>
+                        <a href="#" class="user-dropdown-item" id="signupLink">
+                            <i class="fas fa-user-plus"></i>
+                            Create Account
+                        </a>
+                        <a href="account.html" class="user-dropdown-item" id="profileLink" style="display: none;">
+                            <i class="fas fa-user"></i>
+                            My Profile
+                        </a>
+                        <a href="#" class="user-dropdown-item" id="logoutLink" style="display: none;">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Sign Out
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search and Filter Section -->
+    <div class="search-filter-section" id="searchFilterSection">
+        <div class="container">
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search for your perfect wedding inspiration...">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div class="filter-container">
+                <div class="filter-chip active" data-filter="all">All Styles</div>
+                <div class="filter-chip" data-filter="rustic">Rustic</div>
+                <div class="filter-chip" data-filter="beach">Beach</div>
+                <div class="filter-chip" data-filter="modern">Modern</div>
+                <div class="filter-chip" data-filter="vintage">Vintage</div>
+                <div class="filter-chip" data-filter="bohemian">Bohemian</div>
+                <div class="filter-chip" data-filter="garden">Garden</div>
+                <div class="filter-chip" data-filter="luxury">Luxury</div>
+                <div class="filter-chip" data-filter="destination">Destination</div>
+            </div>
+            <div class="category-filter-container">
+                <div class="category-filter-label">Filter by category:</div>
+                <select class="category-dropdown" id="categoryDropdown">
+                    <option value="all">All Categories</option>
+                    <option value="venue">Venues</option>
+                    <option value="decoration">Decorations</option>
+                    <option value="floral">Floral Arrangements</option>
+                    <option value="tables">Table Settings</option>
+                    <option value="cakes">Wedding Cakes</option>
+                    <option value="bar">Bar & Drinks</option>
+                    <option value="attire">Bridal Attire</option>
+                    <option value="rings">Wedding Rings</option>
+                    <option value="photography">Photography</option>
+                    <option value="invitations">Invitations</option>
+                    <option value="favors">Wedding Favors</option>
+                    <option value="lighting">Lighting</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="transportation">Transportation</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Masonry Grid -->
+    <div class="masonry-grid" id="masonryGrid">
+        <!-- Items will be loaded here -->
+    </div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+        <p class="mt-3">Loading more inspiration...</p>
+    </div>
+
+    <!-- Selection Bar -->
+    <div class="selection-bar" id="selectionBar">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <div class="selection-count" id="selectionCount">0</div>
+                    <span>Items Selected</span>
+                </div>
+                <div>
+                    <button class="btn btn-outline-secondary me-3" id="clearSelection">Clear All</button>
+                    <button class="btn btn-primary-custom" id="contactPlanner">Contact Wedding Planner</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Context Menu -->
+    <div class="context-menu" id="contextMenu">
+        <div class="context-menu-item" id="addToFolder">
+            <i class="fas fa-folder-plus"></i>
+            Add to Folder
+        </div>
+        <div class="context-menu-item" id="createFolder">
+            <i class="fas fa-folder"></i>
+            Create New Folder
+        </div>
+        <div class="context-menu-divider"></div>
+        <div class="context-menu-item" id="viewPlanner">
+            <i class="fas fa-user-tie"></i>
+            View Planner Profile
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Welcome Back to Vow</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <input type="email" class="form-control" id="loginEmail" placeholder="Email address" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" class="form-control" id="loginPassword" placeholder="Password" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary-custom w-100">Sign In</button>
+                        <div class="text-center mt-3">
+                            <p>New to Vow? <a href="#" class="btn-link" id="switchToSignup">Create account</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signupModalLabel">Join Vow Today</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="signupForm">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="signupName" placeholder="Full name" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" id="signupEmail" placeholder="Email address" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" class="form-control" id="signupPassword" placeholder="Password" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" class="form-control" id="signupConfirmPassword" placeholder="Confirm password" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+                            <label class="form-check-label" for="agreeTerms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                        </div>
+                        <button type="submit" class="btn btn-primary-custom w-100">Create Account</button>
+                        <div class="text-center mt-3">
+                            <p>Already have an account? <a href="#" class="btn-link" id="switchToLogin">Sign in</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add to Folder Modal -->
+    <div class="modal fade" id="folderModal" tabindex="-1" aria-labelledby="folderModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="folderModalLabel">Add to Folder</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="folder-list" id="folderList">
+                        <!-- Folders will be loaded here -->
+                    </div>
+                    <div class="text-center mt-3">
+                        <button class="btn btn-outline-primary-custom" id="createNewFolderBtn">Create New Folder</button>
+                    </div>
+                    <div class="mt-3" id="newFolderForm" style="display: none;">
+                        <input type="text" class="form-control" id="newFolderName" placeholder="Folder name">
+                        <button class="btn btn-primary-custom w-100 mt-2" id="saveNewFolder">Create Folder</button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary-custom" id="addToFolderBtn">Add to Folder</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Gallery data generator
+        const styles = ['rustic', 'beach', 'modern', 'vintage', 'bohemian', 'garden', 'luxury', 'destination'];
+        const categories = ['venue', 'decoration', 'floral', 'tables', 'cakes', 'bar', 'attire', 'rings', 'photography', 'invitations', 'favors', 'lighting', 'entertainment', 'transportation'];
+        const planners = ['Elegant Events', 'Coastal Weddings', 'Urban Celebrations', 'Timeless Moments', 'Free Spirit Weddings', 'Nature\'s Nuptials', 'Island I Do\'s', 'Metropolitan Weddings'];
+        
+        let page = 1;
+        let isLoading = false;
+        let currentStyleFilter = 'all';
+        let currentCategoryFilter = 'all';
+        let selectedItems = [];
+        let likedItems = [];
+        let currentUser = null;
+        let currentContextItem = null;
+        let selectedFolderId = null;
+        
+        // Initialize user from localStorage
+        function initUser() {
+            const userData = localStorage.getItem('vowUser');
+            if (userData) {
+                currentUser = JSON.parse(userData);
+                updateUserUI();
+                
+                // Load liked items
+                const likedData = localStorage.getItem(`vowLiked_${currentUser.id}`);
+                if (likedData) {
+                    likedItems = JSON.parse(likedData);
+                }
+            }
+        }
+        
+        // Update UI based on user login status
+        function updateUserUI() {
+            const loginLink = document.getElementById('loginLink');
+            const signupLink = document.getElementById('signupLink');
+            const profileLink = document.getElementById('profileLink');
+            const logoutLink = document.getElementById('logoutLink');
+            const userAvatar = document.getElementById('userAvatar');
+            
+            if (currentUser) {
+                loginLink.style.display = 'none';
+                signupLink.style.display = 'none';
+                profileLink.style.display = 'block';
+                logoutLink.style.display = 'block';
+                userAvatar.innerHTML = currentUser.name.charAt(0).toUpperCase();
+            } else {
+                loginLink.style.display = 'block';
+                signupLink.style.display = 'block';
+                profileLink.style.display = 'none';
+                logoutLink.style.display = 'none';
+                userAvatar.innerHTML = '<i class="fas fa-user"></i>';
+            }
+        }
+        
+        // User dropdown toggle
+        document.getElementById('userAvatar').addEventListener('click', function() {
+            document.getElementById('userDropdown').classList.toggle('show');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const userMenu = document.querySelector('.user-menu');
+            if (!userMenu.contains(event.target)) {
+                document.getElementById('userDropdown').classList.remove('show');
+            }
+        });
+        
+        // Login/Signup links
+        document.getElementById('loginLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+            loginModal.show();
+        });
+        
+        document.getElementById('signupLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            const signupModal = new bootstrap.Modal(document.getElementById('signupModal'));
+            signupModal.show();
+        });
+        
+        // Switch between login and signup modals
+        document.getElementById('switchToSignup').addEventListener('click', function(e) {
+            e.preventDefault();
+            bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide();
+            const signupModal = new bootstrap.Modal(document.getElementById('signupModal'));
+            signupModal.show();
+        });
+        
+        document.getElementById('switchToLogin').addEventListener('click', function(e) {
+            e.preventDefault();
+            bootstrap.Modal.getInstance(document.getElementById('signupModal')).hide();
+            const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+            loginModal.show();
+        });
+        
+                
+                
+        // Generate random items
+        function generateItems(count, startId = 1) {
+            const items = [];
+            for (let i = 0; i < count; i++) {
+                const id = startId + i;
+                const style = styles[Math.floor(Math.random() * styles.length)];
+                const category = categories[Math.floor(Math.random() * categories.length)];
+                const planner = planners[Math.floor(Math.random() * planners.length)];
+                const height = Math.floor(Math.random() * 200) + 250; // Random height between 250-450px
+                const sponsored = Math.random() > 0.8; // 20% chance of being sponsored
+                
+                items.push({
+                    id: id,
+                    title: `${style.charAt(0).toUpperCase() + style.slice(1)} ${category.charAt(0).toUpperCase() + category.slice(1)} ${id}`,
+                    planner: planner,
+                    style: style,
+                    category: category,
+                    height: height,
+                    sponsored: sponsored
+                });
+            }
+            return items;
+        }
+        
+        // Load items into grid
+        function loadItems(append = false) {
+            if (isLoading) return;
+            isLoading = true;
+            
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            loadingSpinner.style.display = 'block';
+            
+            // Simulate API call delay
+            setTimeout(() => {
+                const items = generateItems(20, (page - 1) * 20 + 1);
+                const grid = document.getElementById('masonryGrid');
+                
+                items.forEach(item => {
+                    // Apply both style and category filters
+                    if (currentStyleFilter !== 'all' && item.style !== currentStyleFilter) return;
+                    if (currentCategoryFilter !== 'all' && item.category !== currentCategoryFilter) return;
+                    
+                    const masonryItem = document.createElement('div');
+                    masonryItem.className = `masonry-item ${item.sponsored ? 'sponsored' : ''}`;
+                    masonryItem.dataset.id = item.id;
+                    masonryItem.dataset.planner = item.planner;
+                    masonryItem.dataset.style = item.style;
+                    masonryItem.dataset.category = item.category;
+                    
+                    // Check if item is liked
+                    const isLiked = likedItems.includes(item.id);
+                    
+                    masonryItem.innerHTML = `
+                        <img src="https://picsum.photos/seed/wedding${item.id}/400/${item.height}.jpg" alt="${item.title}">
+                        <div class="masonry-item-overlay">
+                            <div class="masonry-item-title">${item.title}</div>
+                            <div class="masonry-item-planner">by ${item.planner}</div>
+                        </div>
+                        <div class="masonry-item-category">${item.category}</div>
+                        <div class="masonry-item-actions">
+                            <div class="masonry-item-action masonry-item-heart ${isLiked ? 'liked' : ''}" data-id="${item.id}">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="masonry-item-action masonry-item-menu" data-id="${item.id}">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </div>
+                        </div>
+                        <div class="masonry-item-select">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        ${item.sponsored ? '<div class="sponsored-badge">Sponsored</div>' : ''}
+                    `;
+                    
+                    // Add event listeners
+                    const heartBtn = masonryItem.querySelector('.masonry-item-heart');
+                    heartBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        toggleLike(this);
+                    });
+                    
+                    const menuBtn = masonryItem.querySelector('.masonry-item-menu');
+                    menuBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        showContextMenu(e, item.id);
+                    });
+                    
+                    masonryItem.addEventListener('click', function() {
+                        toggleSelection(this);
+                    });
+                    
+                    if (!append) {
+                        grid.appendChild(masonryItem);
+                    } else {
+                        grid.appendChild(masonryItem);
+                    }
+                });
+                
+                loadingSpinner.style.display = 'none';
+                isLoading = false;
+                page++;
+            }, 800);
+        }
+        
+        // Toggle like on an item
+        function toggleLike(heartBtn) {
+            if (!currentUser) {
+                const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+                loginModal.show();
+                return;
+            }
+            
+            const itemId = heartBtn.dataset.id;
+            
+            if (heartBtn.classList.contains('liked')) {
+                heartBtn.classList.remove('liked');
+                likedItems = likedItems.filter(id => id !== itemId);
+            } else {
+                heartBtn.classList.add('liked');
+                likedItems.push(itemId);
+            }
+            
+            // Save liked items to localStorage
+            localStorage.setItem(`vowLiked_${currentUser.id}`, JSON.stringify(likedItems));
+        }
+        
+        // Update liked items UI
+        function updateLikedItems() {
+            document.querySelectorAll('.masonry-item-heart').forEach(heartBtn => {
+                const itemId = heartBtn.dataset.id;
+                if (likedItems.includes(itemId)) {
+                    heartBtn.classList.add('liked');
+                } else {
+                    heartBtn.classList.remove('liked');
+                }
+            });
+        }
+        
+        // Show context menu
+        function showContextMenu(event, itemId) {
+            event.preventDefault();
+            
+            currentContextItem = itemId;
+            
+            const contextMenu = document.getElementById('contextMenu');
+            contextMenu.style.left = `${event.pageX}px`;
+            contextMenu.style.top = `${event.pageY}px`;
+            contextMenu.classList.add('show');
+        }
+        
+        // Hide context menu when clicking outside
+        document.addEventListener('click', function() {
+            document.getElementById('contextMenu').classList.remove('show');
+        });
+        
+        // Context menu actions
+        document.getElementById('addToFolder').addEventListener('click', function() {
+            if (!currentUser) {
+                const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+                loginModal.show();
+                return;
+            }
+            
+            loadFolders();
+            const folderModal = new bootstrap.Modal(document.getElementById('folderModal'));
+            folderModal.show();
+        });
+        
+        document.getElementById('createFolder').addEventListener('click', function() {
+            if (!currentUser) {
+                const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+                loginModal.show();
+                return;
+            }
+            
+            loadFolders();
+            const folderModal = new bootstrap.Modal(document.getElementById('folderModal'));
+            folderModal.show();
+            
+            // Show new folder form
+            document.getElementById('newFolderForm').style.display = 'block';
+            document.getElementById('folderList').style.display = 'none';
+        });
+        
+        document.getElementById('viewPlanner').addEventListener('click', function() {
+            alert(`Viewing planner profile for item ${currentContextItem}. In a real application, this would navigate to the planner's profile page.`);
+        });
+        
+        // Load folders
+        function loadFolders() {
+            const folderList = document.getElementById('folderList');
+            folderList.innerHTML = '';
+            
+            if (!currentUser || !currentUser.folders || currentUser.folders.length === 0) {
+                folderList.innerHTML = '<p class="text-center">No folders yet. Create your first folder!</p>';
+                return;
+            }
+            
+            currentUser.folders.forEach(folder => {
+                const folderItem = document.createElement('div');
+                folderItem.className = 'folder-item';
+                folderItem.dataset.folderId = folder.id;
+                
+                folderItem.innerHTML = `
+                    <div class="folder-info">
+                        <i class="fas fa-folder folder-icon"></i>
+                        <span class="folder-name">${folder.name}</span>
+                        <span class="folder-count">(${folder.items ? folder.items.length : 0})</span>
+                    </div>
+                `;
+                
+                folderItem.addEventListener('click', function() {
+                    document.querySelectorAll('.folder-item').forEach(item => {
+                        item.classList.remove('selected');
+                    });
+                    this.classList.add('selected');
+                    selectedFolderId = folder.id;
+                });
+                
+                folderList.appendChild(folderItem);
+            });
+        }
+        
+        // Create new folder button
+        document.getElementById('createNewFolderBtn').addEventListener('click', function() {
+            document.getElementById('newFolderForm').style.display = 'block';
+            document.getElementById('folderList').style.display = 'none';
+        });
+        
+        // Save new folder
+        document.getElementById('saveNewFolder').addEventListener('click', function() {
+            const folderName = document.getElementById('newFolderName').value.trim();
+            
+            if (!folderName) {
+                alert('Please enter a folder name');
+                return;
+            }
+            
+            // Create new folder
+            const newFolder = {
+                id: Date.now().toString(),
+                name: folderName,
+                items: []
+            };
+            
+            // Add to user folders
+            if (!currentUser.folders) {
+                currentUser.folders = [];
+            }
+            currentUser.folders.push(newFolder);
+            
+            // Update user in localStorage
+            localStorage.setItem('vowUser', JSON.stringify(currentUser));
+            
+            // Reset form and show folders
+            document.getElementById('newFolderName').value = '';
+            document.getElementById('newFolderForm').style.display = 'none';
+            document.getElementById('folderList').style.display = 'block';
+            
+            // Reload folders
+            loadFolders();
+        });
+        
+        // Add to folder
+        document.getElementById('addToFolderBtn').addEventListener('click', function() {
+            if (!selectedFolderId) {
+                alert('Please select a folder');
+                return;
+            }
+            
+            // Find the folder
+            const folder = currentUser.folders.find(f => f.id === selectedFolderId);
+            if (!folder) return;
+            
+            // Add item to folder if not already there
+            if (!folder.items) {
+                folder.items = [];
+            }
+            
+            if (!folder.items.includes(currentContextItem)) {
+                folder.items.push(currentContextItem);
+                
+                // Update user in localStorage
+                localStorage.setItem('vowUser', JSON.stringify(currentUser));
+                
+                // Close modal
+                bootstrap.Modal.getInstance(document.getElementById('folderModal')).hide();
+                
+                // Show success message
+                alert('Item added to folder successfully!');
+            } else {
+                alert('Item is already in this folder');
+            }
+        });
+        
+        // Initial load
+        initUser();
+        loadItems();
+        
+        // Infinite scroll
+        window.addEventListener('scroll', () => {
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
+                loadItems(true);
+            }
+            
+            // Back to top button visibility
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+            
+            // Hide/show search and filter section based on scroll
+            const searchFilterSection = document.getElementById('searchFilterSection');
+            if (window.scrollY > 100) {
+                searchFilterSection.classList.add('hidden');
+            } else {
+                searchFilterSection.classList.remove('hidden');
+            }
+        });
+        
+        // Back to top functionality
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Style filter functionality
+        document.querySelectorAll('.filter-chip').forEach(chip => {
+            chip.addEventListener('click', function() {
+                document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+                currentStyleFilter = this.dataset.filter;
+                page = 1;
+                document.getElementById('masonryGrid').innerHTML = '';
+                loadItems();
+            });
+        });
+        
+        // Category filter functionality
+        document.getElementById('categoryDropdown').addEventListener('change', function() {
+            currentCategoryFilter = this.value;
+            page = 1;
+            document.getElementById('masonryGrid').innerHTML = '';
+            loadItems();
+        });
+        
+        // Search functionality
+        let searchTimeout;
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                const searchTerm = e.target.value.toLowerCase();
+                const items = document.querySelectorAll('.masonry-item');
+                
+                items.forEach(item => {
+                    const title = item.querySelector('.masonry-item-title').textContent.toLowerCase();
+                    const planner = item.querySelector('.masonry-item-planner').textContent.toLowerCase();
+                    const category = item.querySelector('.masonry-item-category').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || planner.includes(searchTerm) || category.includes(searchTerm)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }, 300);
+        });
+        
+        // Selection functionality
+        function toggleSelection(item) {
+            const itemId = item.dataset.id;
+            const planner = item.dataset.planner;
+            
+            if (item.classList.contains('selected')) {
+                item.classList.remove('selected');
+                selectedItems = selectedItems.filter(i => i.id !== itemId);
+            } else {
+                item.classList.add('selected');
+                selectedItems.push({ id: itemId, planner: planner });
+            }
+            
+            updateSelectionBar();
+        }
+        
+        function updateSelectionBar() {
+            const selectionBar = document.getElementById('selectionBar');
+            const selectionCount = document.getElementById('selectionCount');
+            
+            selectionCount.textContent = selectedItems.length;
+            
+            if (selectedItems.length > 0) {
+                selectionBar.classList.add('active');
+            } else {
+                selectionBar.classList.remove('active');
+            }
+        }
+        
+        // Clear selection
+        document.getElementById('clearSelection').addEventListener('click', function() {
+            document.querySelectorAll('.masonry-item.selected').forEach(item => {
+                item.classList.remove('selected');
+            });
+            selectedItems = [];
+            updateSelectionBar();
+        });
+        
+        // Contact planner
+        document.getElementById('contactPlanner').addEventListener('click', function() {
+            if (selectedItems.length === 0) return;
+            
+            if (!currentUser) {
+                const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+                loginModal.show();
+                return;
+            }
+            
+            const uniquePlanners = [...new Set(selectedItems.map(item => item.planner))];
+            
+            if (uniquePlanners.length === 1) {
+                alert(`Contact form for ${uniquePlanners[0]} would appear here. In a real application, this would open a contact form or redirect to a contact page.`);
+            } else {
+                alert(`You've selected items from multiple planners. Please select items from only one planner to proceed.`);
+            }
+        });
+
+    </script>
+    <!-- BOOTSTRAP JS (you already have this) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- FIREBASE LIBRARIES (Use these v8 compat versions for simplicity) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+    <!-- YOUR NEW JAVASCRIPT FILE -->
+    <script src="js/app.js"></script>
+  </body>
+</html>
