@@ -224,7 +224,20 @@
         }
 
         .option-card.selected {
-            border: 3px solid var(--primary-color);
+            border: 5px solid var(--primary-color);
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(232, 180, 184, 0.4);
+        }
+
+        .option-card.selected::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(232, 180, 184, 0.2);
+            pointer-events: none;
         }
 
         .option-card img {
@@ -267,6 +280,32 @@
             padding: 8px;
             font-size: 0.9rem;
             text-align: center;
+        }
+
+        /* Selection Checkmark */
+        .selection-checkmark {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.2rem;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .option-card.selected .selection-checkmark {
+            opacity: 1;
+            transform: scale(1);
         }
 
         .button-container {
@@ -446,27 +485,41 @@
             display: block;
         }
 
-        .portfolio-grid {
+        .moodboard-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
         }
 
-        .portfolio-item {
+        .moodboard-grid-item {
             border-radius: 10px;
             overflow: hidden;
             box-shadow: var(--shadow);
+            position: relative;
+            height: 200px;
         }
 
-        .portfolio-item img {
+        .moodboard-grid-item img {
             width: 100%;
-            height: 200px;
+            height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
         }
 
-        .portfolio-item:hover img {
+        .moodboard-grid-item:hover img {
             transform: scale(1.05);
+        }
+
+        .moodboard-grid-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 8px;
+            font-size: 0.9rem;
+            text-align: center;
         }
 
         .contact-form {
@@ -586,6 +639,76 @@
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+
+        /* Popup Notification */
+        .popup-notification {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 1001;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            display: none;
+        }
+
+        .popup-notification.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .popup-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .popup-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .popup-message {
+            margin-bottom: 20px;
+            color: var(--light-text);
+        }
+
+        .popup-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .popup-button:hover {
+            background-color: var(--accent-color);
+        }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            display: none;
+        }
+
+        .popup-overlay.active {
+            display: block;
         }
 
         /* Responsive Design */
@@ -754,12 +877,12 @@
                 </div>
             </div>
             <div class="planner-tabs">
-                <button class="tab-button active" data-tab="portfolio">Portfolio</button>
+                <button class="tab-button active" data-tab="moodboard">Your Vision</button>
                 <button class="tab-button" data-tab="contact">Contact</button>
             </div>
-            <div class="tab-content active" id="portfolio-tab">
-                <div class="portfolio-grid" id="portfolio-grid">
-                    <!-- Portfolio items will be populated by JavaScript -->
+            <div class="tab-content active" id="moodboard-tab">
+                <div class="moodboard-grid" id="planner-moodboard-grid">
+                    <!-- Moodboard items will be populated by JavaScript -->
                 </div>
             </div>
             <div class="tab-content" id="contact-tab">
@@ -826,6 +949,17 @@
     <!-- Loading Indicator -->
     <div class="loading" id="loading">
         <div class="spinner"></div>
+    </div>
+
+    <!-- Popup Notification -->
+    <div class="popup-overlay" id="popup-overlay"></div>
+    <div class="popup-notification" id="popup-notification">
+        <div class="popup-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h3 class="popup-title">Thank You!</h3>
+        <p class="popup-message">Your wedding planner will contact you within 24 hours to discuss your dream wedding in more detail.</p>
+        <button class="popup-button" id="popup-close">Got it!</button>
     </div>
 
     <script>
@@ -1080,71 +1214,31 @@
                 id: 1,
                 name: "Eleanor Rose",
                 bio: "With over 10 years of experience in creating fairytale weddings, Eleanor specializes in romantic, elegant celebrations that capture the unique love story of each couple.",
-                image: "https://picsum.photos/seed/planner1/400/400.jpg",
-                portfolio: [
-                    "https://picsum.photos/seed/wedding1/400/300.jpg",
-                    "https://picsum.photos/seed/wedding2/400/300.jpg",
-                    "https://picsum.photos/seed/wedding3/400/300.jpg",
-                    "https://picsum.photos/seed/wedding4/400/300.jpg",
-                    "https://picsum.photos/seed/wedding5/400/300.jpg",
-                    "https://picsum.photos/seed/wedding6/400/300.jpg"
-                ]
+                image: "https://picsum.photos/seed/planner1/400/400.jpg"
             },
             {
                 id: 2,
                 name: "James Mitchell",
                 bio: "James brings a modern, sophisticated touch to wedding planning. His attention to detail and creative vision have made him one of the most sought-after planners in the industry.",
-                image: "https://picsum.photos/seed/planner2/400/400.jpg",
-                portfolio: [
-                    "https://picsum.photos/seed/wedding7/400/300.jpg",
-                    "https://picsum.photos/seed/wedding8/400/300.jpg",
-                    "https://picsum.photos/seed/wedding9/400/300.jpg",
-                    "https://picsum.photos/seed/wedding10/400/300.jpg",
-                    "https://picsum.photos/seed/wedding11/400/300.jpg",
-                    "https://picsum.photos/seed/wedding12/400/300.jpg"
-                ]
+                image: "https://picsum.photos/seed/planner2/400/400.jpg"
             },
             {
                 id: 3,
                 name: "Sophia Chen",
                 bio: "Sophia specializes in multicultural weddings, blending traditions and creating unique celebrations that honor the heritage of both partners while reflecting their personal style.",
-                image: "https://picsum.photos/seed/planner3/400/400.jpg",
-                portfolio: [
-                    "https://picsum.photos/seed/wedding13/400/300.jpg",
-                    "https://picsum.photos/seed/wedding14/400/300.jpg",
-                    "https://picsum.photos/seed/wedding15/400/300.jpg",
-                    "https://picsum.photos/seed/wedding16/400/300.jpg",
-                    "https://picsum.photos/seed/wedding17/400/300.jpg",
-                    "https://picsum.photos/seed/wedding18/400/300.jpg"
-                ]
+                image: "https://picsum.photos/seed/planner3/400/400.jpg"
             },
             {
                 id: 4,
                 name: "Michael Torres",
                 bio: "Michael is known for his destination wedding expertise. From beach ceremonies to mountain retreats, he creates seamless experiences no matter where in the world your love story takes you.",
-                image: "https://picsum.photos/seed/planner4/400/400.jpg",
-                portfolio: [
-                    "https://picsum.photos/seed/wedding19/400/300.jpg",
-                    "https://picsum.photos/seed/wedding20/400/300.jpg",
-                    "https://picsum.photos/seed/wedding21/400/300.jpg",
-                    "https://picsum.photos/seed/wedding22/400/300.jpg",
-                    "https://picsum.photos/seed/wedding23/400/300.jpg",
-                    "https://picsum.photos/seed/wedding24/400/300.jpg"
-                ]
+                image: "https://picsum.photos/seed/planner4/400/400.jpg"
             },
             {
                 id: 5,
                 name: "Isabella Wright",
                 bio: "Isabella's creative approach to wedding planning has earned her numerous awards. She transforms ordinary spaces into extraordinary venues, crafting weddings that are both beautiful and meaningful.",
-                image: "https://picsum.photos/seed/planner5/400/400.jpg",
-                portfolio: [
-                    "https://picsum.photos/seed/wedding25/400/300.jpg",
-                    "https://picsum.photos/seed/wedding26/400/300.jpg",
-                    "https://picsum.photos/seed/wedding27/400/300.jpg",
-                    "https://picsum.photos/seed/wedding28/400/300.jpg",
-                    "https://picsum.photos/seed/wedding29/400/300.jpg",
-                    "https://picsum.photos/seed/wedding30/400/300.jpg"
-                ]
+                image: "https://picsum.photos/seed/planner5/400/400.jpg"
             }
         ];
 
@@ -1184,6 +1278,10 @@
             // Set up form submissions
             document.getElementById('contact-form').addEventListener('submit', handleContactForm);
             document.getElementById('signup-form').addEventListener('submit', handleSignupForm);
+            
+            // Set up popup close button
+            document.getElementById('popup-close').addEventListener('click', closePopup);
+            document.getElementById('popup-overlay').addEventListener('click', closePopup);
         });
 
         // Populate options for each category
@@ -1206,6 +1304,11 @@
                 img.src = option.image;
                 img.alt = option.name;
                 
+                // Add selection checkmark
+                const checkmark = document.createElement('div');
+                checkmark.className = 'selection-checkmark';
+                checkmark.innerHTML = '<i class="fas fa-check"></i>';
+                
                 const overlay = document.createElement('div');
                 overlay.className = 'option-overlay';
                 overlay.innerHTML = '<i class="fas fa-check"></i>';
@@ -1215,6 +1318,7 @@
                 label.textContent = option.label;
                 
                 optionCard.appendChild(img);
+                optionCard.appendChild(checkmark);
                 optionCard.appendChild(overlay);
                 optionCard.appendChild(label);
                 
@@ -1299,36 +1403,42 @@
                         document.getElementById(`${category}-selection`).classList.remove('active');
                         
                         // Show previous category
-                        const prevCategory = categories[index - 1];
-                        document.getElementById(`${prevCategory}-selection`).classList.add('active');
-                        updateProgress(index - 1);
+                        if (index > 0) {
+                            const prevCategory = categories[index - 1];
+                            document.getElementById(`${prevCategory}-selection`).classList.add('active');
+                            updateProgress(index - 1);
+                        }
                     });
                 }
             });
         }
 
-        // Show moodboard with all selections
+        // Show moodboard
         function showMoodboard() {
-            document.getElementById('catering-selection').classList.remove('active');
+            // Hide all selection containers
+            document.querySelectorAll('.selection-container').forEach(container => {
+                container.classList.remove('active');
+            });
+            
+            // Show moodboard container
             document.getElementById('moodboard').classList.add('active');
             
+            // Populate moodboard with selected items
             const moodboardGrid = document.getElementById('moodboard-grid');
             moodboardGrid.innerHTML = '';
             
-            // Add each selection to moodboard
             Object.keys(weddingSelections).forEach(category => {
-                const selection = weddingSelections[category];
-                if (selection) {
+                if (weddingSelections[category]) {
                     const moodboardItem = document.createElement('div');
                     moodboardItem.className = 'moodboard-item';
                     
                     const img = document.createElement('img');
-                    img.src = selection.image;
-                    img.alt = category;
+                    img.src = weddingSelections[category].image;
+                    img.alt = weddingSelections[category].name;
                     
                     const label = document.createElement('div');
                     label.className = 'moodboard-label';
-                    label.textContent = selection.label;
+                    label.textContent = weddingSelections[category].label;
                     
                     moodboardItem.appendChild(img);
                     moodboardItem.appendChild(label);
@@ -1339,85 +1449,141 @@
 
         // Show planner profile
         function showPlannerProfile() {
+            // Hide moodboard
             document.getElementById('moodboard').classList.remove('active');
+            
+            // Show planner profile
             document.getElementById('planner-profile').classList.add('active');
             
-            // Randomly select a planner
-            const randomPlanner = weddingPlanners[Math.floor(Math.random() * weddingPlanners.length)];
+            // Select a planner based on wedding selections
+            const selectedPlanner = selectPlanner();
             
-            // Populate planner information
-            document.getElementById('planner-image').src = randomPlanner.image;
-            document.getElementById('planner-name').textContent = randomPlanner.name;
-            document.getElementById('planner-bio').textContent = randomPlanner.bio;
+            // Update planner profile
+            document.getElementById('planner-image').src = selectedPlanner.image;
+            document.getElementById('planner-name').textContent = selectedPlanner.name;
+            document.getElementById('planner-bio').textContent = selectedPlanner.bio;
             
-            // Populate portfolio
-            const portfolioGrid = document.getElementById('portfolio-grid');
-            portfolioGrid.innerHTML = '';
+            // Populate moodboard in planner profile
+            populatePlannerMoodboard();
+        }
+
+        // Populate moodboard in planner profile
+        function populatePlannerMoodboard() {
+            const moodboardGrid = document.getElementById('planner-moodboard-grid');
+            moodboardGrid.innerHTML = '';
             
-            randomPlanner.portfolio.forEach(image => {
-                const portfolioItem = document.createElement('div');
-                portfolioItem.className = 'portfolio-item';
-                
-                const img = document.createElement('img');
-                img.src = image;
-                img.alt = 'Portfolio image';
-                
-                portfolioItem.appendChild(img);
-                portfolioGrid.appendChild(portfolioItem);
+            Object.keys(weddingSelections).forEach(category => {
+                if (weddingSelections[category]) {
+                    const moodboardItem = document.createElement('div');
+                    moodboardItem.className = 'moodboard-grid-item';
+                    
+                    const img = document.createElement('img');
+                    img.src = weddingSelections[category].image;
+                    img.alt = weddingSelections[category].name;
+                    
+                    const label = document.createElement('div');
+                    label.className = 'moodboard-grid-label';
+                    label.textContent = weddingSelections[category].label;
+                    
+                    moodboardItem.appendChild(img);
+                    moodboardItem.appendChild(label);
+                    moodboardGrid.appendChild(moodboardItem);
+                }
             });
+        }
+
+        // Select a planner based on wedding selections
+        function selectPlanner() {
+            // Simple algorithm to select a planner based on style preference
+            // In a real application, this would be more sophisticated
+            if (weddingSelections.style) {
+                const styleName = weddingSelections.style.name.toLowerCase();
+                
+                if (styleName.includes('classic') || styleName.includes('elegance')) {
+                    return weddingPlanners[0]; // Eleanor Rose
+                } else if (styleName.includes('modern') || styleName.includes('minimalist')) {
+                    return weddingPlanners[1]; // James Mitchell
+                } else if (styleName.includes('bohemian')) {
+                    return weddingPlanners[4]; // Isabella Wright
+                } else if (weddingSelections.venue && weddingSelections.venue.name.toLowerCase().includes('beach')) {
+                    return weddingPlanners[3]; // Michael Torres (destination specialist)
+                } else if (weddingSelections.flowers && weddingSelections.flowers.name.toLowerCase().includes('tropical')) {
+                    return weddingPlanners[2]; // Sophia Chen (multicultural specialist)
+                }
+            }
+            
+            // Default to first planner if no specific match
+            return weddingPlanners[0];
         }
 
         // Set up tab navigation
         function setupTabNavigation() {
             const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
             
             tabButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // Remove active class from all tabs and buttons
-                    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-                    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                    // Remove active class from all tabs and contents
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
                     
-                    // Add active class to clicked button and corresponding content
+                    // Add active class to clicked tab and corresponding content
                     this.classList.add('active');
-                    const tabId = this.dataset.tab + '-tab';
-                    document.getElementById(tabId).classList.add('active');
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(`${tabId}-tab`).classList.add('active');
                 });
-            });
-            
-            // Contact planner button
-            document.getElementById('contactPlanner').addEventListener('click', function() {
-                document.querySelector('[data-tab="contact"]').click();
             });
         }
 
         // Handle contact form submission
-        function handleContactForm(e) {
-            e.preventDefault();
+        function handleContactForm(event) {
+            event.preventDefault();
             
-            // Show loading
+            // Show loading indicator
             document.getElementById('loading').classList.add('active');
             
             // Simulate form submission
             setTimeout(() => {
+                // Hide loading indicator
                 document.getElementById('loading').classList.remove('active');
-                document.getElementById('planner-profile').classList.remove('active');
-                document.getElementById('confirmation').classList.add('active');
+                
+                // Show popup notification
+                showPopup();
+                
+                // Redirect to homepage after a short delay
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 3000);
             }, 1500);
         }
 
         // Handle signup form submission
-        function handleSignupForm(e) {
-            e.preventDefault();
+        function handleSignupForm(event) {
+            event.preventDefault();
             
-            // Show loading
+            // Show loading indicator
             document.getElementById('loading').classList.add('active');
             
             // Simulate form submission
             setTimeout(() => {
+                // Hide loading indicator
                 document.getElementById('loading').classList.remove('active');
-                alert('Account created successfully! Welcome to Vow.');
-                // In a real app, you would redirect to the user's dashboard
+                
+                // Show confirmation message
+                document.getElementById('confirmation').classList.add('active');
             }, 1500);
+        }
+
+        // Show popup notification
+        function showPopup() {
+            document.getElementById('popup-overlay').classList.add('active');
+            document.getElementById('popup-notification').classList.add('active');
+        }
+
+        // Close popup notification
+        function closePopup() {
+            document.getElementById('popup-overlay').classList.remove('active');
+            document.getElementById('popup-notification').classList.remove('active');
         }
     </script>
 </body>
