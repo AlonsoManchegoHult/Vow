@@ -11,9 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #e8b4b8;
+            --primary-color: #F6E4DB;
             --secondary-color: #f5e6e8;
-            --accent-color: #d4a5a5;
+            --accent-color: #F6E4DB;
             --text-color: #333;
             --light-text: #666;
             --white: #fff;
@@ -28,11 +28,11 @@
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Playfair Display', sans-serif;
             color: var(--text-color);
             overflow-x: hidden;
             line-height: 1.6;
-            background-color: #fdf6f8;
+            background-color: #F6E4DB;
         }
 
         h1, h2, h3 {
@@ -44,7 +44,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(0,0,0,0.05);
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 15px 30px;
@@ -136,7 +136,7 @@
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Playfair Display', sans-serif;
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
@@ -150,8 +150,8 @@
         /* Landing Page Styles */
         .landing {
             height: 100vh;
-            background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), 
-                        url('https://picsum.photos/seed/weddingcouple/1920/1080.jpg');
+            background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)),
+                        url('https://media.discordapp.net/attachments/785237409553186826/1428448803404644443/404f4d0a-607f-4580-8085-bde62e2677b8.png?ex=68f28a1e&is=68f1389e&hm=69c701977f25268b99f13c6415dcdd748a5cb58bea98f08705a6c5a186ce5f01&=&format=webp&quality=lossless&width=704&height=469');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -161,7 +161,6 @@
             text-align: center;
             padding: 0 20px;
             position: relative;
-            margin-top: 70px;
         }
 
         .tagline {
@@ -180,23 +179,23 @@
 
         .cta-container {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             gap: 15px;
             margin-bottom: 20px;
         }
 
         .cta-button {
-            background-color: var(--primary-color);
-            color: var(--white);
+            background-color: rgba(0,0,0,0.3);
+            color: #A57C85;
             border: none;
-            padding: 15px 40px;
+            padding: 10px 30px;
             font-size: 1.2rem;
-            border-radius: 50px;
+            border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: var(--shadow);
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Playfair Display', sans-serif;
             text-transform: uppercase;
             letter-spacing: 1px;
             text-decoration: none;
@@ -215,10 +214,10 @@
             border: 2px solid var(--primary-color);
             padding: 12px 25px;
             font-size: 1rem;
-            border-radius: 50px;
+            border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Playfair Display', sans-serif;
             text-transform: uppercase;
             letter-spacing: 1px;
             text-decoration: none;
@@ -320,7 +319,7 @@
         /* Reviews Section */
         .reviews-section {
             padding: 80px 20px;
-            background-color: var(--secondary-color);
+            background-color: white;
         }
 
         .reviews-container {
@@ -489,11 +488,11 @@
             .logo {
                 font-size: 2rem;
             }
-            
+
             .nav-links {
                 display: none;
             }
-            
+
             .quick-actions {
                 display: none;
             }
@@ -555,6 +554,13 @@
 
     <!-- Landing Page -->
     <section class="landing" id="home">
+        <div class="gradual-blur">
+          <div class="gradual-blur-inner">
+            <div class="blur-top"></div>
+            <div class="blur-bottom"></div>
+          </div>
+        </div>
+
         <h1 class="tagline">Crafting Your Perfect Wedding Day</h1>
         <p class="value-prop">Vow connects you with expert wedding planners who transform your vision into reality. From intimate ceremonies to grand celebrations, we're here to make your special day unforgettable.</p>
         <div class="cta-container">
@@ -579,7 +585,7 @@
                 <img src="https://picsum.photos/seed/weddingteam/600/400.jpg" alt="Vow Team">
             </div>
         </div>
-        
+
         <h2 class="section-title">Our Values</h2>
         <div class="values-container">
             <div class="value-card">
@@ -618,7 +624,7 @@
         <div class="reviews-container">
             <h2 class="section-title">Love Stories We've Helped Create</h2>
             <p style="text-align: center; max-width: 800px; margin: 0 auto; color: var(--light-text);">Don't just take our word for it. Hear from couples who've experienced the Vow difference.</p>
-            
+
             <div class="reviews-grid">
                 <div class="review-card">
                     <div class="review-content">
@@ -639,7 +645,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="review-card">
                     <div class="review-content">
                         <p class="review-text">As a busy professional, I was overwhelmed with wedding planning until I found Vow. They matched us with the perfect planner who handled everything seamlessly. Our destination wedding was flawless and stress-free!</p>
@@ -659,7 +665,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="review-card">
                     <div class="review-content">
                         <p class="review-text">The attention to detail was incredible! From the floral arrangements to the timeline of events, everything was perfect. Our guests are still talking about how beautiful and well-organized our wedding was.</p>
@@ -679,7 +685,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="review-card">
                     <div class="review-content">
                         <p class="review-text">Vow helped us plan our multicultural wedding with such sensitivity and creativity. They blended our traditions beautifully and created a celebration that honored both our families. We couldn't be happier!</p>
@@ -699,7 +705,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="review-card">
                     <div class="review-content">
                         <p class="review-text">We had a tight budget but big dreams. Our Vow planner worked wonders within our budget, finding amazing vendors and creative solutions. Our wedding looked like a million bucks without breaking the bank!</p>
@@ -719,7 +725,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="review-card">
                     <div class="review-content">
                         <p class="review-text">The day-of coordination service was a lifesaver! Our planner handled everything so we could just enjoy our day. When unexpected rain threatened our outdoor ceremony, she had a beautiful backup plan ready instantly.</p>
@@ -795,10 +801,10 @@
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
-                    
+
                     const targetId = this.getAttribute('href');
                     const targetElement = document.querySelector(targetId);
-                    
+
                     if (targetElement) {
                         window.scrollTo({
                             top: targetElement.offsetTop - 70,
@@ -811,5 +817,3 @@
     </script>
 </body>
 </html>
-
-
