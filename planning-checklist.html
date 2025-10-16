@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Planning Checklist - Vow</title>
+    <meta name="description" content="Complete wedding planning checklist with timeline-based tasks to ensure you don't miss anything for your special day.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e8b4b8;
+            --secondary-color: #f5e6e8;
+            --accent-color: #d4a5a5;
+            --text-color: #333;
+            --light-text: #666;
+            --white: #fff;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --success-color: #81c784;
+            --warning-color: #ffb74d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            overflow-x: hidden;
+            line-height: 1.6;
+            background-color: #fdf6f8;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            padding: 20px 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-right: 10px;
+            letter-spacing: 0.1rem;
+        }
+
+        .logo-icon {
+            width: 35px;
+            height: 35px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .back-button {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-button:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--white) 100%);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--light-text);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        /* Progress Overview */
+        .progress-overview {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: -30px auto 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .progress-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .progress-stats {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+
+        .progress-bar-container {
+            background-color: var(--secondary-color);
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 15px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 500;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .action-button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .action-button:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .action-button.secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .action-button.secondary:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Checklist Container */
+        .checklist-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .timeline-section {
+            margin-bottom: 40px;
+            background-color: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .timeline-header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .timeline-header:hover {
+            background-color: var(--accent-color);
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .timeline-badge {
+            background-color: var(--white);
+            color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .timeline-progress {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .timeline-content {
+            padding: 30px;
+            display: block;
+        }
+
+        .timeline-content.collapsed {
+            display: none;
+        }
+
+        .category-group {
+            margin-bottom: 30px;
+        }
+
+        .category-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .category-title {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-icon {
+            width: 30px;
+            height: 30px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--primary-color);
+        }
+
+        .checklist-items {
+            list-style: none;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.3s ease;
+        }
+
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+
+        .checklist-item:hover {
+            background-color: rgba(232, 180, 184, 0.05);
+            margin: 0 -15px;
+            padding: 12px 15px;
+            border-radius: 8px;
+        }
+
+        .custom-checkbox {
+            position: relative;
+            width: 24px;
+            height: 24px;
+            margin-right: 15px;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 24px;
+            width: 24px;
+            background-color: var(--white);
+            border: 2px solid var(--primary-color);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .custom-checkbox:hover input ~ .checkmark {
+            background-color: var(--secondary-color);
+        }
+
+        .custom-checkbox input:checked ~ .checkmark {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 7px;
+            top: 3px;
+            width: 6px;
+            height: 12px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .custom-checkbox input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        .item-text {
+            flex: 1;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .item-text.completed {
+            text-decoration: line-through;
+            color: var(--light-text);
+        }
+
+        .item-priority {
+            margin-left: 10px;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .priority-high {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+
+        .priority-medium {
+            background-color: #fff3e0;
+            color: #ef6c00;
+        }
+
+        .priority-low {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        /* Notes Section */
+        .notes-section {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            margin-top: 40px;
+        }
+
+        .notes-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .notes-textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            border: 2px solid var(--secondary-color);
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+        }
+
+        .notes-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .progress-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .timeline-header {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .checklist-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .item-priority {
+                margin-left: 0;
+                margin-top: 5px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            header, .hero-section, .progress-overview, .action-buttons {
+                display: none;
+            }
+            
+            .timeline-section {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+            
+            .timeline-header {
+                background-color: var(--white) !important;
+                color: var(--text-color) !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo-container">
+                <div class="logo-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="logo">Vow</div>
+            </a>
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1 class="hero-title">Wedding Planning Checklist</h1>
+        <p class="hero-subtitle">Stay organized and on track with our comprehensive timeline-based checklist. Never miss an important task!</p>
+    </section>
+
+    <!-- Progress Overview -->
+    <div class="progress-overview">
+        <div class="progress-header">
+            <h2 class="progress-title">Your Progress</h2>
+            <div class="progress-stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="completed-count">0</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="total-count">0</div>
+                    <div class="stat-label">Total Tasks</div>
+                </div>
+            </div>
+        </div>
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="overall-progress" style="width: 0%">
+                0%
+            </div>
+        </div>
+        <div class="action-buttons">
+            <button class="action-button" onclick="resetChecklist()">
+                <i class="fas fa-redo"></i>
+                Reset All
+            </button>
+            <button class="action-button secondary" onclick="window.print()">
+                <i class="fas fa-print"></i>
+                Print Checklist
+            </button>
+            <button class="action-button secondary" onclick="saveProgress()">
+                <i class="fas fa-save"></i>
+                Save Progress
+            </button>
+        </div>
+    </div>
+
+    <!-- Checklist Container -->
+    <div class="checklist-container">
+        <!-- 12+ Months Before -->
+        <div class="timeline-section">
+            <div class="timeline-header" onclick="toggleTimeline(this)">
+                <div class="timeline-title">
+                    <i class="fas fa-calendar-alt"></i>
+                    12+ Months Before
+                    <span class="timeline-badge">Early Planning</span>
+                </div>
+                <div class="timeline-progress">
+                    <span class="timeline-progress-text">0/0 completed</span>
+                </div>
+            </div>
+            <div class="timeline-content">
+                <div class="category-group">
+                    <h3 class="category-title">
+                        <div class="category-icon">
+                            <i class="fas fa-ring"></i>
+                        </div>
+                        Engagement & Budget
+                    </h3>
+                    <ul class="checklist-items">
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Announce your engagement to family and friends</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Determine and discuss wedding budget with all contributors</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Create a guest list estimate</span>
+                            <span class="item-priority priority-medium">Medium</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Hire a wedding planner (if desired)</span>
+                            <span class="item-priority priority-medium">Medium</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="category-group">
+                    <h3 class="category-title">
+                        <div class="category-icon">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        Date & Venue
+                    </h3>
+                    <ul class="checklist-items">
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Choose your wedding date</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Research and book ceremony and reception venues</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Book officiant</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 9-12 Months Before -->
+        <div class="timeline-section">
+            <div class="timeline-header" onclick="toggleTimeline(this)">
+                <div class="timeline-title">
+                    <i class="fas fa-calendar-alt"></i>
+                    9-12 Months Before
+                    <span class="timeline-badge">Major Vendors</span>
+                </div>
+                <div class="timeline-progress">
+                    <span class="timeline-progress-text">0/0 completed</span>
+                </div>
+            </div>
+            <div class="timeline-content">
+                <div class="category-group">
+                    <h3 class="category-title">
+                        <div class="category-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        Vendors
+                    </h3>
+                    <ul class="checklist-items">
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Research and book photographer</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Research and book videographer</span>
+                            <span class="item-priority priority-medium">Medium</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Research and book caterer</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Research and book florist</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Research and book DJ or band</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="category-group">
+                    <h3 class="category-title">
+                        <div class="category-icon">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        Attire
+                    </h3>
+                    <ul class="checklist-items">
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Shop for and purchase wedding dress</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Shop for groom's attire</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Schedule first dress fitting</span>
+                            <span class="item-priority priority-medium">Medium</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6-9 Months Before -->
+        <div class="timeline-section">
+            <div class="timeline-header" onclick="toggleTimeline(this)">
+                <div class="timeline-title">
+                    <i class="fas fa-calendar-alt"></i>
+                    6-9 Months Before
+                    <span class="timeline-badge">Details & Guests</span>
+                </div>
+                <div class="timeline-progress">
+                    <span class="timeline-progress-text">0/0 completed</span>
+                </div>
+            </div>
+            <div class="timeline-content">
+                <div class="category-group">
+                    <h3 class="category-title">
+                        <div class="category-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        Guest Management
+                    </h3>
+                    <ul class="checklist-items">
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Finalize guest list</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Order save-the-dates</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Mail save-the-dates (6-8 months before)</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="category-group">
+                    <h3 class="category-title">
+                        <div class="category-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        Wedding Style
+                    </h3>
+                    <ul class="checklist-items">
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Choose wedding colors and theme</span>
+                            <span class="item-priority priority-medium">Medium</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Order wedding invitations</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Book wedding cake baker</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Register for wedding gifts</span>
+                            <span class="item-priority priority-medium">Medium</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4-6 Months Before -->
+        <div class="timeline-section">
+            <div class="timeline-header" onclick="toggleTimeline(this)">
+                <div class="timeline-title">
+                    <i class="fas fa-calendar-alt"></i>
+                    4-6 Months Before
+                    <span class="timeline-badge">Finalizing Details</span>
+                </div>
+                <div class="timeline-progress">
+                    <span class="timeline-progress-text">0/0 completed</span>
+                </div>
+            </div>
+            <div class="timeline-content">
+                <div class="category-group">
+                    <h3 class="category-title">
+                        <div class="category-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        Wedding Party
+                    </h3>
+                    <ul class="checklist-items">
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Finalize wedding party selections</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Order bridesmaid dresses</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Order or rent groomsmen attire</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Purchase wedding rings</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="category-group">
+                    <h3 class="category-title">
+                        <div class="category-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        Entertainment & Transportation
+                    </h3>
+                    <ul class="checklist-items">
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Finalize music playlist with DJ/band</span>
+                            <span class="item-priority priority-medium">Medium</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Book transportation for wedding party</span>
+                            <span class="item-priority priority-medium">Medium</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Book accommodations for out-of-town guests</span>
+                            <span class="item-priority priority-low">Low</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2-4 Months Before -->
+        <div class="timeline-section">
+            <div class="timeline-header" onclick="toggleTimeline(this)">
+                <div class="timeline-title">
+                    <i class="fas fa-calendar-alt"></i>
+                    2-4 Months Before
+                    <span class="timeline-badge">Legal & Beauty</span>
+                </div>
+                <div class="timeline-progress">
+                    <span class="timeline-progress-text">0/0 completed</span>
+                </div>
+            </div>
+            <div class="timeline-content">
+                <div class="category-group">
+                    <h3 class="category-title">
+                        <div class="category-icon">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        Legal Requirements
+                    </h3>
+                    <ul class="checklist-items">
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Apply for marriage license</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Finalize wedding ceremony details with officiant</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Write wedding vows</span>
+                            <span class="item-priority priority-medium">Medium</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="category-group">
+                    <h3 class="category-title">
+                        <div class="category-icon">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        Beauty & Wellness
+                    </h3>
+                    <ul class="checklist-items">
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Schedule hair and makeup trials</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Book hair and makeup artists</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Start skincare and fitness routine</span>
+                            <span class="item-priority priority-low">Low</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1-2 Months Before -->
+        <div class="timeline-section">
+            <div class="timeline-header" onclick="toggleTimeline(this)">
+                <div class="timeline-title">
+                    <i class="fas fa-calendar-alt"></i>
+                    1-2 Months Before
+                    <span class="timeline-badge">Final Preparations</span>
+                </div>
+                <div class="timeline-progress">
+                    <span class="timeline-progress-text">0/0 completed</span>
+                </div>
+            </div>
+            <div class="timeline-content">
+                <div class="category-group">
+                    <h3 class="category-title">
+                        <div class="category-icon">
+                            <i class="fas fa-envelope-open-text"></i>
+                        </div>
+                        Invitations & RSVPs
+                    </h3>
+                    <ul class="checklist-items">
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Mail wedding invitations (6-8 weeks before)</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Track RSVPs and follow up if needed</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Create seating chart</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="category-group">
+                    <h3 class="category-title">
+                        <div class="category-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        Food & Drinks
+                    </h3>
+                    <ul class="checklist-items">
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Finalize menu with caterer</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Finalize cake design and flavors</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Order wedding favors</span>
+                            <span class="item-priority priority-medium">Medium</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1 Month Before -->
+        <div class="timeline-section">
+            <div class="timeline-header" onclick="toggleTimeline(this)">
+                <div class="timeline-title">
+                    <i class="fas fa-calendar-alt"></i>
+                    1 Month Before
+                    <span class="timeline-badge">Final Countdown</span>
+                </div>
+                <div class="timeline-progress">
+                    <span class="timeline-progress-text">0/0 completed</span>
+                </div>
+            </div>
+            <div class="timeline-content">
+                <div class="category-group">
+                    <h3 class="category-title">
+                        <div class="category-icon">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        Final Fittings
+                    </h3>
+                    <ul class="checklist-items">
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Final dress fitting and alterations</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Pick up wedding dress</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Final fittings for wedding party</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="category-group">
+                    <h3 class="category-title">
+                        <div class="category-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        Confirmations
+                    </h3>
+                    <ul class="checklist-items">
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Confirm final details with all vendors</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Create wedding day timeline</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Assign day-of responsibilities</span>
+                            <span class="item-priority priority-medium">Medium</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Pack for honeymoon</span>
+                            <span class="item-priority priority-low">Low</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1 Week Before -->
+        <div class="timeline-section">
+            <div class="timeline-header" onclick="toggleTimeline(this)">
+                <div class="timeline-title">
+                    <i class="fas fa-calendar-alt"></i>
+                    1 Week Before
+                    <span class="timeline-badge">Final Touches</span>
+                </div>
+                <div class="timeline-progress">
+                    <span class="timeline-progress-text">0/0 completed</span>
+                </div>
+            </div>
+            <div class="timeline-content">
+                <div class="category-group">
+                    <h3 class="category-title">
+                        <div class="category-icon">
+                            <i class="fas fa-money-check-alt"></i>
+                        </div>
+                        Payments & Pickups
+                    </h3>
+                    <ul class="checklist-items">
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Make final payments to all vendors</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Pick up wedding rings</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Delegate wedding day payments to trusted person</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="category-group">
+                    <h3 class="category-title">
+                        <div class="category-icon">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        Personal Prep
+                    </h3>
+                    <ul class="checklist-items">
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Get final manicure and pedicure</span>
+                            <span class="item-priority priority-medium">Medium</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Pack wedding day emergency kit</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Rehearse ceremony</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                        <li class="checklist-item">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" onchange="updateProgress()">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="item-text">Get plenty of rest!</span>
+                            <span class="item-priority priority-high">High</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notes Section -->
+    <div class="notes-section">
+        <h2 class="notes-title">
+            <i class="fas fa-sticky-note"></i>
+            Wedding Planning Notes
+        </h2>
+        <textarea class="notes-textarea" id="wedding-notes" placeholder="Add your personal notes, ideas, and reminders here..."></textarea>
+    </div>
+
+    <script>
+        // Initialize the checklist
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProgress();
+            updateProgress();
+            
+            // Save notes on change
+            document.getElementById('wedding-notes').addEventListener('input', saveNotes);
+            loadNotes();
+        });
+
+        // Toggle timeline section
+        function toggleTimeline(header) {
+            const content = header.nextElementSibling;
+            content.classList.toggle('collapsed');
+        }
+
+        // Update overall progress
+        function updateProgress() {
+            const allCheckboxes = document.querySelectorAll('.checklist-item input[type="checkbox"]');
+            const checkedBoxes = document.querySelectorAll('.checklist-item input[type="checkbox"]:checked');
+            
+            const total = allCheckboxes.length;
+            const completed = checkedBoxes.length;
+            const percentage = total > 0 ? Math.round((completed / total) * 100) : 0;
+            
+            // Update stats
+            document.getElementById('completed-count').textContent = completed;
+            document.getElementById('total-count').textContent = total;
+            
+            // Update progress bar
+            const progressBar = document.getElementById('overall-progress');
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = percentage + '%';
+            
+            // Update timeline progress
+            document.querySelectorAll('.timeline-section').forEach(section => {
+                const sectionCheckboxes = section.querySelectorAll('.checklist-item input[type="checkbox"]');
+                const sectionChecked = section.querySelectorAll('.checklist-item input[type="checkbox"]:checked');
+                const sectionTotal = sectionCheckboxes.length;
+                const sectionCompleted = sectionChecked.length;
+                
+                const progressText = section.querySelector('.timeline-progress-text');
+                if (progressText) {
+                    progressText.textContent = `${sectionCompleted}/${sectionTotal} completed`;
+                }
+            });
+            
+            // Update item text styling
+            allCheckboxes.forEach(checkbox => {
+                const itemText = checkbox.closest('.checklist-item').querySelector('.item-text');
+                if (checkbox.checked) {
+                    itemText.classList.add('completed');
+                } else {
+                    itemText.classList.remove('completed');
+                }
+            });
+            
+            // Save progress
+            saveProgress();
+        }
+
+        // Reset checklist
+        function resetChecklist() {
+            if (confirm('Are you sure you want to reset all checkboxes? This cannot be undone.')) {
+                document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                updateProgress();
+                localStorage.removeItem('weddingChecklistProgress');
+                showNotification('Checklist has been reset');
+            }
+        }
+
+        // Save progress to localStorage
+        function saveProgress() {
+            const checkboxes = document.querySelectorAll('.checklist-item input[type="checkbox"]');
+            const progress = {};
+            
+            checkboxes.forEach((checkbox, index) => {
+                progress[index] = checkbox.checked;
+            });
+            
+            localStorage.setItem('weddingChecklistProgress', JSON.stringify(progress));
+        }
+
+        // Load progress from localStorage
+        function loadProgress() {
+            const savedProgress = localStorage.getItem('weddingChecklistProgress');
+            
+            if (savedProgress) {
+                const progress = JSON.parse(savedProgress);
+                const checkboxes = document.querySelectorAll('.checklist-item input[type="checkbox"]');
+                
+                checkboxes.forEach((checkbox, index) => {
+                    if (progress[index] !== undefined) {
+                        checkbox.checked = progress[index];
+                    }
+                });
+            }
+        }
+
+        // Save notes to localStorage
+        function saveNotes() {
+            const notes = document.getElementById('wedding-notes').value;
+            localStorage.setItem('weddingNotes', notes);
+        }
+
+        // Load notes from localStorage
+        function loadNotes() {
+            const savedNotes = localStorage.getItem('weddingNotes');
+            if (savedNotes) {
+                document.getElementById('wedding-notes').value = savedNotes;
+            }
+        }
+
+        // Show notification
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: var(--primary-color);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 50px;
+                box-shadow: var(--shadow);
+                z-index: 1000;
+                font-weight: 500;
+                animation: slideUp 0.3s ease;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transition = 'opacity 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Add slide up animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideUp {
+                from {
+                    transform: translate(-50%, 100px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translate(-50%, 0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
