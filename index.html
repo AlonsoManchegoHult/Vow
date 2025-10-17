@@ -9,11 +9,12 @@
     <meta name="author" content="Vow Wedding Planning">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #F6E4DB;
-            --secondary-color: #f5e6e8;
-            --accent-color: #F6E4DB;
+            --primary-color: #333;
+            --secondary-color: #333;
+            --accent-color: #333;
             --text-color: #333;
             --light-text: #666;
             --white: #fff;
@@ -75,15 +76,19 @@
         }
 
         .logo-icon {
-            width: 40px;
-            height: 40px;
-            background-color: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 1.2rem;
+          width: 40px;
+          height: 40px;
+          overflow: hidden;
+          /* remove background-color and border-radius or keep rounded if logo fits */
+          border-radius: 50%;
+          margin-top: 7px;
+          margin-right: 5px;
+        }
+
+        .logo-icon img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover; /* or contain depending on aspect ratio */
         }
 
         .nav-links {
@@ -151,7 +156,7 @@
         .landing {
             height: 100vh;
             background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)),
-                        url('https://media.discordapp.net/attachments/785237409553186826/1428448803404644443/404f4d0a-607f-4580-8085-bde62e2677b8.png?ex=68f28a1e&is=68f1389e&hm=69c701977f25268b99f13c6415dcdd748a5cb58bea98f08705a6c5a186ce5f01&=&format=webp&quality=lossless&width=704&height=469');
+                        url('https://media.discordapp.net/attachments/1428794102425583626/1428794151448740021/7b13b936c8c2c8e6.jpeg?ex=68f3cbbf&is=68f27a3f&hm=4b6b363d58ffd6894fd87f673a039f2eb15ba7e3cd851d5178464516c89acd50&=&format=webp&width=1470&height=1442');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -163,8 +168,25 @@
             position: relative;
         }
 
+      .landing::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)),
+                      url('https://media.discordapp.net/attachments/1428794102425583626/1428794151448740021/7b13b936c8c2c8e6.jpeg?ex=68f3cbbf&is=68f27a3f&hm=4b6b363d58ffd6894fd87f673a039f2eb15ba7e3cd851d5178464516c89acd50&=&format=webp&width=1470&height=1442');
+          background-size: cover;
+          background-position: center 80%;
+          /* filter: blur(1px); */
+          z-index: 0;
+        }
+
+        .landing > * {
+          position: relative;
+          z-index: 1;
+        }
+
         .tagline {
-            font-size: 1.5rem;
+            font-size: 3.5rem;
             margin-bottom: 2rem;
             color: var(--text-color);
             font-weight: 300;
@@ -173,8 +195,9 @@
         .value-prop {
             max-width: 600px;
             margin-bottom: 3rem;
-            font-size: 1.1rem;
-            color: var(--light-text);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-color);
         }
 
         .cta-container {
@@ -210,8 +233,8 @@
 
         .secondary-cta {
             background-color: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
+            color: #A57C85;
+            border: 2px solid #A57C85;
             padding: 12px 25px;
             font-size: 1rem;
             border-radius: 5px;
@@ -246,9 +269,13 @@
 
         /* About Section */
         .about-section {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+          position: relative;
+          padding: 80px 20px;
+          color: #fff;
+          background:
+            linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+            url('https://cdn.discordapp.com/attachments/785237409553186826/1428466338036187288/IMG-20251016-WA0001.jpg?ex=68f29a72&is=68f148f2&hm=4f2dddb2d21e635ef0a2066d0f4e1d6ce9c841cbb06d90f150e505d69b0f31ed&')
+              center/cover no-repeat fixed;
         }
 
         .section-title {
@@ -263,6 +290,8 @@
             flex-wrap: wrap;
             gap: 40px;
             align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .about-text {
@@ -314,6 +343,70 @@
             font-size: 1.3rem;
             margin-bottom: 10px;
             color: var(--primary-color);
+        }
+
+        /* Resources Section */
+        .resources-section {
+          background-color: #fff;
+          color: #000;
+          padding: 80px 20px;
+        }
+
+        .resources-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        .resources-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 40px;
+          margin-top: 50px;
+        }
+
+        .resource-card {
+          background-color: #fff;
+          border-radius: 15px;
+          box-shadow: var(--shadow);
+          overflow: hidden;
+          text-align: left;
+          transition: transform 0.3s ease;
+        }
+
+        .resource-card:hover {
+          transform: translateY(-5px);
+        }
+
+        .resource-image {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+        }
+
+        .resource-title {
+          font-family: 'Playfair Display', serif;
+          font-size: 1.4rem;
+          margin: 20px;
+        }
+
+        .resource-card p {
+          font-family: 'Roboto', sans-serif;
+          color: #333;
+          margin: 0 20px 20px;
+        }
+
+        .resource-link {
+          display: inline-block;
+          margin: 0 20px 25px;
+          color: #A57C85;
+          text-decoration: none;
+          font-weight: 600;
+          transition: color 0.3s ease;
+        }
+
+        .resource-link:hover {
+          color: var(--primary-color);
         }
 
         /* Reviews Section */
@@ -535,7 +628,7 @@
         <div class="nav-container">
             <a href="#home" class="logo-container">
                 <div class="logo-icon">
-                    <i class="fas fa-heart"></i>
+                    <img src="https://cdn.discordapp.com/attachments/785237409553186826/1428475389734551644/IMG-20251016-WA0002.jpg?ex=68f2a2e0&is=68f15160&hm=7dcd409f4821064d0b9785d9965fdecff22d6af98c1502f51609ccc695bb8bb4&" alt="Vow Logo">
                 </div>
                 <div class="logo">Vow</div>
             </a>
@@ -617,6 +710,35 @@
                 <p>We operate with transparency and honesty, building trust with every couple we serve.</p>
             </div>
         </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources-section">
+      <div class="resources-container">
+        <h2 class="section-title">Plan Every Detail</h2>
+        <div class="resources-grid">
+          <div class="resource-card">
+            <img src="https://picsum.photos/seed/inspiration/600/400" alt="Wedding Inspiration" class="resource-image">
+            <h3 class="resource-title">Wedding Inspiration Board</h3>
+            <p>Explore elegant themes, colors, and trends to spark ideas for your special day.</p>
+            <a href="wedding-inspiration.html" class="resource-link">Explore Inspiration →</a>
+          </div>
+
+          <div class="resource-card">
+            <img src="https://picsum.photos/seed/checklist/600/400" alt="Planning Checklist" class="resource-image">
+            <h3 class="resource-title">Planning Checklist</h3>
+            <p>Stay on track with our easy-to-follow checklist covering every milestone.</p>
+            <a href="planning-checklist.html" class="resource-link">View Checklist →</a>
+          </div>
+
+          <div class="resource-card">
+            <img src="https://picsum.photos/seed/budget/600/400" alt="Budget Calculator" class="resource-image">
+            <h3 class="resource-title">Budget Calculator</h3>
+            <p>Plan confidently with our smart budget tool to estimate and manage wedding costs.</p>
+            <a href="budget-calculator.html" class="resource-link">Open Calculator →</a>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Reviews Section -->
