@@ -9,10 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #e8b4b8;
-            --secondary-color: #f5e6e8;
-            --accent-color: #d4a5a5;
-            --text-color: #333;
+            --primary-color: #000;
+            --secondary-color: #f5f5f5;
+            --accent-color: #333;
+            --text-color: #000;
             --light-text: #666;
             --white: #fff;
             --shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -29,7 +29,7 @@
             color: var(--text-color);
             overflow-x: hidden;
             line-height: 1.6;
-            background-color: #fdf6f8;
+            background-color: #f9f9f9;
         }
 
         h1, h2, h3 {
@@ -226,7 +226,7 @@
         .option-card.selected {
             border: 5px solid var(--primary-color);
             transform: scale(1.03);
-            box-shadow: 0 8px 25px rgba(232, 180, 184, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
 
         .option-card.selected::after {
@@ -236,7 +236,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(232, 180, 184, 0.2);
+            background: rgba(0, 0, 0, 0.1);
             pointer-events: none;
         }
 
@@ -711,6 +711,80 @@
             display: block;
         }
 
+        /* Footer */
+        footer {
+            background-color: var(--text-color);
+            color: var(--white);
+            padding: 50px 20px 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .footer-section p, .footer-section li {
+            margin-bottom: 10px;
+            color: #ddd;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+        }
+
+        .social-icon:hover {
+            background-color: var(--white);
+            color: var(--text-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .progress-step:not(:last-child):after {
@@ -785,7 +859,7 @@
     <!-- Selection Sections -->
     <section class="selection-container active" id="flowers-selection">
         <h2 class="category-title">Flowers</h2>
-        <p class="category-subtitle">Which of these flowers catches your heart? Select the one that speaks to you.</p>
+        <p class="category-subtitle">Which of these flowers catches your heart? Select all that speak to you.</p>
         <div class="options-grid" id="flowers-options">
             <!-- Flower options will be populated by JavaScript -->
         </div>
@@ -797,7 +871,7 @@
 
     <section class="selection-container" id="venue-selection">
         <h2 class="category-title">Venue</h2>
-        <p class="category-subtitle">Where would you like to say "I do"? Choose your dream venue.</p>
+        <p class="category-subtitle">Where would you like to say "I do"? Choose your dream venues.</p>
         <div class="options-grid" id="venue-options">
             <!-- Venue options will be populated by JavaScript -->
         </div>
@@ -809,7 +883,7 @@
 
     <section class="selection-container" id="style-selection">
         <h2 class="category-title">Wedding Style</h2>
-        <p class="category-subtitle">What's your wedding style? Select the theme that resonates with you.</p>
+        <p class="category-subtitle">What's your wedding style? Select all themes that resonate with you.</p>
         <div class="options-grid" id="style-options">
             <!-- Style options will be populated by JavaScript -->
         </div>
@@ -821,7 +895,7 @@
 
     <section class="selection-container" id="cake-selection">
         <h2 class="category-title">Wedding Cake</h2>
-        <p class="category-subtitle">Choose the cake that will sweeten your celebration.</p>
+        <p class="category-subtitle">Choose the cakes that will sweeten your celebration.</p>
         <div class="options-grid" id="cake-options">
             <!-- Cake options will be populated by JavaScript -->
         </div>
@@ -845,7 +919,7 @@
 
     <section class="selection-container" id="catering-selection">
         <h2 class="category-title">Catering</h2>
-        <p class="category-subtitle">Select the cuisine that will delight your guests.</p>
+        <p class="category-subtitle">Select the cuisines that will delight your guests.</p>
         <div class="options-grid" id="catering-options">
             <!-- Catering options will be populated by JavaScript -->
         </div>
@@ -962,6 +1036,52 @@
         <button class="popup-button" id="popup-close">Got it!</button>
     </div>
 
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Vow</h3>
+                <p>Vow connects couples with expert wedding planners to create their perfect day. From intimate ceremonies to grand celebrations, we're here to make your special day unforgettable.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#reviews">Reviews</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>For Couples</h3>
+                <ul>
+                    <li><a href="planner-journey.html">Start Planning</a></li>
+                    <li><a href="wedding-inspiration.html">Wedding Inspiration</a></li>
+                    <li><a href="planning-checklist.html">Planning Checklist</a></li>
+                    <li><a href="budget-calculator.html">Budget Calculator</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>For Planners</h3>
+                <ul>
+                    <li><a href="planner-signup.html">Join Vow</a></li>
+                    <li><a href="#">Planner Resources</a></li>
+                    <li><a href="#">Success Stories</a></li>
+                    <li><a href="#">Planner Login</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Vow Wedding Planning. All Rights Reserved.</p>
+        </div>
+    </footer>
+
     <script>
         // ==========================================
         // CUSTOMIZABLE WEDDING SELECTION DATA
@@ -980,7 +1100,7 @@
         const weddingCategories = {
             flowers: {
                 title: "Flowers",
-                subtitle: "Which of these flowers catches your heart? Select the one that speaks to you.",
+                subtitle: "Which of these flowers catches your heart? Select all that speak to you.",
                 options: [
                     {
                         id: 1,
@@ -1016,7 +1136,7 @@
             },
             venue: {
                 title: "Venue",
-                subtitle: "Where would you like to say \"I do\"? Choose your dream venue.",
+                subtitle: "Where would you like to say \"I do\"? Choose your dream venues.",
                 options: [
                     {
                         id: 1,
@@ -1052,7 +1172,7 @@
             },
             style: {
                 title: "Wedding Style",
-                subtitle: "What's your wedding style? Select the theme that resonates with you.",
+                subtitle: "What's your wedding style? Select all themes that resonate with you.",
                 options: [
                     {
                         id: 1,
@@ -1088,7 +1208,7 @@
             },
             cake: {
                 title: "Wedding Cake",
-                subtitle: "Choose the cake that will sweeten your celebration.",
+                subtitle: "Choose the cakes that will sweeten your celebration.",
                 options: [
                     {
                         id: 1,
@@ -1160,7 +1280,7 @@
             },
             catering: {
                 title: "Catering",
-                subtitle: "Select the cuisine that will delight your guests.",
+                subtitle: "Select the cuisines that will delight your guests.",
                 options: [
                     {
                         id: 1,
@@ -1251,14 +1371,14 @@
         //
         // ==========================================
 
-        // Wedding selections storage
+        // Wedding selections storage - now using arrays for multiple selections
         const weddingSelections = {
-            flowers: null,
-            venue: null,
-            style: null,
-            cake: null,
-            music: null,
-            catering: null
+            flowers: [],
+            venue: [],
+            style: [],
+            cake: [],
+            music: [],
+            catering: []
         };
 
         // Initialize the app
@@ -1300,6 +1420,11 @@
                 optionCard.dataset.category = category;
                 optionCard.dataset.option = option.id;
                 
+                // Check if this option was previously selected
+                if (weddingSelections[category].some(selected => selected.id === option.id)) {
+                    optionCard.classList.add('selected');
+                }
+                
                 const img = document.createElement('img');
                 img.src = option.image;
                 img.alt = option.name;
@@ -1328,192 +1453,166 @@
                 
                 optionsContainer.appendChild(optionCard);
             });
+            
+            // Enable next button if there are already selections
+            document.getElementById(`${category}-next`).disabled = weddingSelections[category].length === 0;
         }
 
-        // Handle option selection
+        // Handle option selection - now supports multiple selections
         function selectOption(category, optionId) {
-            // Remove previous selection
-            document.querySelectorAll(`[data-category="${category}"]`).forEach(card => {
-                card.classList.remove('selected');
-            });
-            
-            // Add selection to clicked option
-            document.querySelector(`[data-category="${category}"][data-option="${optionId}"]`).classList.add('selected');
+            const optionCard = document.querySelector(`[data-category="${category}"][data-option="${optionId}"]`);
             
             // Find the selected option data
             const selectedOption = weddingCategories[category].options.find(option => option.id === optionId);
             
-            // Store selection
-            weddingSelections[category] = {
-                id: optionId,
-                name: selectedOption.name,
-                image: selectedOption.image,
-                label: selectedOption.label
-            };
+            // Check if this option is already selected
+            const existingIndex = weddingSelections[category].findIndex(option => option.id === optionId);
             
-            // Enable next button
-            document.getElementById(`${category}-next`).disabled = false;
-        }
-
-        // Update progress bar
-        function updateProgress(step) {
-            document.querySelectorAll('.progress-step').forEach((progressStep, index) => {
-                if (index < step) {
-                    progressStep.classList.add('completed');
-                    progressStep.classList.remove('active');
-                } else if (index === step) {
-                    progressStep.classList.add('active');
-                    progressStep.classList.remove('completed');
-                } else {
-                    progressStep.classList.remove('active', 'completed');
-                }
-            });
+            if (existingIndex !== -1) {
+                // If already selected, remove it
+                weddingSelections[category].splice(existingIndex, 1);
+                optionCard.classList.remove('selected');
+            } else {
+                // If not selected, add it
+                weddingSelections[category].push(selectedOption);
+                optionCard.classList.add('selected');
+            }
+            
+            // Enable/disable next button based on selection
+            document.getElementById(`${category}-next`).disabled = weddingSelections[category].length === 0;
         }
 
         // Set up category navigation
         function setupCategoryNavigation() {
-            const categories = Object.keys(weddingCategories);
+            const categories = ['flowers', 'venue', 'style', 'cake', 'music', 'catering'];
             
             categories.forEach((category, index) => {
+                // Next button
                 const nextButton = document.getElementById(`${category}-next`);
-                const prevButton = document.getElementById(`${category}-prev`);
-                
                 if (nextButton) {
                     nextButton.addEventListener('click', function() {
-                        // Hide current category
-                        document.getElementById(`${category}-selection`).classList.remove('active');
-                        
-                        // Show next category or moodboard if last category
                         if (index < categories.length - 1) {
+                            // Mark current step as completed
+                            document.querySelector(`.progress-step[data-step="${index + 1}"]`).classList.add('completed');
+                            
+                            // Hide current section
+                            document.getElementById(`${category}-selection`).classList.remove('active');
+                            
+                            // Show next section
                             const nextCategory = categories[index + 1];
                             document.getElementById(`${nextCategory}-selection`).classList.add('active');
-                            populateOptions(nextCategory);
-                            updateProgress(index + 1);
+                            
+                            // Update progress bar
+                            document.querySelector(`.progress-step[data-step="${index + 1}"]`).classList.remove('active');
+                            document.querySelector(`.progress-step[data-step="${index + 2}"]`).classList.add('active');
+                            
+                            // Populate options for next category if not already done
+                            if (document.getElementById(`${nextCategory}-options`).children.length === 0) {
+                                populateOptions(nextCategory);
+                            }
                         } else {
-                            // Show moodboard
+                            // If this is the last category, show moodboard
                             showMoodboard();
-                            updateProgress(index + 1);
                         }
                     });
                 }
                 
-                if (prevButton) {
-                    prevButton.addEventListener('click', function() {
-                        // Hide current category
-                        document.getElementById(`${category}-selection`).classList.remove('active');
-                        
-                        // Show previous category
-                        if (index > 0) {
+                // Previous button (except for first category)
+                if (index > 0) {
+                    const prevButton = document.getElementById(`${category}-prev`);
+                    if (prevButton) {
+                        prevButton.addEventListener('click', function() {
+                            // Hide current section
+                            document.getElementById(`${category}-selection`).classList.remove('active');
+                            
+                            // Show previous section
                             const prevCategory = categories[index - 1];
                             document.getElementById(`${prevCategory}-selection`).classList.add('active');
-                            updateProgress(index - 1);
-                        }
-                    });
+                            
+                            // Update progress bar
+                            document.querySelector(`.progress-step[data-step="${index + 1}"]`).classList.remove('active');
+                            document.querySelector(`.progress-step[data-step="${index}"]`).classList.add('active');
+                        });
+                    }
                 }
             });
         }
 
-        // Show moodboard
+        // Show moodboard with selected options
         function showMoodboard() {
-            // Hide all selection containers
-            document.querySelectorAll('.selection-container').forEach(container => {
-                container.classList.remove('active');
-            });
+            // Mark final step as completed
+            document.querySelector('.progress-step[data-step="6"]').classList.add('completed');
             
-            // Show moodboard container
+            // Hide last selection section
+            document.getElementById('catering-selection').classList.remove('active');
+            
+            // Show moodboard section
             document.getElementById('moodboard').classList.add('active');
             
-            // Populate moodboard with selected items
+            // Populate moodboard with selected options
             const moodboardGrid = document.getElementById('moodboard-grid');
             moodboardGrid.innerHTML = '';
             
+            // Add selected options from all categories
             Object.keys(weddingSelections).forEach(category => {
-                if (weddingSelections[category]) {
+                weddingSelections[category].forEach(option => {
                     const moodboardItem = document.createElement('div');
                     moodboardItem.className = 'moodboard-item';
                     
                     const img = document.createElement('img');
-                    img.src = weddingSelections[category].image;
-                    img.alt = weddingSelections[category].name;
+                    img.src = option.image;
+                    img.alt = option.name;
                     
                     const label = document.createElement('div');
                     label.className = 'moodboard-label';
-                    label.textContent = weddingSelections[category].label;
+                    label.textContent = option.label;
                     
                     moodboardItem.appendChild(img);
                     moodboardItem.appendChild(label);
                     moodboardGrid.appendChild(moodboardItem);
-                }
+                });
             });
         }
 
         // Show planner profile
         function showPlannerProfile() {
-            // Hide moodboard
+            // Hide moodboard section
             document.getElementById('moodboard').classList.remove('active');
             
-            // Show planner profile
+            // Show planner profile section
             document.getElementById('planner-profile').classList.add('active');
             
-            // Select a planner based on wedding selections
-            const selectedPlanner = selectPlanner();
+            // Select a random planner (in a real app, this would be based on matching algorithm)
+            const selectedPlanner = weddingPlanners[Math.floor(Math.random() * weddingPlanners.length)];
             
-            // Update planner profile
+            // Populate planner profile
             document.getElementById('planner-image').src = selectedPlanner.image;
             document.getElementById('planner-name').textContent = selectedPlanner.name;
             document.getElementById('planner-bio').textContent = selectedPlanner.bio;
             
-            // Populate moodboard in planner profile
-            populatePlannerMoodboard();
-        }
-
-        // Populate moodboard in planner profile
-        function populatePlannerMoodboard() {
-            const moodboardGrid = document.getElementById('planner-moodboard-grid');
-            moodboardGrid.innerHTML = '';
+            // Populate planner moodboard with selected options
+            const plannerMoodboardGrid = document.getElementById('planner-moodboard-grid');
+            plannerMoodboardGrid.innerHTML = '';
             
+            // Add selected options from all categories
             Object.keys(weddingSelections).forEach(category => {
-                if (weddingSelections[category]) {
+                weddingSelections[category].forEach(option => {
                     const moodboardItem = document.createElement('div');
                     moodboardItem.className = 'moodboard-grid-item';
                     
                     const img = document.createElement('img');
-                    img.src = weddingSelections[category].image;
-                    img.alt = weddingSelections[category].name;
+                    img.src = option.image;
+                    img.alt = option.name;
                     
                     const label = document.createElement('div');
                     label.className = 'moodboard-grid-label';
-                    label.textContent = weddingSelections[category].label;
+                    label.textContent = option.label;
                     
                     moodboardItem.appendChild(img);
                     moodboardItem.appendChild(label);
-                    moodboardGrid.appendChild(moodboardItem);
-                }
+                    plannerMoodboardGrid.appendChild(moodboardItem);
+                });
             });
-        }
-
-        // Select a planner based on wedding selections
-        function selectPlanner() {
-            // Simple algorithm to select a planner based on style preference
-            // In a real application, this would be more sophisticated
-            if (weddingSelections.style) {
-                const styleName = weddingSelections.style.name.toLowerCase();
-                
-                if (styleName.includes('classic') || styleName.includes('elegance')) {
-                    return weddingPlanners[0]; // Eleanor Rose
-                } else if (styleName.includes('modern') || styleName.includes('minimalist')) {
-                    return weddingPlanners[1]; // James Mitchell
-                } else if (styleName.includes('bohemian')) {
-                    return weddingPlanners[4]; // Isabella Wright
-                } else if (weddingSelections.venue && weddingSelections.venue.name.toLowerCase().includes('beach')) {
-                    return weddingPlanners[3]; // Michael Torres (destination specialist)
-                } else if (weddingSelections.flowers && weddingSelections.flowers.name.toLowerCase().includes('tropical')) {
-                    return weddingPlanners[2]; // Sophia Chen (multicultural specialist)
-                }
-            }
-            
-            // Default to first planner if no specific match
-            return weddingPlanners[0];
         }
 
         // Set up tab navigation
@@ -1523,15 +1622,21 @@
             
             tabButtons.forEach(button => {
                 button.addEventListener('click', function() {
+                    const targetTab = this.getAttribute('data-tab');
+                    
                     // Remove active class from all tabs and contents
                     tabButtons.forEach(btn => btn.classList.remove('active'));
                     tabContents.forEach(content => content.classList.remove('active'));
                     
                     // Add active class to clicked tab and corresponding content
                     this.classList.add('active');
-                    const tabId = this.getAttribute('data-tab');
-                    document.getElementById(`${tabId}-tab`).classList.add('active');
+                    document.getElementById(`${targetTab}-tab`).classList.add('active');
                 });
+            });
+            
+            // Contact planner button
+            document.getElementById('contactPlanner').addEventListener('click', function() {
+                document.querySelector('[data-tab="contact"]').click();
             });
         }
 
@@ -1539,21 +1644,22 @@
         function handleContactForm(event) {
             event.preventDefault();
             
-            // Show loading indicator
+            // Show loading
             document.getElementById('loading').classList.add('active');
             
             // Simulate form submission
             setTimeout(() => {
-                // Hide loading indicator
+                // Hide loading
                 document.getElementById('loading').classList.remove('active');
                 
-                // Show popup notification
-                showPopup();
+                // Hide planner profile
+                document.getElementById('planner-profile').classList.remove('active');
                 
-                // Redirect to homepage after a short delay
-                setTimeout(() => {
-                    window.location.href = 'index.html';
-                }, 3000);
+                // Show confirmation
+                document.getElementById('confirmation').classList.add('active');
+                
+                // Reset form
+                document.getElementById('contact-form').reset();
             }, 1500);
         }
 
@@ -1561,26 +1667,24 @@
         function handleSignupForm(event) {
             event.preventDefault();
             
-            // Show loading indicator
+            // Show loading
             document.getElementById('loading').classList.add('active');
             
             // Simulate form submission
             setTimeout(() => {
-                // Hide loading indicator
+                // Hide loading
                 document.getElementById('loading').classList.remove('active');
                 
-                // Show confirmation message
-                document.getElementById('confirmation').classList.add('active');
+                // Show popup notification
+                document.getElementById('popup-overlay').classList.add('active');
+                document.getElementById('popup-notification').classList.add('active');
+                
+                // Reset form
+                document.getElementById('signup-form').reset();
             }, 1500);
         }
 
-        // Show popup notification
-        function showPopup() {
-            document.getElementById('popup-overlay').classList.add('active');
-            document.getElementById('popup-notification').classList.add('active');
-        }
-
-        // Close popup notification
+        // Close popup
         function closePopup() {
             document.getElementById('popup-overlay').classList.remove('active');
             document.getElementById('popup-notification').classList.remove('active');
