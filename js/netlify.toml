@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/discord/*"
+  to = "https://media.discordapp.net/:splat"
+  status = 200
+  force = true
