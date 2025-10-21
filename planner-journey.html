@@ -791,17 +791,17 @@
                 left: 50%;
                 width: 100%;
             }
-            
+
             .step-label {
                 font-size: 0.7rem;
             }
-            
+
             .planner-header {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
             }
-            
+
             .planner-image {
                 margin-right: 0;
                 margin-bottom: 20px;
@@ -1086,7 +1086,7 @@
         // ==========================================
         // CUSTOMIZABLE WEDDING SELECTION DATA
         // ==========================================
-        // 
+        //
         // Edit this section to customize the wedding selection options
         // You can change:
         // - Category titles and descriptions
@@ -1319,7 +1319,7 @@
         // ==========================================
         // WEDDING PLANNERS DATA
         // ==========================================
-        // 
+        //
         // Edit this section to customize the wedding planners
         // You can change:
         // - Planner names and bios
@@ -1334,38 +1334,38 @@
                 id: 1,
                 name: "Eleanor Rose",
                 bio: "With over 10 years of experience in creating fairytale weddings, Eleanor specializes in romantic, elegant celebrations that capture the unique love story of each couple.",
-                image: "https://picsum.photos/seed/planner1/400/400.jpg"
+                image: "images/ZhenPic.jpeg"
             },
             {
                 id: 2,
                 name: "James Mitchell",
                 bio: "James brings a modern, sophisticated touch to wedding planning. His attention to detail and creative vision have made him one of the most sought-after planners in the industry.",
-                image: "https://picsum.photos/seed/planner2/400/400.jpg"
+                image: "images/ZhenPic.jpeg"
             },
             {
                 id: 3,
                 name: "Sophia Chen",
                 bio: "Sophia specializes in multicultural weddings, blending traditions and creating unique celebrations that honor the heritage of both partners while reflecting their personal style.",
-                image: "https://picsum.photos/seed/planner3/400/400.jpg"
+                image: "images/ZhenPic.jpeg"
             },
             {
                 id: 4,
                 name: "Michael Torres",
                 bio: "Michael is known for his destination wedding expertise. From beach ceremonies to mountain retreats, he creates seamless experiences no matter where in the world your love story takes you.",
-                image: "https://picsum.photos/seed/planner4/400/400.jpg"
+                image: "images/ZhenPic.jpeg"
             },
             {
                 id: 5,
                 name: "Isabella Wright",
                 bio: "Isabella's creative approach to wedding planning has earned her numerous awards. She transforms ordinary spaces into extraordinary venues, crafting weddings that are both beautiful and meaningful.",
-                image: "https://picsum.photos/seed/planner5/400/400.jpg"
+                image: "images/ZhenPic.jpeg"
             }
         ];
 
         // ==========================================
         // END OF CUSTOMIZABLE DATA
         // ==========================================
-        // 
+        //
         // You don't need to edit below this line
         // unless you want to change functionality
         //
@@ -1385,20 +1385,20 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Populate first category
             populateOptions('flowers');
-            
+
             // Set up category navigation
             setupCategoryNavigation();
-            
+
             // Set up moodboard and planner profile
             document.getElementById('makeItReal').addEventListener('click', showPlannerProfile);
-            
+
             // Set up tab navigation
             setupTabNavigation();
-            
+
             // Set up form submissions
             document.getElementById('contact-form').addEventListener('submit', handleContactForm);
             document.getElementById('signup-form').addEventListener('submit', handleSignupForm);
-            
+
             // Set up popup close button
             document.getElementById('popup-close').addEventListener('click', closePopup);
             document.getElementById('popup-overlay').addEventListener('click', closePopup);
@@ -1408,52 +1408,52 @@
         function populateOptions(category) {
             const optionsContainer = document.getElementById(`${category}-options`);
             optionsContainer.innerHTML = '';
-            
+
             // Update category title and subtitle
             document.querySelector(`#${category}-selection .category-title`).textContent = weddingCategories[category].title;
             document.querySelector(`#${category}-selection .category-subtitle`).textContent = weddingCategories[category].subtitle;
-            
+
             // Create options for each category
             weddingCategories[category].options.forEach(option => {
                 const optionCard = document.createElement('div');
                 optionCard.className = 'option-card';
                 optionCard.dataset.category = category;
                 optionCard.dataset.option = option.id;
-                
+
                 // Check if this option was previously selected
                 if (weddingSelections[category].some(selected => selected.id === option.id)) {
                     optionCard.classList.add('selected');
                 }
-                
+
                 const img = document.createElement('img');
                 img.src = option.image;
                 img.alt = option.name;
-                
+
                 // Add selection checkmark
                 const checkmark = document.createElement('div');
                 checkmark.className = 'selection-checkmark';
                 checkmark.innerHTML = '<i class="fas fa-check"></i>';
-                
+
                 const overlay = document.createElement('div');
                 overlay.className = 'option-overlay';
                 overlay.innerHTML = '<i class="fas fa-check"></i>';
-                
+
                 const label = document.createElement('div');
                 label.className = 'option-label';
                 label.textContent = option.label;
-                
+
                 optionCard.appendChild(img);
                 optionCard.appendChild(checkmark);
                 optionCard.appendChild(overlay);
                 optionCard.appendChild(label);
-                
+
                 optionCard.addEventListener('click', function() {
                     selectOption(category, option.id);
                 });
-                
+
                 optionsContainer.appendChild(optionCard);
             });
-            
+
             // Enable next button if there are already selections
             document.getElementById(`${category}-next`).disabled = weddingSelections[category].length === 0;
         }
@@ -1461,13 +1461,13 @@
         // Handle option selection - now supports multiple selections
         function selectOption(category, optionId) {
             const optionCard = document.querySelector(`[data-category="${category}"][data-option="${optionId}"]`);
-            
+
             // Find the selected option data
             const selectedOption = weddingCategories[category].options.find(option => option.id === optionId);
-            
+
             // Check if this option is already selected
             const existingIndex = weddingSelections[category].findIndex(option => option.id === optionId);
-            
+
             if (existingIndex !== -1) {
                 // If already selected, remove it
                 weddingSelections[category].splice(existingIndex, 1);
@@ -1477,7 +1477,7 @@
                 weddingSelections[category].push(selectedOption);
                 optionCard.classList.add('selected');
             }
-            
+
             // Enable/disable next button based on selection
             document.getElementById(`${category}-next`).disabled = weddingSelections[category].length === 0;
         }
@@ -1485,7 +1485,7 @@
         // Set up category navigation
         function setupCategoryNavigation() {
             const categories = ['flowers', 'venue', 'style', 'cake', 'music', 'catering'];
-            
+
             categories.forEach((category, index) => {
                 // Next button
                 const nextButton = document.getElementById(`${category}-next`);
@@ -1494,18 +1494,18 @@
                         if (index < categories.length - 1) {
                             // Mark current step as completed
                             document.querySelector(`.progress-step[data-step="${index + 1}"]`).classList.add('completed');
-                            
+
                             // Hide current section
                             document.getElementById(`${category}-selection`).classList.remove('active');
-                            
+
                             // Show next section
                             const nextCategory = categories[index + 1];
                             document.getElementById(`${nextCategory}-selection`).classList.add('active');
-                            
+
                             // Update progress bar
                             document.querySelector(`.progress-step[data-step="${index + 1}"]`).classList.remove('active');
                             document.querySelector(`.progress-step[data-step="${index + 2}"]`).classList.add('active');
-                            
+
                             // Populate options for next category if not already done
                             if (document.getElementById(`${nextCategory}-options`).children.length === 0) {
                                 populateOptions(nextCategory);
@@ -1516,7 +1516,7 @@
                         }
                     });
                 }
-                
+
                 // Previous button (except for first category)
                 if (index > 0) {
                     const prevButton = document.getElementById(`${category}-prev`);
@@ -1524,11 +1524,11 @@
                         prevButton.addEventListener('click', function() {
                             // Hide current section
                             document.getElementById(`${category}-selection`).classList.remove('active');
-                            
+
                             // Show previous section
                             const prevCategory = categories[index - 1];
                             document.getElementById(`${prevCategory}-selection`).classList.add('active');
-                            
+
                             // Update progress bar
                             document.querySelector(`.progress-step[data-step="${index + 1}"]`).classList.remove('active');
                             document.querySelector(`.progress-step[data-step="${index}"]`).classList.add('active');
@@ -1542,31 +1542,31 @@
         function showMoodboard() {
             // Mark final step as completed
             document.querySelector('.progress-step[data-step="6"]').classList.add('completed');
-            
+
             // Hide last selection section
             document.getElementById('catering-selection').classList.remove('active');
-            
+
             // Show moodboard section
             document.getElementById('moodboard').classList.add('active');
-            
+
             // Populate moodboard with selected options
             const moodboardGrid = document.getElementById('moodboard-grid');
             moodboardGrid.innerHTML = '';
-            
+
             // Add selected options from all categories
             Object.keys(weddingSelections).forEach(category => {
                 weddingSelections[category].forEach(option => {
                     const moodboardItem = document.createElement('div');
                     moodboardItem.className = 'moodboard-item';
-                    
+
                     const img = document.createElement('img');
                     img.src = option.image;
                     img.alt = option.name;
-                    
+
                     const label = document.createElement('div');
                     label.className = 'moodboard-label';
                     label.textContent = option.label;
-                    
+
                     moodboardItem.appendChild(img);
                     moodboardItem.appendChild(label);
                     moodboardGrid.appendChild(moodboardItem);
@@ -1578,36 +1578,36 @@
         function showPlannerProfile() {
             // Hide moodboard section
             document.getElementById('moodboard').classList.remove('active');
-            
+
             // Show planner profile section
             document.getElementById('planner-profile').classList.add('active');
-            
+
             // Select a random planner (in a real app, this would be based on matching algorithm)
             const selectedPlanner = weddingPlanners[Math.floor(Math.random() * weddingPlanners.length)];
-            
+
             // Populate planner profile
             document.getElementById('planner-image').src = selectedPlanner.image;
             document.getElementById('planner-name').textContent = selectedPlanner.name;
             document.getElementById('planner-bio').textContent = selectedPlanner.bio;
-            
+
             // Populate planner moodboard with selected options
             const plannerMoodboardGrid = document.getElementById('planner-moodboard-grid');
             plannerMoodboardGrid.innerHTML = '';
-            
+
             // Add selected options from all categories
             Object.keys(weddingSelections).forEach(category => {
                 weddingSelections[category].forEach(option => {
                     const moodboardItem = document.createElement('div');
                     moodboardItem.className = 'moodboard-grid-item';
-                    
+
                     const img = document.createElement('img');
                     img.src = option.image;
                     img.alt = option.name;
-                    
+
                     const label = document.createElement('div');
                     label.className = 'moodboard-grid-label';
                     label.textContent = option.label;
-                    
+
                     moodboardItem.appendChild(img);
                     moodboardItem.appendChild(label);
                     plannerMoodboardGrid.appendChild(moodboardItem);
@@ -1619,21 +1619,21 @@
         function setupTabNavigation() {
             const tabButtons = document.querySelectorAll('.tab-button');
             const tabContents = document.querySelectorAll('.tab-content');
-            
+
             tabButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const targetTab = this.getAttribute('data-tab');
-                    
+
                     // Remove active class from all tabs and contents
                     tabButtons.forEach(btn => btn.classList.remove('active'));
                     tabContents.forEach(content => content.classList.remove('active'));
-                    
+
                     // Add active class to clicked tab and corresponding content
                     this.classList.add('active');
                     document.getElementById(`${targetTab}-tab`).classList.add('active');
                 });
             });
-            
+
             // Contact planner button
             document.getElementById('contactPlanner').addEventListener('click', function() {
                 document.querySelector('[data-tab="contact"]').click();
@@ -1643,21 +1643,21 @@
         // Handle contact form submission
         function handleContactForm(event) {
             event.preventDefault();
-            
+
             // Show loading
             document.getElementById('loading').classList.add('active');
-            
+
             // Simulate form submission
             setTimeout(() => {
                 // Hide loading
                 document.getElementById('loading').classList.remove('active');
-                
+
                 // Hide planner profile
                 document.getElementById('planner-profile').classList.remove('active');
-                
+
                 // Show confirmation
                 document.getElementById('confirmation').classList.add('active');
-                
+
                 // Reset form
                 document.getElementById('contact-form').reset();
             }, 1500);
@@ -1666,19 +1666,19 @@
         // Handle signup form submission
         function handleSignupForm(event) {
             event.preventDefault();
-            
+
             // Show loading
             document.getElementById('loading').classList.add('active');
-            
+
             // Simulate form submission
             setTimeout(() => {
                 // Hide loading
                 document.getElementById('loading').classList.remove('active');
-                
+
                 // Show popup notification
                 document.getElementById('popup-overlay').classList.add('active');
                 document.getElementById('popup-notification').classList.add('active');
-                
+
                 // Reset form
                 document.getElementById('signup-form').reset();
             }, 1500);
