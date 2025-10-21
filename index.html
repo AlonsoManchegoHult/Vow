@@ -180,7 +180,7 @@
           z-index: 0;
         }
 
-        .landing > * {
+        .landing > *{ transform: translateY(-8vh);  /* adjust -4vh to -12vh */
           position: relative;
           z-index: 1;
         }
@@ -193,24 +193,25 @@
         }
 
         .value-prop {
-            max-width: 600px;
+            font-family: 'Roboto', sans-serif;
+            max-width: 800px;
             margin-bottom: 3rem;
-            font-size: 1.5rem;
-            font-weight: 600;
+            font-size: 1.4rem;
+            font-weight: 350;
             color: var(--text-color);
         }
 
         .cta-container {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
             gap: 15px;
             margin-bottom: 20px;
         }
 
         .cta-button {
-            background-color: rgba(0,0,0,0.3);
-            color: #A57C85;
+            background-color: #5B5A41;
+            color: white;
             border: none;
             padding: 10px 30px;
             font-size: 1.2rem;
@@ -233,8 +234,8 @@
 
         .secondary-cta {
             background-color: transparent;
-            color: #A57C85;
-            border: 2px solid #A57C85;
+            color: #5B5A41;
+            border: 2px solid #5B5A41;
             padding: 12px 25px;
             font-size: 1rem;
             border-radius: 5px;
@@ -275,7 +276,7 @@
 
           background:
             linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
-            url('images/Wedding.jpeg');
+            url('images/Wedding.jpeg') center/cover no-repeat fixed;
 
           background-size: cover;
           background-position: center 80%;
@@ -289,6 +290,13 @@
             text-align: center;
             margin-bottom: 2rem;
             color: white;
+        }
+
+        .section-title-lower {
+          font-size: 2.5rem;
+          text-align: center;
+          margin-bottom: 2rem;
+          color: black;
         }
 
         .about-content {
@@ -315,8 +323,7 @@
 
         .about-image img {
             width: 100%;
-            height: auto;
-            display: block;
+            height: 85vh;
         }
 
         .values-container {
@@ -348,7 +355,11 @@
         .value-title {
             font-size: 1.3rem;
             margin-bottom: 10px;
-            color: var(--primary-color);
+            color: black;
+        }
+
+        .value-title-text {
+          color: black;
         }
 
         /* Resources Section */
@@ -653,13 +664,6 @@
 
     <!-- Landing Page -->
     <section class="landing" id="home">
-        <div class="gradual-blur">
-          <div class="gradual-blur-inner">
-            <div class="blur-top"></div>
-            <div class="blur-bottom"></div>
-          </div>
-        </div>
-
         <h1 class="tagline">Crafting Your Perfect Wedding Day</h1>
         <p class="value-prop">Vow connects you with expert wedding planners who transform your vision into reality. From intimate ceremonies to grand celebrations, we're here to make your special day unforgettable.</p>
         <div class="cta-container">
@@ -681,7 +685,7 @@
                 <p>Today, Vow has helped over 5,000 couples create their dream weddings, with a team of 50+ expert planners across the country. We believe that every couple deserves a wedding day that reflects their unique love story, without the stress that often comes with planning it.</p>
             </div>
             <div class="about-image">
-                <img src="https://picsum.photos/seed/weddingteam/600/400.jpg" alt="Vow Team">
+                <img src="images/OurStory.jpeg" alt="Vow Team">
             </div>
         </div>
 
@@ -691,29 +695,15 @@
                 <div class="value-icon">
                     <i class="fas fa-heart"></i>
                 </div>
-                <h3 class="value-title">Passion</h3>
-                <p>We're passionate about creating beautiful, meaningful weddings that celebrate love in all its forms.</p>
+                <h3 class="value-title">Vision</h3>
+                <p class="value-title-text">To become the leading digital wedding-planning marketplace, a platform where couples design, plan and celebrate their dream weddings with ease and creativity</p>
             </div>
             <div class="value-card">
                 <div class="value-icon">
                     <i class="fas fa-star"></i>
                 </div>
-                <h3 class="value-title">Excellence</h3>
-                <p>We strive for excellence in every detail, from the first consultation to the final toast.</p>
-            </div>
-            <div class="value-card">
-                <div class="value-icon">
-                    <i class="fas fa-users"></i>
-                </div>
-                <h3 class="value-title">Personalization</h3>
-                <p>We believe every wedding should be as unique as the couple celebrating it.</p>
-            </div>
-            <div class="value-card">
-                <div class="value-icon">
-                    <i class="fas fa-handshake"></i>
-                </div>
-                <h3 class="value-title">Integrity</h3>
-                <p>We operate with transparency and honesty, building trust with every couple we serve.</p>
+                <h3 class="value-title">Mission</h3>
+                <p class="value-title-text">To empower couples to bring their unique vision to life through a seamless digital experience that blends inspiration, organization, and human expertise — taking away all the noise so they can focus on what truly matters: their story.</p>
             </div>
         </div>
     </section>
@@ -721,7 +711,7 @@
     <!-- Resources Section -->
     <section class="resources-section">
       <div class="resources-container">
-        <h2 class="section-title">Plan Every Detail</h2>
+        <h2 class="section-title-lower">Plan Every Detail</h2>
         <div class="resources-grid">
           <div class="resource-card">
             <img src="https://picsum.photos/seed/inspiration/600/400" alt="Wedding Inspiration" class="resource-image">
@@ -750,7 +740,7 @@
     <!-- Reviews Section -->
     <section class="reviews-section" id="reviews">
         <div class="reviews-container">
-            <h2 class="section-title">Love Stories We've Helped Create</h2>
+            <h2 class="section-title-lower">Love Stories We've Helped Create</h2>
             <p style="text-align: center; max-width: 800px; margin: 0 auto; color: var(--light-text);">Don't just take our word for it. Hear from couples who've experienced the Vow difference.</p>
 
             <div class="reviews-grid">
