@@ -29,7 +29,7 @@
         }
 
         body {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Roboto', serif;
             color: var(--text-color);
             overflow-x: hidden;
             line-height: 1.6;
@@ -38,6 +38,11 @@
 
         h1, h2, h3 {
             font-family: 'Playfair Display', serif;
+        }
+
+        button, .cta-button, .secondary-cta, .quick-action-btn,
+        input, select, textarea{
+          font-family: inherit;
         }
 
         /* Navigation */
@@ -296,27 +301,35 @@
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
+            margin-bottom: 80px;
         }
 
         .about-text {
             font-family: 'Roboto', serif;
             font-size: 30px;
+            font-weight: 350;
             flex: 1;
             min-width: 300px;
             color: black;
         }
 
-        .about-image {
-            flex: 1;
-            min-width: 300px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
+        .about-image img{ height:auto; }          /* only to neutralize previous 85vh */
+
+        /* square crop */
+        .about-image{
+          aspect-ratio: 1 / 1;                    /* square box */
+          overflow: hidden;                        /* hide overflow */
+          border-radius: 15px;
+          box-shadow: var(--shadow);
+          max-width: 500px;
+          margin-inline: auto;        /* keep your rounding */
         }
 
-        .about-image img {
-            width: 100%;
-            height: 85vh;
+        .about-image img{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;                       /* crop top/bottom */
+          object-position: center;                 /* center the crop */
         }
 
         .values-container {
@@ -359,7 +372,7 @@
         .resources-section {
           background-color: #fff;
           color: #000;
-          padding: 80px 20px;
+          padding: 20px 20px;
         }
 
         .resources-container {
@@ -421,7 +434,7 @@
 
         /* Reviews Section */
         .reviews-section {
-            padding: 80px 20px;
+            padding: 40px 20px;
             background-color: white;
         }
 
@@ -630,6 +643,10 @@
           background:#fff; padding:40px 0;
         }
 
+        .section-title-lower{
+          margin-bottom: 1.25rem;
+        }
+
         .landing-video{
           width: min(100%, 960px);
           margin: 28px auto 24px;
@@ -754,6 +771,9 @@
 
     <!-- Landing video -->
      <section class="video-section" aria-label="Intro video">
+      <div class="resources-container">
+        <h2 class="section-title-lower">Placeholder</h2>
+      </div>
       <div class="landing-video">
         <video
           class="landing-video-el"
