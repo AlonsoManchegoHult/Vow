@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- FIX: Added Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <style>
         :root {
             --primary-color: #333; /* Using a consistent dark color */
@@ -19,6 +23,12 @@
             --light-text: #666;
             --white: #fff;
             --shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --gray-light: #f8f9fa;
+            --gray-medium: #dee2e6;
+            --gray-dark: #6c757d;
+            --danger-color: #dc3545;
+            --warning-color: #ffc107;
+            --success-color: #28a745;
         }
 
         * {
@@ -881,87 +891,15 @@
     <script>
         // Budget categories with suggested percentages
         const budgetCategories = [
-            {
-                id: 'venue',
-                name: 'Venue & Catering',
-                icon: 'fa-home',
-                percentage: 45,
-                estimated: 0,
-                actual: 0,
-                vendor: ''
-            },
-            {
-                id: 'photography',
-                name: 'Photography & Videography',
-                icon: 'fa-camera',
-                percentage: 12,
-                estimated: 0,
-                actual: 0,
-                vendor: ''
-            },
-            {
-                id: 'attire',
-                name: 'Attire & Beauty',
-                icon: 'fa-tshirt',
-                percentage: 10,
-                estimated: 0,
-                actual: 0,
-                vendor: ''
-            },
-	    {
-                id: 'flowers',
-                name: 'Flowers & Decorations',
-                icon: 'fa-seedling', 
-                percentage: 10,
-                estimated: 0,
-                actual: 0,
-                vendor: ''
-            },
-            {
-                id: 'music',
-                name: 'Music & Entertainment',
-                icon: 'fa-music',
-                percentage: 8,
-                estimated: 0,
-                actual: 0,
-                vendor: ''
-            },
-            {
-                id: 'rings',
-                name: 'Wedding Rings',
-                icon: 'fa-ring',
-                percentage: 5,
-                estimated: 0,
-                actual: 0,
-                vendor: ''
-            },
-            {
-                id: 'transportation',
-                name: 'Transportation',
-                icon: 'fa-car',
-                percentage: 3,
-                estimated: 0,
-                actual: 0,
-                vendor: ''
-            },
-            {
-                id: 'favors',
-                name: 'Gifts & Favors',
-                icon: 'fa-gift',
-                percentage: 2,
-                estimated: 0,
-                actual: 0,
-                vendor: ''
-            },
-            {
-                id: 'other',
-                name: 'Other Expenses',
-                icon: 'fa-ellipsis-h',
-                percentage: 5,
-                estimated: 0,
-                actual: 0,
-                vendor: ''
-            }
+            { id: 'venue', name: 'Venue & Catering', icon: 'fa-home', percentage: 45, estimated: 0, actual: 0, vendor: '' },
+            { id: 'photography', name: 'Photography & Videography', icon: 'fa-camera', percentage: 12, estimated: 0, actual: 0, vendor: '' },
+            { id: 'attire', name: 'Attire & Beauty', icon: 'fa-tshirt', percentage: 10, estimated: 0, actual: 0, vendor: '' },
+	        { id: 'flowers', name: 'Flowers & Decorations', icon: 'fa-seedling', percentage: 10, estimated: 0, actual: 0, vendor: '' },
+            { id: 'music', name: 'Music & Entertainment', icon: 'fa-music', percentage: 8, estimated: 0, actual: 0, vendor: '' },
+            { id: 'rings', name: 'Wedding Rings', icon: 'fa-ring', percentage: 5, estimated: 0, actual: 0, vendor: '' },
+            { id: 'transportation', name: 'Transportation', icon: 'fa-car', percentage: 3, estimated: 0, actual: 0, vendor: '' },
+            { id: 'favors', name: 'Gifts & Favors', icon: 'fa-gift', percentage: 2, estimated: 0, actual: 0, vendor: '' },
+            { id: 'other', name: 'Other Expenses', icon: 'fa-ellipsis-h', percentage: 5, estimated: 0, actual: 0, vendor: '' }
         ];
 
         let totalBudget = 30000;
@@ -988,9 +926,7 @@
                 categoryElement.innerHTML = `
                     <div class="category-header">
                         <div class="category-name">
-                            <div class="category-icon">
-                                <i class="fas ${category.icon}"></i>
-                            </div>
+                            <div class="category-icon"><i class="fas ${category.icon}"></i></div>
                             ${category.name}
                         </div>
                         <div class="category-percentage">${category.percentage}% of budget</div>
@@ -1000,36 +936,20 @@
                             <label>Estimated Cost</label>
                             <div class="currency-input-group">
                                 <div class="currency-symbol">$</div>
-                                <input type="number" 
-                                       id="estimated-${category.id}" 
-                                       class="currency-input"
-                                       value="${category.estimated}" 
-                                       min="0" 
-                                       step="100"
-                                       onchange="updateCategory('${category.id}', 'estimated', this.value)">
+                                <input type="number" id="estimated-${category.id}" class="currency-input" value="${category.estimated}" min="0" step="100" onchange="updateCategory('${category.id}', 'estimated', this.value)">
                             </div>
                         </div>
                         <div class="category-input">
                             <label>Actual Cost</label>
                             <div class="currency-input-group">
                                 <div class="currency-symbol">$</div>
-                                <input type="number" 
-                                       id="actual-${category.id}" 
-                                       class="currency-input"
-                                       value="${category.actual}" 
-                                       min="0" 
-                                       step="100"
-                                       onchange="updateCategory('${category.id}', 'actual', this.value)">
+                                <input type="number" id="actual-${category.id}" class="currency-input" value="${category.actual}" min="0" step="100" onchange="updateCategory('${category.id}', 'actual', this.value)">
                             </div>
                         </div>
                     </div>
                     <div class="vendor-info">
                         <label style="font-size: 0.85rem; color: var(--light-text);">Vendor Name</label>
-                        <input type="text" 
-                               class="vendor-input" 
-                               placeholder="Enter vendor name..." 
-                               value="${category.vendor}"
-                               onchange="updateCategory('${category.id}', 'vendor', this.value)">
+                        <input type="text" class="vendor-input" placeholder="Enter vendor name..." value="${category.vendor}" onchange="updateCategory('${category.id}', 'vendor', this.value)">
                     </div>
                 `;
                 container.appendChild(categoryElement);
@@ -1040,7 +960,11 @@
         function updateCategory(categoryId, field, value) {
             const category = budgetCategories.find(c => c.id === categoryId);
             if (category) {
-                category[field] = parseFloat(value) || 0;
+                if (field === 'vendor') {
+                    category[field] = value;
+                } else {
+                    category[field] = parseFloat(value) || 0;
+                }
                 updateBudget();
                 saveBudgetToStorage();
             }
@@ -1048,30 +972,25 @@
 
         // Update budget calculations
         function updateBudget() {
-            // Get values from inputs
             totalBudget = parseFloat(document.getElementById('total-budget').value) || 0;
             guestCount = parseInt(document.getElementById('guest-count').value) || 1;
 
-            // Calculate totals
             const totalEstimated = budgetCategories.reduce((sum, cat) => sum + cat.estimated, 0);
             const totalActual = budgetCategories.reduce((sum, cat) => sum + cat.actual, 0);
             const remaining = totalBudget - totalActual;
             const percentageUsed = totalBudget > 0 ? (totalActual / totalBudget * 100) : 0;
             const costPerGuest = guestCount > 0 ? (totalActual / guestCount) : 0;
 
-            // Update stats
             document.getElementById('stat-total').textContent = formatCurrency(totalBudget);
             document.getElementById('stat-estimated').textContent = formatCurrency(totalEstimated);
             document.getElementById('stat-actual').textContent = formatCurrency(totalActual);
             document.getElementById('stat-remaining').textContent = formatCurrency(remaining);
             document.getElementById('stat-per-guest').textContent = formatCurrency(costPerGuest);
 
-            // Update progress bar
             const progressBar = document.getElementById('overall-progress');
             progressBar.style.width = Math.min(percentageUsed, 100) + '%';
             progressBar.textContent = Math.round(percentageUsed) + '% Budget Used';
 
-            // Update progress bar color based on percentage
             if (percentageUsed > 100) {
                 progressBar.style.background = 'linear-gradient(90deg, var(--danger-color), #c82333)';
             } else if (percentageUsed > 90) {
@@ -1080,17 +999,11 @@
                 progressBar.style.background = 'linear-gradient(90deg, var(--gray-dark), var(--primary-color))';
             }
 
-            // Update stat card colors
             updateStatCardColors(remaining, totalBudget);
-
-            // Update charts
             updateCharts();
-
-            // Save to storage
             saveBudgetToStorage();
         }
 
-        // Update stat card colors based on budget status
         function updateStatCardColors(remaining, budget) {
             const remainingCard = document.getElementById('stat-remaining').parentElement;
             remainingCard.classList.remove('danger', 'warning', 'success');
@@ -1104,9 +1017,11 @@
             }
         }
 
-        // Initialize charts
         function initCharts() {
-            // Pie Chart
+            if (typeof Chart === 'undefined') {
+                console.error("Chart.js is not loaded");
+                return;
+            }
             const pieCtx = document.getElementById('budgetPieChart').getContext('2d');
             pieChart = new Chart(pieCtx, {
                 type: 'doughnut',
@@ -1114,17 +1029,7 @@
                     labels: budgetCategories.map(cat => cat.name),
                     datasets: [{
                         data: budgetCategories.map(cat => cat.estimated),
-                        backgroundColor: [
-                            '#212121',
-                            '#343a40',
-                            '#495057',
-                            '#6c757d',
-                            '#adb5bd',
-                            '#ced4da',
-                            '#dee2e6',
-                            '#e9ecef',
-                            '#f8f9fa'
-                        ],
+                        backgroundColor: ['#212121', '#343a40', '#495057', '#6c757d', '#adb5bd', '#ced4da', '#dee2e6', '#e9ecef', '#f8f9fa'],
                         borderWidth: 2,
                         borderColor: '#fff'
                     }]
@@ -1132,90 +1037,34 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                padding: 15,
-                                font: {
-                                    size: 11
-                                }
-                            }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    const label = context.label || '';
-                                    const value = formatCurrency(context.raw);
-                                    const percentage = totalBudget > 0 ? 
-                                        Math.round((context.raw / totalBudget) * 100) : 0;
-                                    return `${label}: ${value} (${percentage}%)`;
-                                }
-                            }
-                        }
-                    }
+                    plugins: { legend: { position: 'bottom', labels: { padding: 15, font: { size: 11 } } }, tooltip: { callbacks: { label: (c) => `${c.label}: ${formatCurrency(c.raw)} (${totalBudget > 0 ? Math.round((c.raw/totalBudget)*100) : 0}%)` } } }
                 }
             });
 
-            // Comparison Chart
             const comparisonCtx = document.getElementById('comparisonChart').getContext('2d');
             comparisonChart = new Chart(comparisonCtx, {
                 type: 'bar',
                 data: {
                     labels: budgetCategories.map(cat => cat.name),
                     datasets: [
-                        {
-                            label: 'Estimated',
-                            data: budgetCategories.map(cat => cat.estimated),
-                            backgroundColor: 'rgba(33, 37, 41, 0.7)',
-                            borderColor: '#212121',
-                            borderWidth: 2
-                        },
-                        {
-                            label: 'Actual',
-                            data: budgetCategories.map(cat => cat.actual),
-                            backgroundColor: 'rgba(108, 117, 125, 0.7)',
-                            borderColor: '#6c757d',
-                            borderWidth: 2
-                        }
+                        { label: 'Estimated', data: budgetCategories.map(cat => cat.estimated), backgroundColor: 'rgba(33, 37, 41, 0.7)', borderColor: '#212121', borderWidth: 2 },
+                        { label: 'Actual', data: budgetCategories.map(cat => cat.actual), backgroundColor: 'rgba(108, 117, 125, 0.7)', borderColor: '#6c757d', borderWidth: 2 }
                     ]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                callback: function(value) {
-                                    return '$' + value.toLocaleString();
-                                }
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            position: 'top'
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return context.dataset.label + ': ' + formatCurrency(context.raw);
-                                }
-                            }
-                        }
-                    }
+                    scales: { y: { beginAtZero: true, ticks: { callback: (v) => '$' + v.toLocaleString() } } },
+                    plugins: { legend: { position: 'top' }, tooltip: { callbacks: { label: (c) => `${c.dataset.label}: ${formatCurrency(c.raw)}` } } }
                 }
             });
         }
 
-        // Update charts with new data
         function updateCharts() {
             if (pieChart) {
                 pieChart.data.datasets[0].data = budgetCategories.map(cat => cat.estimated);
                 pieChart.update();
             }
-
             if (comparisonChart) {
                 comparisonChart.data.datasets[0].data = budgetCategories.map(cat => cat.estimated);
                 comparisonChart.data.datasets[1].data = budgetCategories.map(cat => cat.actual);
@@ -1223,138 +1072,53 @@
             }
         }
 
-        // Save budget to localStorage
         function saveBudgetToStorage() {
-            const budgetData = {
-                totalBudget: totalBudget,
-                guestCount: guestCount,
-                categories: budgetCategories
-            };
+            const budgetData = { totalBudget, guestCount, categories: budgetCategories };
             localStorage.setItem('weddingBudget', JSON.stringify(budgetData));
         }
 
-        // Load budget from localStorage
         function loadBudgetFromStorage() {
             const savedBudget = localStorage.getItem('weddingBudget');
             if (savedBudget) {
-                const budgetData = JSON.parse(savedBudget);
-                totalBudget = budgetData.totalBudget || 30000;
-                guestCount = budgetData.guestCount || 150;
-                
-                if (budgetData.categories) {
-                    budgetData.categories.forEach(savedCat => {
+                const data = JSON.parse(savedBudget);
+                totalBudget = data.totalBudget || 30000;
+                guestCount = data.guestCount || 150;
+                if (data.categories) {
+                    data.categories.forEach(savedCat => {
                         const category = budgetCategories.find(c => c.id === savedCat.id);
-                        if (category) {
-                            category.estimated = savedCat.estimated || 0;
-                            category.actual = savedCat.actual || 0;
-                            category.vendor = savedCat.vendor || '';
-                        }
+                        if (category) { Object.assign(category, savedCat); }
                     });
                 }
-                
-                // Update form inputs
                 document.getElementById('total-budget').value = totalBudget;
                 document.getElementById('guest-count').value = guestCount;
             }
         }
 
-        // Save budget (with notification)
-        function saveBudget() {
-            saveBudgetToStorage();
-            showNotification('Budget saved successfully!');
-        }
-
-        // Load budget (with notification)
-        function loadBudget() {
-            loadBudgetFromStorage();
-            renderCategories();
-            updateBudget();
-            showNotification('Budget loaded successfully!');
-        }
-
-        // Reset budget
+        function saveBudget() { saveBudgetToStorage(); showNotification('Budget saved successfully!'); }
+        function loadBudget() { loadBudgetFromStorage(); renderCategories(); updateBudget(); showNotification('Budget loaded successfully!'); }
         function resetBudget() {
-            if (confirm('Are you sure you want to reset all budget data? This cannot be undone.')) {
-                budgetCategories.forEach(category => {
-                    category.estimated = 0;
-                    category.actual = 0;
-                    category.vendor = '';
-                });
-                
-                totalBudget = 30000;
-                guestCount = 150;
-                
-                document.getElementById('total-budget').value = totalBudget;
-                document.getElementById('guest-count').value = guestCount;
-                
-                renderCategories();
-                updateBudget();
+            if (confirm('Are you sure you want to reset all budget data?')) {
                 localStorage.removeItem('weddingBudget');
-                showNotification('Budget has been reset');
+                window.location.reload();
             }
         }
-
-        // Export budget as PDF (placeholder function)
-        function exportBudget() {
-            showNotification('PDF export feature coming soon!');
-            // In a real implementation, you would use a library like jsPDF
-        }
-
-        // Format currency
-        function formatCurrency(amount) {
-            return new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-                minimumFractionDigits: 0,
-                maximumFractionDigits: 0
-            }).format(amount);
-        }
-
-        // Show notification
+        function exportBudget() { showNotification('PDF export feature coming soon!'); }
+        function formatCurrency(amount) { return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(amount); }
         function showNotification(message) {
             const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                bottom: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                background-color: var(--primary-color);
-                color: white;
-                padding: 15px 25px;
-                border-radius: 50px;
-                box-shadow: var(--shadow);
-                z-index: 1000;
-                font-weight: 500;
-                animation: slideUp 0.3s ease;
-            `;
+            notification.style.cssText = `position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background-color: var(--primary-color); color: white; padding: 15px 25px; border-radius: 50px; box-shadow: var(--shadow); z-index: 1000; font-weight: 500; animation: slideUp 0.3s ease;`;
             notification.textContent = message;
-            
             document.body.appendChild(notification);
-            
             setTimeout(() => {
                 notification.style.opacity = '0';
                 notification.style.transition = 'opacity 0.3s ease';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
+                setTimeout(() => document.body.removeChild(notification), 300);
             }, 3000);
         }
-
-        // Add slide up animation
         const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideUp {
-                from {
-                    transform: translate(-50%, 100px);
-                    opacity: 0;
-                }
-                to {
-                    transform: translate(-50%, 0);
-                    opacity: 1;
-                }
-            }
-        `;
+        style.textContent = `@keyframes slideUp { from { transform: translate(-50%, 100px); opacity: 0; } to { transform: translate(-50%, 0); opacity: 1; } }`;
         document.head.appendChild(style);
     </script>
 </body>
 </html>
+
