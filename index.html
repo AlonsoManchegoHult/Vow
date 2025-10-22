@@ -193,7 +193,7 @@
         .top-logo{
           position: absolute;
           left: 50%;
-          top: 1000px;
+          top: 120px;
           transform: translateX(-50%);
           max-width: 140px;
           height: auto;
@@ -320,7 +320,7 @@
 
         .about-text {
             font-family: 'Roboto', serif;
-            font-size: 30px;
+            font-size: 1.4rem;
             font-weight: 350;
             flex: 1;
             min-width: 300px;
@@ -344,6 +344,19 @@
           height: 100%;
           object-fit: cover;                       /* crop top/bottom */
           object-position: center;                 /* center the crop */
+        }
+
+        .about-card{
+          background:#fff;
+          border-radius:15px;
+          box-shadow: var(--shadow);
+          padding:32px;
+          max-width:1200px;
+          margin:0 auto 80px;
+        }
+
+        @media (max-width:768px){
+          .about-card{ padding:20px; }
         }
 
         .values-container {
@@ -667,7 +680,7 @@
           box-shadow: var(--shadow);
           border-radius: 12px;
           overflow: hidden;
-          background: black;
+          background: #29272A;
         }
 
         .landing-video-el{
@@ -711,7 +724,7 @@
 
     <!-- Landing Page -->
     <section class="landing" id="home">
-        <img src="images/Logo" class="top-logo" alt="Vow logo" />
+        <img src="images/Logo.svg" class="top-logo" alt="Vow logo" />
         <h1 class="tagline">Crafting Your Perfect Wedding Day</h1>
         <p class="value-prop">Vow connects you with expert wedding planners who transform your vision into reality. From intimate ceremonies to grand celebrations, we're here to make your special day unforgettable.</p>
         <div class="cta-container">
@@ -726,13 +739,15 @@
     <!-- About Section -->
     <section class="about-section" id="about">
         <h2 class="section-title">Our Story</h2>
-        <div class="about-content">
+        <div class="about-card">
+          <div class="about-content">
             <div class="about-text">
-                <p>Vow began with our founder's own overwhelming wedding planning experience and a simple mission: <b>to handle every stressful detail so you can focus on the joy.</b> We believe every couple deserves a day that perfectly reflects their love story, and our passion is making that journey as beautiful as the destination.</p>
+              <p>Vow began with our founder's own overwhelming wedding planning experience and a simple mission: <b>to handle every stressful detail so you can focus on the joy.</b> We believe every couple deserves a day that perfectly reflects their love story, and our passion is making that journey as beautiful as the destination.</p>
             </div>
             <div class="about-image">
-                <img src="images/OurStory.jpeg" alt="Vow Team">
+              <img src="images/OurStory.jpeg" alt="Vow Team">
             </div>
+          </div>
         </div>
 
         <h2 class="section-title">Our Values</h2>
@@ -786,7 +801,7 @@
     <!-- Landing video -->
      <section class="video-section" aria-label="Intro video">
       <div class="resources-container">
-        <h2 class="section-title-lower">Impressions speak louder than words</h2>
+        <h2 class="section-title-lower">Remember why you started:</h2>
       </div>
       <div class="landing-video">
         <video
