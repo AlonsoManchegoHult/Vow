@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Wedding Journey - Vow</title>
-    <meta name="description" content="Create your dream wedding vision with Vow's interactive wedding planner. Select flowers, venues, styles, and more to find your perfect wedding planner.">
+    <title>Vow - Your Dream Wedding Journey | Wedding Planning Services</title>
+    <meta name="description" content="Vow connects you with expert wedding planners to create your perfect wedding day. From venue selection to catering, we handle every detail with care.">
+    <meta name="keywords" content="wedding planning, wedding planner, dream wedding, wedding venue, wedding flowers, wedding cake, wedding catering">
+    <meta name="author" content="Vow Wedding Planning">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #000;
+            --primary-color: #333; /* Using a consistent dark color */
             --secondary-color: #f5f5f5;
             --accent-color: #333;
-            --text-color: #000;
+            --text-color: #333; /* Using a consistent dark color */
             --light-text: #666;
             --white: #fff;
             --shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -25,7 +28,7 @@
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Roboto', serif;
             color: var(--text-color);
             overflow-x: hidden;
             line-height: 1.6;
@@ -36,76 +39,68 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* Header */
-        header {
-            background-color: var(--white);
-            padding: 20px 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        /* NEW NAVIGATION BAR STYLES */
+        nav {
             position: sticky;
             top: 0;
-            z-index: 100;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        .header-container {
+        .nav-container {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 20px;
         }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
+        .brand{
+          display:inline-flex;
+          align-items:center;
+          text-decoration:none;
         }
 
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-right: 10px;
-            letter-spacing: 0.1rem;
+        .brand-mark {
+          display: flex;
+          justify-content: center;
+          height: 5rem;
+          width: auto;
+          object-fit: contain;
+          margin-top: 10px;
+          margin-bottom: 10px;
         }
 
-        .logo-icon {
-            width: 35px;
-            height: 35px;
-            background-color: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 1rem;
-        }
-
-        .back-button {
+        .quick-action-btn {
             background-color: transparent;
             color: var(--primary-color);
             border: 2px solid var(--primary-color);
-            padding: 10px 20px;
+            padding: 8px 15px;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Playfair Display', serif;
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
         }
 
-        .back-button:hover {
+        .quick-action-btn:hover {
             background-color: var(--primary-color);
             color: var(--white);
         }
+
 
         /* Progress Bar */
         .progress-container {
             background-color: var(--secondary-color);
             padding: 20px 30px;
             position: sticky;
-            top: 85px;
+            top: 96px; /* Adjusted for new navbar height */
             z-index: 99;
         }
 
@@ -601,13 +596,28 @@
             color: var(--light-text);
         }
 
-        .signup-form {
-            background-color: var(--white);
-            padding: 30px;
-            border-radius: 15px;
+        .cta-button {
+            background-color: #5B5A41;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
             box-shadow: var(--shadow);
-            text-align: left;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+            text-decoration: none;
+            display: inline-block;
         }
+
+        .cta-button:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
 
         /* Loading Animation */
         .loading {
@@ -639,76 +649,6 @@
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
-        }
-
-        /* Popup Notification */
-        .popup-notification {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            z-index: 1001;
-            text-align: center;
-            max-width: 500px;
-            width: 90%;
-            display: none;
-        }
-
-        .popup-notification.active {
-            display: block;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .popup-icon {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-
-        .popup-title {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-
-        .popup-message {
-            margin-bottom: 20px;
-            color: var(--light-text);
-        }
-
-        .popup-button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 25px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .popup-button:hover {
-            background-color: var(--accent-color);
-        }
-
-        .popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            z-index: 1000;
-            display: none;
-        }
-
-        .popup-overlay.active {
-            display: block;
         }
 
         /* Footer */
@@ -785,23 +725,62 @@
             font-size: 0.9rem;
         }
 
+	.secondary-cta {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .secondary-cta:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+
+        .back-button {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-button:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .progress-step:not(:last-child):after {
                 left: 50%;
                 width: 100%;
             }
-
             .step-label {
                 font-size: 0.7rem;
             }
-
             .planner-header {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
             }
-
             .planner-image {
                 margin-right: 0;
                 margin-bottom: 20px;
@@ -810,21 +789,18 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="header-container">
-            <a href="index.html" class="logo-container">
-                <div class="logo-icon">
-                    <i class="fas fa-heart"></i>
-                </div>
-                <div class="logo">Vow</div>
+    <!-- Header MODIFIED -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand" aria-label="Vow home">
+              <img src="images/Logo2.png" class="brand-mark" alt="Vow logo">
             </a>
             <a href="index.html" class="back-button">
                 <i class="fas fa-arrow-left"></i>
                 Back to Home
-            </a>
+	    </a>
         </div>
-    </header>
+    </nav>
 
     <!-- Progress Bar -->
     <div class="progress-container">
@@ -860,9 +836,7 @@
     <section class="selection-container active" id="flowers-selection">
         <h2 class="category-title">Flowers</h2>
         <p class="category-subtitle">Which of these flowers catches your heart? Select all that speak to you.</p>
-        <div class="options-grid" id="flowers-options">
-            <!-- Flower options will be populated by JavaScript -->
-        </div>
+        <div class="options-grid" id="flowers-options"></div>
         <div class="button-container">
             <button class="prev-button" style="visibility: hidden;">Previous</button>
             <button class="next-button" id="flowers-next" disabled>Next</button>
@@ -872,9 +846,7 @@
     <section class="selection-container" id="venue-selection">
         <h2 class="category-title">Venue</h2>
         <p class="category-subtitle">Where would you like to say "I do"? Choose your dream venues.</p>
-        <div class="options-grid" id="venue-options">
-            <!-- Venue options will be populated by JavaScript -->
-        </div>
+        <div class="options-grid" id="venue-options"></div>
         <div class="button-container">
             <button class="prev-button" id="venue-prev">Previous</button>
             <button class="next-button" id="venue-next" disabled>Next</button>
@@ -884,9 +856,7 @@
     <section class="selection-container" id="style-selection">
         <h2 class="category-title">Wedding Style</h2>
         <p class="category-subtitle">What's your wedding style? Select all themes that resonate with you.</p>
-        <div class="options-grid" id="style-options">
-            <!-- Style options will be populated by JavaScript -->
-        </div>
+        <div class="options-grid" id="style-options"></div>
         <div class="button-container">
             <button class="prev-button" id="style-prev">Previous</button>
             <button class="next-button" id="style-next" disabled>Next</button>
@@ -896,9 +866,7 @@
     <section class="selection-container" id="cake-selection">
         <h2 class="category-title">Wedding Cake</h2>
         <p class="category-subtitle">Choose the cakes that will sweeten your celebration.</p>
-        <div class="options-grid" id="cake-options">
-            <!-- Cake options will be populated by JavaScript -->
-        </div>
+        <div class="options-grid" id="cake-options"></div>
         <div class="button-container">
             <button class="prev-button" id="cake-prev">Previous</button>
             <button class="next-button" id="cake-next" disabled>Next</button>
@@ -908,9 +876,7 @@
     <section class="selection-container" id="music-selection">
         <h2 class="category-title">Music</h2>
         <p class="category-subtitle">What music will set the tone for your special day?</p>
-        <div class="options-grid" id="music-options">
-            <!-- Music options will be populated by JavaScript -->
-        </div>
+        <div class="options-grid" id="music-options"></div>
         <div class="button-container">
             <button class="prev-button" id="music-prev">Previous</button>
             <button class="next-button" id="music-next" disabled>Next</button>
@@ -920,9 +886,7 @@
     <section class="selection-container" id="catering-selection">
         <h2 class="category-title">Catering</h2>
         <p class="category-subtitle">Select the cuisines that will delight your guests.</p>
-        <div class="options-grid" id="catering-options">
-            <!-- Catering options will be populated by JavaScript -->
-        </div>
+        <div class="options-grid" id="catering-options"></div>
         <div class="button-container">
             <button class="prev-button" id="catering-prev">Previous</button>
             <button class="next-button" id="catering-next" disabled>Next</button>
@@ -932,11 +896,9 @@
     <!-- Moodboard Section -->
     <section class="moodboard-container" id="moodboard">
         <h2 class="category-title">Your Wedding Vision</h2>
-        <div class="moodboard" id="moodboard-grid">
-            <!-- Moodboard items will be populated by JavaScript -->
-        </div>
+        <div class="moodboard" id="moodboard-grid"></div>
         <p class="planner-intro">Our expert planners are here to bring your vision to life, handling every detail with care. Let's create a celebration as unique as your love story.</p>
-        <button class="next-button" id="makeItReal" style="margin: 0 auto;">Ready to Make It Real?</button>
+        <button class="cta-button" id="makeItReal" style="margin: 0 auto;">Ready to Make It Real?</button>
     </section>
 
     <!-- Wedding Planner Profile -->
@@ -947,7 +909,7 @@
                 <div class="planner-info">
                     <h2 class="planner-name" id="planner-name"></h2>
                     <p class="planner-bio" id="planner-bio"></p>
-                    <button class="next-button" id="contactPlanner">Contact This Planner</button>
+                    <button class="cta-button" id="contactPlanner">Contact This Planner</button>
                 </div>
             </div>
             <div class="planner-tabs">
@@ -955,85 +917,34 @@
                 <button class="tab-button" data-tab="contact">Contact</button>
             </div>
             <div class="tab-content active" id="moodboard-tab">
-                <div class="moodboard-grid" id="planner-moodboard-grid">
-                    <!-- Moodboard items will be populated by JavaScript -->
-                </div>
+                <div class="moodboard-grid" id="planner-moodboard-grid"></div>
             </div>
             <div class="tab-content" id="contact-tab">
                 <form class="contact-form" id="contact-form">
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="wedding-date">Wedding Date</label>
-                        <input type="date" id="wedding-date" name="wedding-date">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" placeholder="Tell us about your dream wedding..."></textarea>
-                    </div>
-                    <button type="submit" class="submit-button">Send Message</button>
+                    <div class="form-group"><label for="name">Your Name</label><input type="text" id="name" name="name" required></div>
+                    <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" required></div>
+                    <div class="form-group"><label for="phone">Phone</label><input type="tel" id="phone" name="phone"></div>
+                    <div class="form-group"><label for="wedding-date">Wedding Date</label><input type="date" id="wedding-date" name="wedding-date"></div>
+                    <div class="form-group"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell us about your dream wedding..."></textarea></div>
+                    <button type="submit" class="cta-button">Send Message</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- Confirmation & Sign Up -->
+    <!-- Confirmation & Sign Up MODIFIED -->
     <section class="confirmation-container" id="confirmation">
         <div class="success-icon">
             <i class="fas fa-check-circle"></i>
         </div>
         <h2 class="confirmation-title">Your Request Has Been Sent!</h2>
-        <p class="confirmation-message">Your chosen wedding planner will contact you within 24 hours. Create an account to save your wedding vision and track your planning journey.</p>
-        <form class="signup-form" id="signup-form">
-            <h3>Create Your Account</h3>
-            <div class="form-group">
-                <label for="signup-name">Full Name</label>
-                <input type="text" id="signup-name" name="signup-name" required>
-            </div>
-            <div class="form-group">
-                <label for="signup-email">Email</label>
-                <input type="email" id="signup-email" name="signup-email" required>
-            </div>
-            <div class="form-group">
-                <label for="signup-password">Password</label>
-                <input type="password" id="signup-password" name="signup-password" required>
-            </div>
-            <div class="form-group">
-                <label for="partner-name">Partner's Name</label>
-                <input type="text" id="partner-name" name="partner-name">
-            </div>
-            <div class="form-group">
-                <label for="wedding-date">Wedding Date</label>
-                <input type="date" id="wedding-date" name="wedding-date">
-            </div>
-            <button type="submit" class="submit-button">Create Account</button>
-        </form>
+        <p class="confirmation-message">Your chosen wedding planner will contact you within 24 hours.</p>
+        <a href="index.html" class="submit-button" style="text-decoration: none; display: inline-block; margin-top: 20px;">Back to Home</a>
     </section>
 
     <!-- Loading Indicator -->
     <div class="loading" id="loading">
         <div class="spinner"></div>
-    </div>
-
-    <!-- Popup Notification -->
-    <div class="popup-overlay" id="popup-overlay"></div>
-    <div class="popup-notification" id="popup-notification">
-        <div class="popup-icon">
-            <i class="fas fa-check-circle"></i>
-        </div>
-        <h3 class="popup-title">Thank You!</h3>
-        <p class="popup-message">Your wedding planner will contact you within 24 hours to discuss your dream wedding in more detail.</p>
-        <button class="popup-button" id="popup-close">Got it!</button>
     </div>
 
     <!-- Footer -->
@@ -1066,269 +977,45 @@
                     <li><a href="planning-checklist.html">Planning Checklist</a></li>
                     <li><a href="budget-calculator.html">Budget Calculator</a></li>
                 </ul>
-            </div>
-            <div class="footer-section">
-                <h3>For Planners</h3>
-                <ul>
-                    <li><a href="planner-signup.html">Join Vow</a></li>
-                    <li><a href="#">Planner Resources</a></li>
-                    <li><a href="#">Success Stories</a></li>
-                    <li><a href="#">Planner Login</a></li>
-                </ul>
-            </div>
-        </div>
+
         <div class="copyright">
             <p>&copy; 2023 Vow Wedding Planning. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
-        // ==========================================
-        // CUSTOMIZABLE WEDDING SELECTION DATA
-        // ==========================================
-        //
-        // Edit this section to customize the wedding selection options
-        // You can change:
-        // - Category titles and descriptions
-        // - Option names and labels
-        // - Image URLs
-        // - Add or remove options
-        // - Reorder options
-        //
-        // ==========================================
-
         const weddingCategories = {
             flowers: {
                 title: "Flowers",
                 subtitle: "Which of these flowers catches your heart? Select all that speak to you.",
-                options: [
-                    {
-                        id: 1,
-                        name: "Rose Garden",
-                        image: "https://help.gardeningexpress.co.uk/wp-content/uploads/2023/01/victor-malyushev-w_N-XCjiM0o-unsplash-edited-1-scaled.jpg",
-                        label: "Classic Rose Garden"
-                    },
-                    {
-                        id: 2,
-                        name: "Wildflower Meadow",
-                        image: "https://assets.americanmeadows.com/media/wysiwyg/20210827_215234742_iOS-2100x74_800x500.jpg",
-                        label: "Wildflower Meadow"
-                    },
-                    {
-                        id: 3,
-                        name: "Tropical Paradise",
-                        image: "https://cdn.atwilltech.com/flowerdatabase/t/tropical-paradise-table-arrangement-62e0718e67e9c1.19724930.425.jpg",
-                        label: "Tropical Paradise"
-                    },
-                    {
-                        id: 4,
-                        name: "Peony Elegance",
-                        image: "https://www.mypeonysociety.com/wp-content/uploads/2024/12/8sEkccFd-scaled-2400x0-c-default.jpeg",
-                        label: "Peony Elegance"
-                    },
-                    {
-                        id: 5,
-                        name: "Lavender Fields",
-                        image: "https://www.brides.com/thmb/_TTXmWI5mWFSBRoy8OY2YDJ67fU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/PhotoAug0744935PM-7743050eeaaa4e3dbd656f8b77c462d2.jpg",
-                        label: "Lavender Fields"
-                    }
-                ]
+                options: [ { id: 1, name: "Rose Garden", image: "https://help.gardeningexpress.co.uk/wp-content/uploads/2023/01/victor-malyushev-w_N-XCjiM0o-unsplash-edited-1-scaled.jpg", label: "Classic Rose Garden" }, { id: 2, name: "Wildflower Meadow", image: "https://assets.americanmeadows.com/media/wysiwyg/20210827_215234742_iOS-2100x74_800x500.jpg", label: "Wildflower Meadow" }, { id: 3, name: "Tropical Paradise", image: "https://cdn.atwilltech.com/flowerdatabase/t/tropical-paradise-table-arrangement-62e0718e67e9c1.19724930.425.jpg", label: "Tropical Paradise" }, { id: 4, name: "Peony Elegance", image: "https://www.mypeonysociety.com/wp-content/uploads/2024/12/8sEkccFd-scaled-2400x0-c-default.jpeg", label: "Peony Elegance" }, { id: 5, name: "Lavender Fields", image: "https://www.brides.com/thmb/_TTXmWI5mWFSBRoy8OY2YDJ67fU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/PhotoAug0744935PM-7743050eeaaa4e3dbd656f8b77c462d2.jpg", label: "Lavender Fields" } ]
             },
             venue: {
                 title: "Venue",
                 subtitle: "Where would you like to say \"I do\"? Choose your dream venues.",
-                options: [
-                    {
-                        id: 1,
-                        name: "Beachfront Paradise",
-                        image: "https://sunandseabeachweddings.com/wp-content/uploads/2020/01/034-1.jpg",
-                        label: "Beachfront Paradise"
-                    },
-                    {
-                        id: 2,
-                        name: "Historic Mansion",
-                        image: "https://static.showit.co/800/jJf2-KzwQ0ezkUnRWbd4QA/74082/grant-humphries-mansion-wedding-venue-in-denver-colorado.jpg",
-                        label: "Historic Mansion"
-                    },
-                    {
-                        id: 3,
-                        name: "Rustic Barn",
-                        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc7x_1rfTS_IyZfrWI2uEPbX86U2Hxwg-IvA&s",
-                        label: "Rustic Barn"
-                    },
-                    {
-                        id: 4,
-                        name: "Garden Estate",
-                        image: "https://hctg-images.imgix.net/images/venues/secluded-garden-estate/20240213SecludedGardenEstate18.jpg?auto=format%2Ccompress&fit=clamp&h=430&s=5cdba880efeb484027280b761a62c65c",
-                        label: "Garden Estate"
-                    },
-                    {
-                        id: 5,
-                        name: "Enchanted Forest",
-                        image: "https://bodasyweddings.com/wp-content/uploads/2017/03/enchanted-forest-wedding.jpg",
-                        label: "Enchanted Forest"
-                    }
-                ]
+                options: [ { id: 1, name: "Beachfront Paradise", image: "https://sunandseabeachweddings.com/wp-content/uploads/2020/01/034-1.jpg", label: "Beachfront Paradise" }, { id: 2, name: "Historic Mansion", image: "https://static.showit.co/800/jJf2-KzwQ0ezkUnRWbd4QA/74082/grant-humphries-mansion-wedding-venue-in-denver-colorado.jpg", label: "Historic Mansion" }, { id: 3, name: "Rustic Barn", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc7x_1rfTS_IyZfrWI2uEPbX86U2Hxwg-IvA&s", label: "Rustic Barn" }, { id: 4, name: "Garden Estate", image: "https://hctg-images.imgix.net/images/venues/secluded-garden-estate/20240213SecludedGardenEstate18.jpg?auto=format%2Ccompress&fit=clamp&h=430&s=5cdba880efeb484027280b761a62c65c", label: "Garden Estate" }, { id: 5, name: "Enchanted Forest", image: "https://bodasyweddings.com/wp-content/uploads/2017/03/enchanted-forest-wedding.jpg", label: "Enchanted Forest" } ]
             },
             style: {
                 title: "Wedding Style",
                 subtitle: "What's your wedding style? Select all themes that resonate with you.",
-                options: [
-                    {
-                        id: 1,
-                        name: "Classic Elegance",
-                        image: "https://www.theknot.com/tk-media/images/18b39993-49ca-4f55-9cdf-9bdbe285e955",
-                        label: "Classic Elegance"
-                    },
-                    {
-                        id: 2,
-                        name: "Bohemian Chic",
-                        image: "https://organiceventssupplyco.com/cdn/shop/articles/shutterstock_2144857717.jpg?v=1701305161",
-                        label: "Bohemian Chic"
-                    },
-                    {
-                        id: 3,
-                        name: "Modern Minimalist",
-                        image: "https://www.lolavalentina.com/wp-content/uploads/2022/11/Lola_Minimalist-Blog-2.jpg",
-                        label: "Modern Minimalist"
-                    },
-                    {
-                        id: 4,
-                        name: "Art Deco",
-                        image: "https://chameleonchair.com/wp-content/uploads/2019/01/Glamorous-Art-Deco-Wedding-Featured-on-Inside-Weddings3.jpg",
-                        label: "Art Deco"
-                    },
-                    {
-                        id: 5,
-                        name: "Glamorous",
-                        image: "https://media-api.xogrp.com/images/d0eda053-c3f4-4709-b2cd-c65d0705da23~rs_768.h",
-                        label: "Glamorous"
-                    }
-                ]
+                options: [ { id: 1, name: "Classic Elegance", image: "https://www.theknot.com/tk-media/images/18b39993-49ca-4f55-9cdf-9bdbe285e955", label: "Classic Elegance" }, { id: 2, name: "Bohemian Chic", image: "https://organiceventssupplyco.com/cdn/shop/articles/shutterstock_2144857717.jpg?v=1701305161", label: "Bohemian Chic" }, { id: 3, name: "Modern Minimalist", image: "https://www.lolavalentina.com/wp-content/uploads/2022/11/Lola_Minimalist-Blog-2.jpg", label: "Modern Minimalist" }, { id: 4, name: "Art Deco", image: "https://chameleonchair.com/wp-content/uploads/2019/01/Glamorous-Art-Deco-Wedding-Featured-on-Inside-Weddings3.jpg", label: "Art Deco" }, { id: 5, name: "Glamorous", image: "https://media-api.xogrp.com/images/d0eda053-c3f4-4709-b2cd-c65d0705da23~rs_768.h", label: "Glamorous" } ]
             },
             cake: {
                 title: "Wedding Cake",
                 subtitle: "Choose the cakes that will sweeten your celebration.",
-                options: [
-                    {
-                        id: 1,
-                        name: "Classic White",
-                        image: "https://media-api.xogrp.com/images/cf032ee7-82a4-4e51-aeff-82a25869f75c~rs_768.h",
-                        label: "Classic White"
-                    },
-                    {
-                        id: 2,
-                        name: "Naked Cake",
-                        image: "https://sugargeekshow.com/wp-content/uploads/2022/03/naked-wedding-cake-FEATURED-scaled.jpg",
-                        label: "Naked Cake"
-                    },
-                    {
-                        id: 3,
-                        name: "Floral Cascade",
-                        image: "https://apis.xogrp.com/media-api/images/c21e1322-c542-11e5-af58-22000aa61a3e",
-                        label: "Floral Cascade"
-                    },
-                    {
-                        id: 4,
-                        name: "Geometric Design",
-                        image: "https://thecocoabeanbakery.com/wp-content/uploads/2017/03/1488981569.jpg",
-                        label: "Geometric Design"
-                    },
-                    {
-                        id: 5,
-                        name: "Gold Accents",
-                        image: "https://img.freepik.com/premium-photo/three-tier-wedding-cake-with-white-flowers-gold-accents_964739-28676.jpg",
-                        label: "Gold Accents"
-                    }
-                ]
+                options: [ { id: 1, name: "Classic White", image: "https://media-api.xogrp.com/images/cf032ee7-82a4-4e51-aeff-82a25869f75c~rs_768.h", label: "Classic White" }, { id: 2, name: "Naked Cake", image: "https://sugargeekshow.com/wp-content/uploads/2022/03/naked-wedding-cake-FEATURED-scaled.jpg", label: "Naked Cake" }, { id: 3, name: "Floral Cascade", image: "https://apis.xogrp.com/media-api/images/c21e1322-c542-11e5-af58-22000aa61a3e", label: "Floral Cascade" }, { id: 4, name: "Geometric Design", image: "https://thecocoabeanbakery.com/wp-content/uploads/2017/03/1488981569.jpg", label: "Geometric Design" }, { id: 5, name: "Gold Accents", image: "https://img.freepik.com/premium-photo/three-tier-wedding-cake-with-white-flowers-gold-accents_964739-28676.jpg", label: "Gold Accents" } ]
             },
             music: {
                 title: "Music",
                 subtitle: "What music will set the tone for your special day?",
-                options: [
-                    {
-                        id: 1,
-                        name: "Live String Quartet",
-                        image: "https://allthedaintydetails.com/wp-content/uploads/sites/25790/2022/04/The-Weiners-685-scaled.jpg",
-                        label: "Live String Quartet"
-                    },
-                    {
-                        id: 2,
-                        name: "Jazz Band",
-                        image: "https://theritztrio.com/wp-content/uploads/2024/01/Harburnritztrio-700x441.jpg",
-                        label: "Jazz Band"
-                    },
-                    {
-                        id: 3,
-                        name: "DJ Party",
-                        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSTFmaPGVq-cyEtHkXpIOYZTKJS-LqxSdQWQ&s",
-                        label: "DJ Party"
-                    },
-                    {
-                        id: 4,
-                        name: "Acoustic Duo",
-                        image: "https://static.wixstatic.com/media/460ef4_a1d08ea518e848d5b2c25e106ea1df54~mv2.jpg/v1/fill/w_640,h_424,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/460ef4_a1d08ea518e848d5b2c25e106ea1df54~mv2.jpg",
-                        label: "Acoustic Duo"
-                    },
-                    {
-                        id: 5,
-                        name: "Orchestra",
-                        image: "https://i.pinimg.com/736x/a7/ef/b4/a7efb445c273d51024b125ca0e25b8cc.jpg",
-                        label: "Orchestra"
-                    }
-                ]
+                options: [ { id: 1, name: "Live String Quartet", image: "https://allthedaintydetails.com/wp-content/uploads/sites/25790/2022/04/The-Weiners-685-scaled.jpg", label: "Live String Quartet" }, { id: 2, name: "Jazz Band", image: "https://theritztrio.com/wp-content/uploads/2024/01/Harburnritztrio-700x441.jpg", label: "Jazz Band" }, { id: 3, name: "DJ Party", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSTFmaPGVq-cyEtHkXpIOYZTKJS-LqxSdQWQ&s", label: "DJ Party" }, { id: 4, name: "Acoustic Duo", image: "https://static.wixstatic.com/media/460ef4_a1d08ea518e848d5b2c25e106ea1df54~mv2.jpg/v1/fill/w_640,h_424,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/460ef4_a1d08ea518e848d5b2c25e106ea1df54~mv2.jpg", label: "Acoustic Duo" }, { id: 5, name: "Orchestra", image: "https://i.pinimg.com/736x/a7/ef/b4/a7efb445c273d51024b125ca0e25b8cc.jpg", label: "Orchestra" } ]
             },
             catering: {
                 title: "Catering",
                 subtitle: "Select the cuisines that will delight your guests.",
-                options: [
-                    {
-                        id: 1,
-                        name: "Farm-to-Table",
-                        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd8WFINQrs0vaVwtgB2PnwBJ6Jjnp1aguejQ&s",
-                        label: "Farm-to-Table"
-                    },
-                    {
-                        id: 2,
-                        name: "International Buffet",
-                        image: "https://media-api.xogrp.com/images/9eab5290-1d7b-40c7-9ba9-bc22ef79a01b~rs_768.h-cr_0.628.1458.2086",
-                        label: "International Buffet"
-                    },
-                    {
-                        id: 3,
-                        name: "Gourmet Sit-Down",
-                        image: "https://www.brides.com/thmb/IMhS9vGayy-XNseONGPctsyHqsk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/wedding-food-plated-meal-chris-j-evans-primary-0425-95f5a84ebdc14313a1b1c85da906662e.jpg",
-                        label: "Gourmet Sit-Down"
-                    },
-                    {
-                        id: 4,
-                        name: "Food Stations",
-                        image: "https://perfectsettingcatering.com/wp-content/uploads/2020/02/Kelly_OKeefe_Photography_Perfect_Setting_Malvern_Wedding_-161-1.jpg",
-                        label: "Food Stations"
-                    },
-                    {
-                        id: 5,
-                        name: "Cocktail Reception",
-                        image: "https://perfectsettingcatering.com/wp-content/uploads/2020/03/039-Philip-Gabriel-Photography-Top-of-the-Tower-1120x746.jpg",
-                        label: "Cocktail Reception"
-                    }
-                ]
+                options: [ { id: 1, name: "Farm-to-Table", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd8WFINQrs0vaVwtgB2PnwBJ6Jjnp1aguejQ&s", label: "Farm-to-Table" }, { id: 2, name: "International Buffet", image: "https://media-api.xogrp.com/images/9eab5290-1d7b-40c7-9ba9-bc22ef79a01b~rs_768.h-cr_0.628.1458.2086", label: "International Buffet" }, { id: 3, name: "Gourmet Sit-Down", image: "https://www.brides.com/thmb/IMhS9vGayy-XNseONGPctsyHqsk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/wedding-food-plated-meal-chris-j-evans-primary-0425-95f5a84ebdc14313a1b1c85da906662e.jpg", label: "Gourmet Sit-Down" }, { id: 4, name: "Food Stations", image: "https://perfectsettingcatering.com/wp-content/uploads/2020/02/Kelly_OKeefe_Photography_Perfect_Setting_Malvern_Wedding_-161-1.jpg", label: "Food Stations" }, { id: 5, name: "Cocktail Reception", image: "https://perfectsettingcatering.com/wp-content/uploads/2020/03/039-Philip-Gabriel-Photography-Top-of-the-Tower-1120x746.jpg", label: "Cocktail Reception" } ]
             }
         };
-
-        // ==========================================
-        // WEDDING PLANNERS DATA
-        // ==========================================
-        //
-        // Edit this section to customize the wedding planners
-        // You can change:
-        // - Planner names and bios
-        // - Profile images
-        // - Portfolio images
-        // - Add or remove planners
-        //
-        // ==========================================
-
         const weddingPlanners = [
             {
                 id: 1,
@@ -1338,198 +1025,103 @@
             },
             {
                 id: 2,
-                name: "James Mitchell",
-                bio: "James brings a modern, sophisticated touch to wedding planning. His attention to detail and creative vision have made him one of the most sought-after planners in the industry.",
+                name: "Eleanor Rose",
+                bio: "With over 10 years of experience in creating fairytale weddings, Eleanor specializes in romantic, elegant celebrations that capture the unique love story of each couple.",
                 image: "images/ZhenPic.jpeg"
             },
             {
                 id: 3,
-                name: "Sophia Chen",
-                bio: "Sophia specializes in multicultural weddings, blending traditions and creating unique celebrations that honor the heritage of both partners while reflecting their personal style.",
+                name: "Eleanor Rose",
+                bio: "With over 10 years of experience in creating fairytale weddings, Eleanor specializes in romantic, elegant celebrations that capture the unique love story of each couple.",
                 image: "images/ZhenPic.jpeg"
             },
             {
                 id: 4,
-                name: "Michael Torres",
-                bio: "Michael is known for his destination wedding expertise. From beach ceremonies to mountain retreats, he creates seamless experiences no matter where in the world your love story takes you.",
+                name: "Eleanor Rose",
+                bio: "With over 10 years of experience in creating fairytale weddings, Eleanor specializes in romantic, elegant celebrations that capture the unique love story of each couple.",
                 image: "images/ZhenPic.jpeg"
             },
             {
                 id: 5,
-                name: "Isabella Wright",
-                bio: "Isabella's creative approach to wedding planning has earned her numerous awards. She transforms ordinary spaces into extraordinary venues, crafting weddings that are both beautiful and meaningful.",
+                name: "Eleanor Rose",
+                bio: "With over 10 years of experience in creating fairytale weddings, Eleanor specializes in romantic, elegant celebrations that capture the unique love story of each couple.",
                 image: "images/ZhenPic.jpeg"
-            }
+            },
         ];
+        
+        const weddingSelections = { flowers: [], venue: [], style: [], cake: [], music: [], catering: [] };
 
-        // ==========================================
-        // END OF CUSTOMIZABLE DATA
-        // ==========================================
-        //
-        // You don't need to edit below this line
-        // unless you want to change functionality
-        //
-        // ==========================================
-
-        // Wedding selections storage - now using arrays for multiple selections
-        const weddingSelections = {
-            flowers: [],
-            venue: [],
-            style: [],
-            cake: [],
-            music: [],
-            catering: []
-        };
-
-        // Initialize the app
         document.addEventListener('DOMContentLoaded', function() {
-            // Populate first category
             populateOptions('flowers');
-
-            // Set up category navigation
             setupCategoryNavigation();
-
-            // Set up moodboard and planner profile
             document.getElementById('makeItReal').addEventListener('click', showPlannerProfile);
-
-            // Set up tab navigation
             setupTabNavigation();
-
-            // Set up form submissions
             document.getElementById('contact-form').addEventListener('submit', handleContactForm);
-            document.getElementById('signup-form').addEventListener('submit', handleSignupForm);
-
-            // Set up popup close button
-            document.getElementById('popup-close').addEventListener('click', closePopup);
-            document.getElementById('popup-overlay').addEventListener('click', closePopup);
+            // MODIFIED: Removed signup form listener
         });
 
-        // Populate options for each category
         function populateOptions(category) {
             const optionsContainer = document.getElementById(`${category}-options`);
             optionsContainer.innerHTML = '';
-
-            // Update category title and subtitle
             document.querySelector(`#${category}-selection .category-title`).textContent = weddingCategories[category].title;
             document.querySelector(`#${category}-selection .category-subtitle`).textContent = weddingCategories[category].subtitle;
-
-            // Create options for each category
             weddingCategories[category].options.forEach(option => {
                 const optionCard = document.createElement('div');
                 optionCard.className = 'option-card';
                 optionCard.dataset.category = category;
                 optionCard.dataset.option = option.id;
-
-                // Check if this option was previously selected
                 if (weddingSelections[category].some(selected => selected.id === option.id)) {
                     optionCard.classList.add('selected');
                 }
-
-                const img = document.createElement('img');
-                img.src = option.image;
-                img.alt = option.name;
-
-                // Add selection checkmark
-                const checkmark = document.createElement('div');
-                checkmark.className = 'selection-checkmark';
-                checkmark.innerHTML = '<i class="fas fa-check"></i>';
-
-                const overlay = document.createElement('div');
-                overlay.className = 'option-overlay';
-                overlay.innerHTML = '<i class="fas fa-check"></i>';
-
-                const label = document.createElement('div');
-                label.className = 'option-label';
-                label.textContent = option.label;
-
-                optionCard.appendChild(img);
-                optionCard.appendChild(checkmark);
-                optionCard.appendChild(overlay);
-                optionCard.appendChild(label);
-
-                optionCard.addEventListener('click', function() {
-                    selectOption(category, option.id);
-                });
-
+                optionCard.innerHTML = `<img src="${option.image}" alt="${option.name}"><div class="selection-checkmark"><i class="fas fa-check"></i></div><div class="option-label">${option.label}</div>`;
+                optionCard.addEventListener('click', function() { selectOption(category, option.id); });
                 optionsContainer.appendChild(optionCard);
             });
-
-            // Enable next button if there are already selections
             document.getElementById(`${category}-next`).disabled = weddingSelections[category].length === 0;
         }
 
-        // Handle option selection - now supports multiple selections
         function selectOption(category, optionId) {
             const optionCard = document.querySelector(`[data-category="${category}"][data-option="${optionId}"]`);
-
-            // Find the selected option data
             const selectedOption = weddingCategories[category].options.find(option => option.id === optionId);
-
-            // Check if this option is already selected
             const existingIndex = weddingSelections[category].findIndex(option => option.id === optionId);
-
             if (existingIndex !== -1) {
-                // If already selected, remove it
                 weddingSelections[category].splice(existingIndex, 1);
                 optionCard.classList.remove('selected');
             } else {
-                // If not selected, add it
                 weddingSelections[category].push(selectedOption);
                 optionCard.classList.add('selected');
             }
-
-            // Enable/disable next button based on selection
             document.getElementById(`${category}-next`).disabled = weddingSelections[category].length === 0;
         }
 
-        // Set up category navigation
         function setupCategoryNavigation() {
             const categories = ['flowers', 'venue', 'style', 'cake', 'music', 'catering'];
-
             categories.forEach((category, index) => {
-                // Next button
                 const nextButton = document.getElementById(`${category}-next`);
                 if (nextButton) {
                     nextButton.addEventListener('click', function() {
                         if (index < categories.length - 1) {
-                            // Mark current step as completed
                             document.querySelector(`.progress-step[data-step="${index + 1}"]`).classList.add('completed');
-
-                            // Hide current section
                             document.getElementById(`${category}-selection`).classList.remove('active');
-
-                            // Show next section
                             const nextCategory = categories[index + 1];
                             document.getElementById(`${nextCategory}-selection`).classList.add('active');
-
-                            // Update progress bar
                             document.querySelector(`.progress-step[data-step="${index + 1}"]`).classList.remove('active');
                             document.querySelector(`.progress-step[data-step="${index + 2}"]`).classList.add('active');
-
-                            // Populate options for next category if not already done
                             if (document.getElementById(`${nextCategory}-options`).children.length === 0) {
                                 populateOptions(nextCategory);
                             }
                         } else {
-                            // If this is the last category, show moodboard
                             showMoodboard();
                         }
                     });
                 }
-
-                // Previous button (except for first category)
                 if (index > 0) {
                     const prevButton = document.getElementById(`${category}-prev`);
                     if (prevButton) {
                         prevButton.addEventListener('click', function() {
-                            // Hide current section
                             document.getElementById(`${category}-selection`).classList.remove('active');
-
-                            // Show previous section
                             const prevCategory = categories[index - 1];
                             document.getElementById(`${prevCategory}-selection`).classList.add('active');
-
-                            // Update progress bar
                             document.querySelector(`.progress-step[data-step="${index + 1}"]`).classList.remove('active');
                             document.querySelector(`.progress-step[data-step="${index}"]`).classList.add('active');
                         });
@@ -1538,157 +1130,64 @@
             });
         }
 
-        // Show moodboard with selected options
         function showMoodboard() {
-            // Mark final step as completed
             document.querySelector('.progress-step[data-step="6"]').classList.add('completed');
-
-            // Hide last selection section
             document.getElementById('catering-selection').classList.remove('active');
-
-            // Show moodboard section
             document.getElementById('moodboard').classList.add('active');
-
-            // Populate moodboard with selected options
             const moodboardGrid = document.getElementById('moodboard-grid');
             moodboardGrid.innerHTML = '';
-
-            // Add selected options from all categories
             Object.keys(weddingSelections).forEach(category => {
                 weddingSelections[category].forEach(option => {
-                    const moodboardItem = document.createElement('div');
-                    moodboardItem.className = 'moodboard-item';
-
-                    const img = document.createElement('img');
-                    img.src = option.image;
-                    img.alt = option.name;
-
-                    const label = document.createElement('div');
-                    label.className = 'moodboard-label';
-                    label.textContent = option.label;
-
-                    moodboardItem.appendChild(img);
-                    moodboardItem.appendChild(label);
-                    moodboardGrid.appendChild(moodboardItem);
+                    moodboardGrid.innerHTML += `<div class="moodboard-item"><img src="${option.image}" alt="${option.name}"><div class="moodboard-label">${option.label}</div></div>`;
                 });
             });
         }
 
-        // Show planner profile
         function showPlannerProfile() {
-            // Hide moodboard section
             document.getElementById('moodboard').classList.remove('active');
-
-            // Show planner profile section
             document.getElementById('planner-profile').classList.add('active');
-
-            // Select a random planner (in a real app, this would be based on matching algorithm)
             const selectedPlanner = weddingPlanners[Math.floor(Math.random() * weddingPlanners.length)];
-
-            // Populate planner profile
             document.getElementById('planner-image').src = selectedPlanner.image;
             document.getElementById('planner-name').textContent = selectedPlanner.name;
             document.getElementById('planner-bio').textContent = selectedPlanner.bio;
-
-            // Populate planner moodboard with selected options
             const plannerMoodboardGrid = document.getElementById('planner-moodboard-grid');
             plannerMoodboardGrid.innerHTML = '';
-
-            // Add selected options from all categories
             Object.keys(weddingSelections).forEach(category => {
                 weddingSelections[category].forEach(option => {
-                    const moodboardItem = document.createElement('div');
-                    moodboardItem.className = 'moodboard-grid-item';
-
-                    const img = document.createElement('img');
-                    img.src = option.image;
-                    img.alt = option.name;
-
-                    const label = document.createElement('div');
-                    label.className = 'moodboard-grid-label';
-                    label.textContent = option.label;
-
-                    moodboardItem.appendChild(img);
-                    moodboardItem.appendChild(label);
-                    plannerMoodboardGrid.appendChild(moodboardItem);
+                    plannerMoodboardGrid.innerHTML += `<div class="moodboard-grid-item"><img src="${option.image}" alt="${option.name}"><div class="moodboard-grid-label">${option.label}</div></div>`;
                 });
             });
         }
 
-        // Set up tab navigation
         function setupTabNavigation() {
             const tabButtons = document.querySelectorAll('.tab-button');
             const tabContents = document.querySelectorAll('.tab-content');
-
             tabButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const targetTab = this.getAttribute('data-tab');
-
-                    // Remove active class from all tabs and contents
                     tabButtons.forEach(btn => btn.classList.remove('active'));
                     tabContents.forEach(content => content.classList.remove('active'));
-
-                    // Add active class to clicked tab and corresponding content
                     this.classList.add('active');
                     document.getElementById(`${targetTab}-tab`).classList.add('active');
                 });
             });
-
-            // Contact planner button
             document.getElementById('contactPlanner').addEventListener('click', function() {
                 document.querySelector('[data-tab="contact"]').click();
             });
         }
 
-        // Handle contact form submission
         function handleContactForm(event) {
             event.preventDefault();
-
-            // Show loading
             document.getElementById('loading').classList.add('active');
-
-            // Simulate form submission
             setTimeout(() => {
-                // Hide loading
                 document.getElementById('loading').classList.remove('active');
-
-                // Hide planner profile
                 document.getElementById('planner-profile').classList.remove('active');
-
-                // Show confirmation
                 document.getElementById('confirmation').classList.add('active');
-
-                // Reset form
                 document.getElementById('contact-form').reset();
             }, 1500);
         }
-
-        // Handle signup form submission
-        function handleSignupForm(event) {
-            event.preventDefault();
-
-            // Show loading
-            document.getElementById('loading').classList.add('active');
-
-            // Simulate form submission
-            setTimeout(() => {
-                // Hide loading
-                document.getElementById('loading').classList.remove('active');
-
-                // Show popup notification
-                document.getElementById('popup-overlay').classList.add('active');
-                document.getElementById('popup-notification').classList.add('active');
-
-                // Reset form
-                document.getElementById('signup-form').reset();
-            }, 1500);
-        }
-
-        // Close popup
-        function closePopup() {
-            document.getElementById('popup-overlay').classList.remove('active');
-            document.getElementById('popup-notification').classList.remove('active');
-        }
+        
+        // MODIFIED: Unused functions removed for cleanliness
     </script>
 </body>
 </html>
