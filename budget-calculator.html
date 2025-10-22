@@ -3,26 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Budget Calculator - Vow</title>
-    <meta name="description" content="Plan and track your wedding budget with our comprehensive calculator. Visualize expenses, compare estimates vs actual costs, and stay within budget.">
+    <title>Vow - Your Dream Wedding Journey | Wedding Planning Services</title>
+    <meta name="description" content="Vow connects you with expert wedding planners to create your perfect wedding day. From venue selection to catering, we handle every detail with care.">
+    <meta name="keywords" content="wedding planning, wedding planner, dream wedding, wedding venue, wedding flowers, wedding cake, wedding catering">
+    <meta name="author" content="Vow Wedding Planning">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #000000;
+            --primary-color: #333; /* Using a consistent dark color */
             --secondary-color: #f5f5f5;
-            --accent-color: #333333;
-            --text-color: #212121;
-            --light-text: #757575;
-            --white: #ffffff;
-            --gray-light: #f8f9fa;
-            --gray-medium: #e9ecef;
-            --gray-dark: #343a40;
-            --shadow: 0 5px 15px rgba(0,0,0,0.08);
-            --success-color: #28a745;
-            --warning-color: #ffc107;
-            --danger-color: #dc3545;
+            --accent-color: #333;
+            --text-color: #333; /* Using a consistent dark color */
+            --light-text: #666;
+            --white: #fff;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         * {
@@ -32,63 +28,38 @@
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Roboto', serif;
             color: var(--text-color);
             overflow-x: hidden;
             line-height: 1.6;
-            background-color: var(--white);
+            background-color: #f9f9f9;
         }
 
         h1, h2, h3 {
             font-family: 'Playfair Display', serif;
         }
 
-        /* Header */
-        header {
-            background-color: var(--white);
-            padding: 20px 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        /* NEW NAVIGATION BAR STYLES */
+        nav {
             position: sticky;
             top: 0;
-            z-index: 100;
-            border-bottom: 1px solid var(--gray-medium);
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        .header-container {
+        .nav-container {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 20px;
         }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-right: 10px;
-            letter-spacing: 0.1rem;
-        }
-
-        .logo-icon {
-            width: 35px;
-            height: 35px;
-            background-color: black;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 1rem;
-        }
-
-        .back-button {
+	.back-button {
             background-color: transparent;
             color: var(--primary-color);
             border: 2px solid var(--primary-color);
@@ -107,6 +78,42 @@
             background-color: var(--primary-color);
             color: var(--white);
         }
+
+        .brand{
+          display:inline-flex;
+          align-items:center;
+          text-decoration:none;
+        }
+
+        .brand-mark {
+          display: flex;
+          justify-content: center;
+          height: 5rem;
+          width: auto;
+          object-fit: contain;
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+
+        .quick-action-btn {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 8px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Playfair Display', serif;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .quick-action-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
 
         /* Hero Section */
         .hero-section {
@@ -537,7 +544,6 @@
             background-color: var(--text-color);
             color: var(--white);
             padding: 50px 20px 20px;
-            margin-top: 60px;
         }
 
         .footer-content {
@@ -552,7 +558,7 @@
         .footer-section h3 {
             font-size: 1.3rem;
             margin-bottom: 20px;
-            color: var(--primary-color);
+            color: var(--white);
         }
 
         .footer-section p, .footer-section li {
@@ -571,7 +577,7 @@
         }
 
         .footer-section a:hover {
-            color: var(--primary-color);
+            color: var(--white);
         }
 
         .social-icons {
@@ -644,21 +650,16 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="header-container">
-            <a href="index.html" class="logo-container">
-                <div class="logo-icon">
-                    <i class="fas fa-heart"></i>
-                </div>
-                <div class="logo">Vow</div>
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand" aria-label="Vow home">
+              <img src="images/Logo2.png" class="brand-mark" alt="Vow logo">
             </a>
             <a href="index.html" class="back-button">
-                <i class="fas fa-arrow-left"></i>
                 Back to Home
-            </a>
+	    </a>
         </div>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -803,7 +804,7 @@
                         A professional DJ typically costs $1,000-$2,500 compared to $3,000-$10,000 for a live band, with similar dance floor results.
                     </div>
                 </div>
-		<div class="tip-card">
+                <div class="tip-card">
                     <div class="tip-title">
                         <i class="fas fa-seedling"></i>
                         In-Season Flowers
@@ -857,9 +858,9 @@
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="wedding-inspiration.html">Wedding Inspiration</a></li>
-                    <li><a href="planning-checklist.html">Planning Checklist</a></li>
-                    <li><a href="budget-calculator.html">Budget Calculator</a></li>
+                    <li><a href="index.html#reviews">Reviews</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -869,15 +870,6 @@
                     <li><a href="wedding-inspiration.html">Wedding Inspiration</a></li>
                     <li><a href="planning-checklist.html">Planning Checklist</a></li>
                     <li><a href="budget-calculator.html">Budget Calculator</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>For Planners</h3>
-                <ul>
-                    <li><a href="planner-signup.html">Join Vow</a></li>
-                    <li><a href="#">Planner Resources</a></li>
-                    <li><a href="#">Success Stories</a></li>
-                    <li><a href="#">Planner Login</a></li>
                 </ul>
             </div>
         </div>
@@ -916,7 +908,7 @@
                 actual: 0,
                 vendor: ''
             },
-{
+	    {
                 id: 'flowers',
                 name: 'Flowers & Decorations',
                 icon: 'fa-seedling', 
