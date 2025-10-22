@@ -75,10 +75,11 @@
         .brand-mark {
           display: flex;
           justify-content: center;
-          height: 5rem;
+          height: 2.5rem;
           width: auto;
           object-fit: contain;
           margin-top: 10px;
+          margin: 15px;
         }
 
         .brand-text{
@@ -86,7 +87,6 @@
           font-size:2rem;
           font-weight:700;
           color:var(--primary-color);
-          margin-bottom: 5px;
         }
 
         .nav-links {
@@ -193,9 +193,9 @@
         .top-logo{
           position: absolute;
           left: 50%;
-          top: 90px;
+          top: 85px;
           transform: translateX(-50%);
-          max-width: 140px;
+          max-width: 180px;
           height: auto;
           z-index: 1;
           pointer-events: none;
@@ -325,6 +325,7 @@
             flex: 1;
             min-width: 300px;
             color: #29272A;
+            text-align: center;
         }
 
         .about-image img{ height:auto; }          /* only to neutralize previous 85vh */
@@ -557,7 +558,7 @@
         footer {
             background-color: var(--text-color);
             color: var(--white);
-            padding: 50px 20px 20px;
+            padding: 72px 24px 48px;
         }
 
         .footer-content {
@@ -706,8 +707,8 @@
     <nav id="navbar">
         <div class="nav-container">
             <a href="#home" class="brand" aria-label="Vow home">
-              <!-- <img src="images/Logo2.png" class="brand-mark" alt="Vow logo"> -->
-              <span class="brand-text">Vow</span>
+              <img src="images/WrittenLogoColor.png" class="brand-mark" alt="Vow logo">
+              <!-- <span class="brand-text">Vow</span> -->
             </a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -724,9 +725,11 @@
 
     <!-- Landing Page -->
     <section class="landing" id="home">
-        <img src="images/Logo.svg" class="top-logo" alt="Vow logo" />
+        <img src="images/LogoNewColor.png" class="top-logo" alt="Vow logo" />
         <h1 class="tagline">Crafting Your Perfect Wedding Day</h1>
-        <p class="value-prop">Vow connects you with expert wedding planners who transform your vision into reality. From intimate ceremonies to grand celebrations, we're here to make your special day unforgettable.</p>
+        <p class="value-prop">
+          <i>vow.</i> connects you with expert wedding planners who transform your vision into reality. From intimate ceremonies to grand celebrations, we're here to make your special day unforgettable.
+        </p>
         <div class="cta-container">
             <a href="planner-journey.html" class="cta-button">Start Your Journey</a>
             <a href="planner-signup.html" class="secondary-cta">For Wedding Planners</a>
@@ -742,7 +745,7 @@
         <div class="about-card">
           <div class="about-content">
             <div class="about-text">
-              <p>Vow began with our founder's own overwhelming wedding planning experience and a simple mission: <b>to handle every stressful detail so you can focus on the joy.</b> We believe every couple deserves a day that perfectly reflects their love story, and our passion is making that journey as beautiful as the destination.</p>
+              <p><i><b>vow.</b></i> began with our founder's own overwhelming wedding planning experience and a simple mission: <b>to handle every stressful detail so you can focus on the joy.</b> We believe every couple deserves a day that perfectly reflects their love story, and our passion is making that journey as beautiful as the destination.</p>
             </div>
             <div class="about-image">
               <img src="images/OurStory.jpeg" alt="Vow Team">
