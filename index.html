@@ -12,10 +12,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #333;
-            --secondary-color: #333;
+            --primary-color: #29272A;
+            --secondary-color: #29272A;
             --accent-color: #333;
-            --text-color: #333;
+            --text-color: #29272A;
             --light-text: #666;
             --white: #fff;
             --shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -37,7 +37,7 @@
         }
 
         h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
+          font-family: 'Playfair Display', serif;
         }
 
         button, .cta-button, .secondary-cta, .quick-action-btn,
@@ -82,10 +82,11 @@
         }
 
         .brand-text{
-          font-size:2rem;          /* adjust as needed */
+          font-family: 'Playfair Display', serif;
+          font-size:2rem;
           font-weight:700;
           color:var(--primary-color);
-          margin-bottom: 10px;
+          margin-bottom: 5px;
         }
 
         .nav-links {
@@ -156,6 +157,7 @@
 
         /* Landing Page Styles */
         .landing {
+            position: relative;
             height: 100vh;
             background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)),
                         url('images/BlubiTwo.jpeg');
@@ -170,22 +172,33 @@
             position: relative;
         }
 
-      .landing::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)),
-                      url('images/BlubiTwo.jpeg');
-          background-size: cover;
-          background-position: center var(--landing-y);
-          filter: blur(2px);
-          z-index: 0;
-        }
+        .landing::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)),
+                        url('images/BlubiTwo.jpeg');
+            background-size: cover;
+            background-position: center var(--landing-y);
+            filter: blur(2px);
+            z-index: 0;
+          }
 
         .landing > * {
-          transform: translateY(-12vh);
+          transform: translateY(-13vh);
           position: relative;
+          z-index: 2;
+        }
+
+        .top-logo{
+          position: absolute;
+          left: 50%;
+          top: 1000px;
+          transform: translateX(-50%);
+          max-width: 140px;
+          height: auto;
           z-index: 1;
+          pointer-events: none;
         }
 
         .tagline {
@@ -285,14 +298,14 @@
             font-size: 2.5rem;
             text-align: center;
             margin-bottom: 2rem;
-            color: black;
+            color: #29272A;
         }
 
         .section-title-lower {
           font-size: 2.5rem;
           text-align: center;
           margin-bottom: 2rem;
-          color: black;
+          color: #29272A;
         }
 
         .about-content {
@@ -311,7 +324,7 @@
             font-weight: 350;
             flex: 1;
             min-width: 300px;
-            color: black;
+            color: #29272A;
         }
 
         .about-image img{ height:auto; }          /* only to neutralize previous 85vh */
@@ -362,17 +375,17 @@
         .value-title {
             font-size: 1.3rem;
             margin-bottom: 10px;
-            color: black;
+            color: #29272A;
         }
 
         .value-title-text {
-          color: black;
+          color: #29272A;
         }
 
         /* Resources Section */
         .resources-section {
           background-color: #fff;
-          color: #000;
+          color: #29272A;
           padding: 20px 20px;
         }
 
@@ -416,7 +429,7 @@
 
         .resource-card p {
           font-family: 'Roboto', serif;
-          color: #333;
+          color: #29272A;
           margin: 0 20px 20px;
         }
 
@@ -668,7 +681,6 @@
           .landing-video{ margin: 8px 16px 20px; }
           .landing-video-caption{ text-align:center; }
         }
-
     </style>
 </head>
 <body>
@@ -681,8 +693,8 @@
     <nav id="navbar">
         <div class="nav-container">
             <a href="#home" class="brand" aria-label="Vow home">
-              <img src="images/Logo2.png" class="brand-mark" alt="Vow logo">
-              <!-- <span class="brand-text">Vow</span> -->
+              <!-- <img src="images/Logo2.png" class="brand-mark" alt="Vow logo"> -->
+              <span class="brand-text">Vow</span>
             </a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -699,6 +711,7 @@
 
     <!-- Landing Page -->
     <section class="landing" id="home">
+        <img src="images/Logo" class="top-logo" alt="Vow logo" />
         <h1 class="tagline">Crafting Your Perfect Wedding Day</h1>
         <p class="value-prop">Vow connects you with expert wedding planners who transform your vision into reality. From intimate ceremonies to grand celebrations, we're here to make your special day unforgettable.</p>
         <div class="cta-container">
