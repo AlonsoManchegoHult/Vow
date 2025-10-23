@@ -27,12 +27,13 @@
             box-sizing: border-box;
         }
 
-        body {
+	body {
             font-family: 'Roboto', serif;
             color: var(--text-color);
             overflow-x: hidden;
             line-height: 1.6;
             background-color: #f9f9f9;
+            padding-top: calc(3.5rem + 10px); /* Add this line */
         }
 
         h1, h2, h3 {
@@ -41,13 +42,14 @@
 
         /* NEW NAVIGATION BAR STYLES */
         nav {
-            position: sticky;
+            position: fixed;
             top: 0;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(0,0,0,0.05); /* This makes it transparent */
             backdrop-filter: blur(10px);
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
         }
 
         .nav-container {
@@ -65,14 +67,14 @@
           text-decoration:none;
         }
 
-        .brand-mark {
+	.brand-mark {
           display: flex;
           justify-content: center;
-          height: 5rem;
+          height: 3.5rem; /* Reduced from 5rem */
           width: auto;
           object-fit: contain;
-          margin-top: 10px;
-          margin-bottom: 10px;
+          margin-top: 5px;   /* Reduced from 10px */
+          margin-bottom: 5px;/* Reduced from 10px */
         }
 
         .quick-action-btn {
@@ -95,13 +97,17 @@
         }
 
 
-        /* Progress Bar */
+	/* Progress Bar */
+
         .progress-container {
-            background-color: var(--secondary-color);
-            padding: 20px 30px;
+            background-color: rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px; /* Reduced padding for a tighter look */
             position: sticky;
-            top: 96px; /* Adjusted for new navbar height */
+            top: calc(3.5rem + 10px);
             z-index: 99;
+            /* The shadow is now here, at the bottom of the whole unit */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .progress-bar {
@@ -950,8 +956,8 @@
     <footer id="contact">
         <div class="footer-content">
             <div class="footer-section">
-                <h3>About Vow</h3>
-                <p>Vow connects couples with expert wedding planners to create their perfect day. From intimate ceremonies to grand celebrations, we're here to make your special day unforgettable.</p>
+                <h3>About <i><b>vow.</b></i></h3>
+                <p><i><b>vow.</b></i> connects couples with expert wedding planners to create their perfect day. From intimate ceremonies to grand celebrations, we're here to make your special day unforgettable.</p>
                 <div class="social-icons">
                     <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
@@ -978,7 +984,7 @@
                 </ul>
 
         <div class="copyright">
-            <p>&copy; 2023 Vow Wedding Planning. All Rights Reserved.</p>
+            <p>&copy; 2023 <i><b>vow.</b></i> Wedding Planning. All Rights Reserved.</p>
         </div>
     </footer>
 
