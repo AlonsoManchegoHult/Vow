@@ -12,11 +12,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #333; /* Using a consistent dark color */
+            --primary-color: #a88868;
             --secondary-color: #f5f5f5;
-            --accent-color: #333;
-            --text-color: #333; /* Using a consistent dark color */
-            --light-text: #666;
+            --accent-color: #29272A;
+            --text-color: #29272A; /* Main text color */
+            --light-text: #29272A; /* Secondary text color */
             --white: #fff;
             --shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
@@ -41,13 +41,14 @@
 
         /* NEW NAVIGATION BAR STYLES */
         nav {
-            position: sticky;
+            position: fixed;
             top: 0;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(0,0,0,0.05); /* This makes it transparent */
             backdrop-filter: blur(10px);
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
         }
 
         .nav-container {
@@ -57,6 +58,41 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 20px;
+        }
+
+        .brand{
+          display:inline-flex;
+          align-items:center;
+          text-decoration:none;
+        }
+
+	.brand-mark {
+          display: flex;
+          justify-content: center;
+          height: 3.5rem; /* Reduced from 5rem */
+          width: auto;
+          object-fit: contain;
+          margin-top: 5px;   /* Reduced from 10px */
+          margin-bottom: 5px;/* Reduced from 10px */
+        }
+
+        .quick-action-btn {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 8px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Playfair Display', serif;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .quick-action-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
         }
 
 	.back-button {
@@ -79,42 +115,36 @@
             color: var(--white);
         }
 
-        .brand{
-          display:inline-flex;
-          align-items:center;
-          text-decoration:none;
+
+        .cta-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
         }
 
-        .brand-mark {
-          display: flex;
-          justify-content: center;
-          height: 5rem;
-          width: auto;
-          object-fit: contain;
-          margin-top: 10px;
-          margin-bottom: 10px;
-        }
-
-        .quick-action-btn {
-            background-color: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-            padding: 8px 15px;
-            border-radius: 50px;
+        .cta-button {
+            background-color: #5B5A41;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            font-size: 1.2rem;
+            border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: var(--shadow);
             font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
+            display: inline-block;
         }
 
-        .quick-action-btn:hover {
-            background-color: var(--primary-color);
-            color: var(--white);
+        .cta-button:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
-
-
 
         /* Hero Section */
         .hero {
@@ -134,7 +164,7 @@
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 20px;
-            color: var(--primary-color);
+            color: var(--text-color);
         }
 
         .hero p {
@@ -154,7 +184,7 @@
             font-size: 2.5rem;
             text-align: center;
             margin-bottom: 2rem;
-            color: var(--primary-color);
+            color: var(--text-color);
         }
 
         .benefits-grid {
@@ -186,7 +216,7 @@
         .benefit-title {
             font-size: 1.3rem;
             margin-bottom: 10px;
-            color: var(--primary-color);
+            color: var(--text-color);
         }
 
         /* Pricing Section */
@@ -205,6 +235,13 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 50px;
+        }
+        
+        .pricing-footnote {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: var(--light-text);
         }
 
         .pricing-card {
@@ -233,13 +270,18 @@
         .pricing-header {
             padding: 25px;
             text-align: center;
-            background-color: var(--primary-color);
+            background-color: #a88868;
             color: var(--white);
         }
 
         .pricing-card.featured .pricing-header {
-            background-color: var(--accent-color);
+            background-color: #5B5A41;
         }
+        
+        .pricing-card:last-child .pricing-header {
+            background-color: black;
+        }
+
 
         .plan-name {
             font-size: 1.8rem;
@@ -295,7 +337,7 @@
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Roboto', serif;
             text-transform: uppercase;
             letter-spacing: 1px;
             width: 100%;
@@ -446,7 +488,7 @@
 
         .plan-option h4 {
             margin-bottom: 5px;
-            color: var(--primary-color);
+            color: var(--text-color);
         }
 
         .plan-option p {
@@ -455,7 +497,7 @@
         }
 
         .submit-button {
-            background-color: var(--primary-color);
+            background-color: #5B5A41;
             color: var(--white);
             border: none;
             padding: 15px 30px;
@@ -463,7 +505,7 @@
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Roboto', serif;
             text-transform: uppercase;
             letter-spacing: 1px;
             width: 100%;
@@ -583,7 +625,7 @@
         .modal-title {
             font-size: 1.8rem;
             margin-bottom: 15px;
-            color: var(--primary-color);
+            color: var(--text-color);
         }
 
         .modal-message {
@@ -600,7 +642,7 @@
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Roboto', serif;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -628,8 +670,9 @@
 <body>
     <nav id="navbar">
         <div class="nav-container">
-            <a href="index.html" class="brand" aria-label="Vow home">
-              <img src="images/Logo2.png" class="brand-mark" alt="Vow logo">
+            <a href="#home" class="brand" aria-label="Vow home">
+              <img src="images/WrittenLogoColor.png" class="brand-mark" alt="Vow logo">
+              <!-- <span class="brand-text">Vow</span> -->
             </a>
             <a href="index.html" class="back-button">
                 Back to Home
@@ -640,14 +683,14 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Join Vow as a Wedding Planner</h1>
+            <h1>Join <i><b>vow.</b></i> as a Wedding Planner</h1>
             <p>Connect with couples looking for expert wedding planning services and grow your business with our supportive platform designed specifically for wedding professionals.</p>
         </div>
     </section>
 
     <!-- Benefits Section -->
     <section class="benefits-section">
-        <h2 class="section-title">Why Join Vow?</h2>
+        <h2 class="section-title">Why Join <i><b>vow.</b></i>?</h2>
         <div class="benefits-grid">
             <div class="benefit-card">
                 <div class="benefit-icon">
@@ -662,13 +705,6 @@
                 </div>
                 <h3 class="benefit-title">Grow Your Business</h3>
                 <p>Build your portfolio, gain exposure, and increase your bookings with our marketing tools and client management system.</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3 class="benefit-title">Professional Support</h3>
-                <p>Access resources, training, and a community of fellow wedding planners to help you succeed in your business.</p>
             </div>
         </div>
     </section>
@@ -687,11 +723,10 @@
                     <div class="pricing-content">
                         <p class="plan-description">Perfect for new wedding planners looking to establish their presence.</p>
                         <ul class="features-list">
-                            <li><i class="fas fa-check"></i> Up to 3 client matches per month</li>
+                            <li><i class="fas fa-check"></i> 3 minimum client matches per month</li>
                             <li><i class="fas fa-check"></i> Basic profile listing</li>
                             <li><i class="fas fa-check"></i> Access to planning resources</li>
                             <li><i class="fas fa-check"></i> Basic client management tools</li>
-                            <li><i class="fas fa-check"></i> Community forum access</li>
                         </ul>
                         <button class="select-plan-button" data-plan="basic">Select Basic</button>
                     </div>
@@ -706,12 +741,11 @@
                     <div class="pricing-content">
                         <p class="plan-description">Our most popular plan for established wedding planners.</p>
                         <ul class="features-list">
-                            <li><i class="fas fa-check"></i> Up to 10 client matches per month</li>
+                            <li><i class="fas fa-check"></i> 10 minimum client matches per month</li>
                             <li><i class="fas fa-check"></i> Featured profile placement</li>
-                            <li><i class="fas fa-check"></i> Advanced portfolio showcase</li>
+                            <li><i class="fas fa-check"></i> Advanced portfolio matching</li>
                             <li><i class="fas fa-check"></i> Priority client support</li>
-                            <li><i class="fas fa-check"></i> Marketing toolkit</li>
-                            <li><i class="fas fa-check"></i> Monthly webinars & training</li>
+                            <li><i class="fas fa-check"></i> Advanced analytics dashboard</li>
                         </ul>
                         <button class="select-plan-button" data-plan="professional">Select Professional</button>
                     </div>
@@ -726,11 +760,9 @@
                     <div class="pricing-content">
                         <p class="plan-description">For top-tier wedding planners seeking maximum exposure.</p>
                         <ul class="features-list">
-                            <li><i class="fas fa-check"></i> Unlimited client matches</li>
+                            <li><i class="fas fa-check"></i> 15 minimum client matches per month</li>
                             <li><i class="fas fa-check"></i> Premium profile with video</li>
                             <li><i class="fas fa-check"></i> Dedicated account manager</li>
-                            <li><i class="fas fa-check"></i> Advanced analytics dashboard</li>
-                            <li><i class="fas fa-check"></i> Exclusive networking events</li>
                             <li><i class="fas fa-check"></i> Lead generation tools</li>
                             <li><i class="fas fa-check"></i> Custom branding options</li>
                         </ul>
@@ -738,6 +770,7 @@
                     </div>
                 </div>
             </div>
+            <p class="pricing-footnote">*All plans are subject to a 0.5% commission fee per customer package sold.</p>
         </div>
     </section>
 
@@ -751,7 +784,7 @@
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="faq-answer">
-                <p>Our intelligent matching system connects you with couples based on your expertise, style, availability, and location. When a couple's requirements align with your profile, you'll receive a notification with their details and can choose to accept or decline the match.</p>
+                <p>Our intelligent matching system connects you with couples based on your expertise, style, availability, and location. When a couple's requirements align with your profile, you'll receive a notification with their details.</p>
             </div>
         </div>
         
@@ -781,7 +814,7 @@
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="faq-answer">
-                <p>Vow doesn't handle payment processing between you and your clients. You'll discuss payment arrangements directly with your clients and handle invoicing and payment collection through your preferred methods.</p>
+                <p><i><b>vow.</b></i> doesn't handle payment processing between you and your clients. You'll discuss payment arrangements directly with your clients and handle invoicing and payment collection through your preferred methods.</p>
             </div>
         </div>
     </section>
@@ -790,7 +823,7 @@
     <section class="signup-section">
         <div class="signup-container">
             <div class="signup-header">
-                <h2>Start Your Journey with Vow</h2>
+                <h2>Start Your Journey with <i><b>vow.</b></i></h2>
                 <p>Fill out the form below to join our community of expert wedding planners</p>
             </div>
             <form class="signup-form" id="plannerSignupForm">
@@ -865,7 +898,7 @@
                     <textarea id="bio" name="bio" placeholder="Describe your approach to wedding planning, your specialties, and what makes you unique..." required></textarea>
                 </div>
                 
-                <button type="submit" class="submit-button">Join Vow Today</button>
+                <button type="submit" class="submit-button">Join <i><b>vow.</b></i> Today</button>
             </form>
         </div>
     </section>
@@ -874,8 +907,8 @@
     <footer id="contact">
         <div class="footer-content">
             <div class="footer-section">
-                <h3>About Vow</h3>
-                <p>Vow connects couples with expert wedding planners to create their perfect day. From intimate ceremonies to grand celebrations, we're here to make your special day unforgettable.</p>
+                <h3>About <i><b>vow.</b></i></h3>
+                <p><i><b>vow.</b></i> connects couples with expert wedding planners to create their perfect day. From intimate ceremonies to grand celebrations, we're here to make your special day unforgettable.</p>
                 <div class="social-icons">
                     <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
@@ -903,7 +936,7 @@
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2023 Vow Wedding Planning. All Rights Reserved.</p>
+            <p>&copy; 2023 <i><b>vow.</b></i> Wedding Planning. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -914,7 +947,7 @@
                 <i class="fas fa-check-circle"></i>
             </div>
             <h2 class="modal-title">Application Received!</h2>
-            <p class="modal-message">Thank you for your interest in joining Vow! Our team will review your application within 3-5 business days and contact you with next steps.</p>
+            <p class="modal-message">Thank you for your interest in joining <i><b>vow.</b></i>! Our team will review your application within 3-5 business days and contact you with next steps.</p>
             <button class="modal-button" id="closeModal">Got It</button>
         </div>
     </div>
