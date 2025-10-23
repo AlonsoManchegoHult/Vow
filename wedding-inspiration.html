@@ -12,10 +12,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #333; /* Using a consistent dark color */
+            --primary-color: #a88868; 
             --secondary-color: #f5f5f5;
             --accent-color: #333;
-            --text-color: #333; /* Using a consistent dark color */
+            --text-color: #29272A; /* Using a consistent dark color */
             --light-text: #666;
             --white: #fff;
             --shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -41,13 +41,14 @@
 
         /* NEW NAVIGATION BAR STYLES */
         nav {
-            position: sticky;
+            position: fixed;
             top: 0;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(0,0,0,0.05); /* This makes it transparent */
             backdrop-filter: blur(10px);
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
         }
 
         .nav-container {
@@ -59,40 +60,20 @@
             padding: 0 20px;
         }
 
-	.back-button {
-            background-color: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-            padding: 10px 20px;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Montserrat', sans-serif;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .back-button:hover {
-            background-color: var(--primary-color);
-            color: var(--white);
-        }
-
         .brand{
           display:inline-flex;
           align-items:center;
           text-decoration:none;
         }
 
-        .brand-mark {
+	.brand-mark {
           display: flex;
           justify-content: center;
-          height: 5rem;
+          height: 3.5rem; /* Reduced from 5rem */
           width: auto;
           object-fit: contain;
-          margin-top: 10px;
-          margin-bottom: 10px;
+          margin-top: 5px;   /* Reduced from 10px */
+          margin-bottom: 5px;/* Reduced from 10px */
         }
 
         .quick-action-btn {
@@ -114,6 +95,26 @@
             color: var(--white);
         }
 
+	.back-button {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Roboto', serif;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-button:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
 
         /* Filter Tags Section */
         .filter-container {
@@ -126,7 +127,7 @@
         .filter-container h1 {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            color: var(--primary-color);
+            color: var(--text-color);
             font-weight: 700;
         }
 
@@ -146,7 +147,7 @@
             border-radius: 0;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Roboto', serif;
             font-size: 0.9rem;
         }
 
@@ -267,7 +268,7 @@
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Roboto', serif;
             text-transform: uppercase;
             letter-spacing: 1px;
             box-shadow: var(--shadow);
@@ -448,10 +449,11 @@
     </style>
 </head>
 <body>
-    <nav id="navbar">
+  <nav id="navbar">
         <div class="nav-container">
-            <a href="index.html" class="brand" aria-label="Vow home">
-              <img src="images/Logo2.png" class="brand-mark" alt="Vow logo">
+            <a href="#home" class="brand" aria-label="Vow home">
+              <img src="images/WrittenLogoColor.png" class="brand-mark" alt="Vow logo">
+              <!-- <span class="brand-text">Vow</span> -->
             </a>
             <a href="index.html" class="back-button">
                 Back to Home
@@ -461,6 +463,7 @@
 
     <!-- Filter Tags Section -->
     <div class="filter-container">
+	<br> <br>
         <h1>Wedding Inspiration Gallery</h1>
         <div class="filter-tags">
             <div class="filter-tag active" data-category="all">All</div>
@@ -507,8 +510,8 @@
     <footer id="contact">
         <div class="footer-content">
             <div class="footer-section">
-                <h3>About Vow</h3>
-                <p>Vow connects couples with expert wedding planners to create their perfect day. From intimate ceremonies to grand celebrations, we're here to make your special day unforgettable.</p>
+                <h3>About <i><b>vow.</b></i></h3>
+                <p><i><b>vow.</b></i> connects couples with expert wedding planners to create their perfect day. From intimate ceremonies to grand celebrations, we're here to make your special day unforgettable.</p>
                 <div class="social-icons">
                     <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
@@ -536,7 +539,7 @@
             </div>
          </div>
         <div class="copyright">
-            <p>&copy; 2023 Vow Wedding Planning. All Rights Reserved.</p>
+            <p>&copy; 2023 <i><b>vow.</b></i> Wedding Planning. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -809,3 +812,4 @@
     </script>
 </body>
 </html>
+
